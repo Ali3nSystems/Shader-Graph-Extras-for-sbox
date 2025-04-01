@@ -1,6 +1,6 @@
 namespace Editor.ShaderGraph.Nodes;
 
-[Title("SGE - Negate"), Category("Unary"), Icon("exposure_neg_1")]
+[Title( "SGE - Negate" ), Category( "Unary" ), Icon( "exposure_neg_1" )]
 public sealed class SGENegateNode : ShaderNode
 {
 	[Hide]

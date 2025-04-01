@@ -1,6 +1,6 @@
 namespace Editor.ShaderGraph.Nodes;
 
-[Title("SGE - Grayscale"), Category("Transform"), Icon("filter_b_and_w")]
+[Title( "SGE - Grayscale" ), Category( "Transform" ), Icon( "filter_b_and_w" )]
 public sealed class SGEGrayscaleNode : ShaderNode
 {
 	[Hide]
