@@ -1,0 +1,277 @@
+{
+  "IsSubgraph": false,
+  "Path": "shaders/examples/water ripples.shdrgrph",
+  "Model": "models/dev/plane.vmdl",
+  "Title": null,
+  "Description": null,
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "EnableShadows": true,
+    "ShowSkybox": true,
+    "BackgroundColor": "1,1,1,1",
+    "Tint": "1,1,1,1"
+  },
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 0.05,
+      "DefaultMetalness": 1,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Normal": {
+        "Identifier": "1",
+        "Output": "Normal"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/sgsg-liquid-water-ripples.shdrfunc",
+      "DefaultValues": {
+        "Coordinates A": 0,
+        "Time A": 0,
+        "Intensity A": 1,
+        "Tiling A": 1,
+        "Coordinates B": 0,
+        "Time B": 0,
+        "Intensity B": 1,
+        "Tiling B": 1
+      },
+      "Identifier": "1",
+      "Position": "-216,72",
+      "HandleOffsets": {},
+      "Coordinates A": {
+        "Identifier": "16",
+        "Output": "Result"
+      },
+      "Time A": {
+        "Identifier": "10",
+        "Output": "Result"
+      },
+      "Coordinates B": {
+        "Identifier": "14",
+        "Output": "Result"
+      },
+      "Time B": {
+        "Identifier": "20",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureCoord",
+      "UseSecondaryCoord": false,
+      "Tiling": "1,1",
+      "Identifier": "2",
+      "Position": "-1020,144",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "3",
+      "Position": "-612,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "11",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Time",
+      "Identifier": "4",
+      "Position": "-1020,84",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "5",
+      "Position": "-612,204",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "11",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "6",
+      "Position": "-804,120",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "7",
+      "Position": "-804,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "8",
+      "Position": "-804,228",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 0.1,
+      "Identifier": "9",
+      "Position": "-744,192",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "8",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 0.1,
+      "Identifier": "10",
+      "Position": "-744,96",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "11",
+      "Position": "-612,180",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "408,192",
+      "Color": "Green",
+      "Title": "Water Ripples",
+      "Description": "-A stands for the first normal map.\n-B stands for the second normal map.\n-Use Rotate UV node to change rotation.\nCoordinates: -Used for mapping the textures.\nTime: -Used for scrolling the textures.\nIntensity: Intensity of the normal maps.\nTiling: Controls how large or small the textures should be.",
+      "Layer": 1,
+      "Identifier": "12",
+      "Position": "168,-0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SGERotateUVNode",
+      "DefaultInput": "0,0",
+      "DefaultCenter": "0.5,0.5",
+      "DefaultRotation": 0,
+      "Mode": "Degrees",
+      "Identifier": "13",
+      "Position": "-492,24",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SGERotateUVNode",
+      "DefaultInput": "0,0",
+      "DefaultCenter": "0.5,0.5",
+      "DefaultRotation": 180,
+      "Mode": "Degrees",
+      "Identifier": "14",
+      "Position": "-492,168",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "15",
+      "Position": "-276,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "13",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "16",
+      "Position": "-276,108",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "15",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "17",
+      "Position": "-612,228",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "18",
+      "Position": "-612,276",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "19",
+      "Position": "-276,276",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "18",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "20",
+      "Position": "-276,228",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "19",
+        "Output": "Result"
+      }
+    }
+  ]
+}
