@@ -30,7 +30,7 @@ public sealed class SGERotateUVNode : ShaderNode
 	public string Degrees => @"
 		float2 Degrees( float2 input, float2 center, float rotation )
 		{
-			rotation = rotation * (3.1415926f/180.0f);
+			rotation *= 3.1415926f/180.0f;
 			input -= center;
 			float s = sin(rotation);
 			float c = cos(rotation);

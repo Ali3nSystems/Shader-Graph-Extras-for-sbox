@@ -31,7 +31,7 @@ public sealed class SGERotateAboutAxisNode : ShaderNode
 	public string Degrees => @"
 		float3 Degrees( float3 input, float3 axis, float rotation )
 		{
-			rotation = radians(rotation);
+			rotation *= 3.1415926f/180.0f;
 			float s = sin(rotation);
 			float c = cos(rotation);
 			float one_minus_c = 1.0 - c;
@@ -67,7 +67,7 @@ public sealed class SGERotateAboutAxisNode : ShaderNode
 	[MinMax(0, 360)]
 	[InputDefault( nameof( Rotation ) )]
 	public float DefaultRotation {get; set;} = 0f;
-	public SGERotateAboutAxisMode Mode {get; set;} = SGERotateAboutAxisMode.Degrees;
+	public SGERotateAboutAxisMode Mode {get; set;} = SGERotateAboutAxisMode.Radians;
 
 	[Output( typeof( Vector3 ) )]
 	[Hide]
