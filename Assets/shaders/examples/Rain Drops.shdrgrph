@@ -370,7 +370,7 @@
       "Color": "Green",
       "Title": "Rain Drops",
       "Description": "Coordinates: -Used for mapping the texture.\nTime: -Used to control the water drops animation.\nBlur: -Blurs the edges of the drops. Clamped between 0-1.\nDelay: -Controls how often the drops appear. Clamped between 0-1.\nIntensity: -Controls the intensity of the normal map.",
-      "Layer": 1,
+      "Layer": 2,
       "Identifier": "28",
       "Position": "168,0",
       "HandleOffsets": {}
@@ -410,6 +410,17 @@
         "Identifier": "30",
         "Output": "Result"
       }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "384,156",
+      "Color": "Red",
+      "Title": "Warning!",
+      "Description": "If you see artifacts in the distance when using this shader, turn off mip maps for the texture that has opacity,temporal in its name. This will affect frame rate but there is no other way from what I have tested.",
+      "Layer": 1,
+      "Identifier": "32",
+      "Position": "168,168",
+      "HandleOffsets": {}
     }
   ]
 }
