@@ -1,0 +1,270 @@
+{
+  "IsSubgraph": false,
+  "Path": "shaders/examples/rain ripples.shdrgrph",
+  "Model": "models/dev/plane.vmdl",
+  "Title": null,
+  "Description": null,
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "EnableShadows": true,
+    "ShowSkybox": true,
+    "BackgroundColor": "1,1,1,1",
+    "Tint": "1,1,1,1"
+  },
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 0.05,
+      "DefaultMetalness": 1,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Normal": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/sgsg-weather-rain-ripples.shdrfunc",
+      "DefaultValues": {
+        "Coordinates": 0,
+        "Time": 0,
+        "Intensity": 1,
+        "Delay": 0.5,
+        "Scale": 1
+      },
+      "Identifier": "1",
+      "Position": "-492,72",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "13",
+        "Output": "Result"
+      },
+      "Time": {
+        "Identifier": "16",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/sgsg-weather-rain-ripples.shdrfunc",
+      "DefaultValues": {
+        "Coordinates": 0,
+        "Time": 0,
+        "Intensity": 1,
+        "Delay": 0.25,
+        "Scale": 0.5
+      },
+      "Identifier": "2",
+      "Position": "-492,228",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "15",
+        "Output": "Result"
+      },
+      "Time": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SGEBlendNormalsNode",
+      "Mode": "Reoriented",
+      "Identifier": "3",
+      "Position": "-216,72",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "1",
+        "Output": "Normal"
+      },
+      "B": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "4",
+      "Position": "-276,264",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "2",
+        "Output": "Normal"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "5",
+      "Position": "-276,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureCoord",
+      "UseSecondaryCoord": false,
+      "Tiling": "1,1",
+      "Identifier": "6",
+      "Position": "-1236,36",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Time",
+      "Identifier": "7",
+      "Position": "-1236,96",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "8",
+      "Position": "-960,96",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "7",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "11",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 1.25,
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {},
+      "Identifier": "9",
+      "Position": "-1236,156",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "10",
+      "Position": "-1020,192",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "11",
+      "Position": "-1020,156",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "10",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "12",
+      "Position": "-828,72",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "13",
+      "Position": "-828,108",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "12",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "14",
+      "Position": "-828,264",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "13",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TileAndOffset",
+      "DefaultTile": "1,1",
+      "DefaultOffset": "0.333,0.666",
+      "WrapTo01": false,
+      "Identifier": "15",
+      "Position": "-768,228",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "14",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "16",
+      "Position": "-552,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "8",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "17",
+      "Position": "-552,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "16",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "384,192",
+      "Color": "Green",
+      "Title": "Rain Ripples",
+      "Description": "Coordinates: -Used for mapping the texture.\nTime: -Used to control the water ripples animation.\nDelay: -Controls how often the ripples appear. Clamped between 0-1.\nIntensity: -Controls the intensity of the normal map.\nScale: -Controls the scale of the ripples. Clamped between 0-1.",
+      "Layer": 1,
+      "Identifier": "18",
+      "Position": "168,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "384,156",
+      "Color": "Red",
+      "Title": "Warning!",
+      "Description": "If you see artifacts in the distance when using this shader, turn off mip maps for the texture that has opacity,temporal in its name. This will affect frame rate but there is no other way from what I have tested.",
+      "Layer": 2,
+      "Identifier": "19",
+      "Position": "168,204",
+      "HandleOffsets": {}
+    }
+  ]
+}
