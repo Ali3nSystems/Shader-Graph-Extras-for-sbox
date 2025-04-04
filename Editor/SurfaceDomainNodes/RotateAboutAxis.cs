@@ -67,7 +67,7 @@ public sealed class SGERotateAboutAxisNode : ShaderNode
 	[MinMax(0, 360)]
 	[InputDefault( nameof( Rotation ) )]
 	public float DefaultRotation {get; set;} = 0f;
-	public SGERotateAboutAxisMode Mode {get; set;} = SGERotateAboutAxisMode.Radians;
+	public SGERotateAboutAxisMode Mode {get; set;} = SGERotateAboutAxisMode.Degrees;
 
 	[Output( typeof( Vector3 ) )]
 	[Hide]
