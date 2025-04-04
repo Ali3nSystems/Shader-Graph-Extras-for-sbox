@@ -1,14 +1,14 @@
 namespace Editor.ShaderGraph.Nodes;
 
-public enum SGERotateAboutAxisMode
-{
-	Radians,
-	Degrees,
-}
-
 [Title( "SGE - Rotate About Axis" ), Category( "Transform" ), Icon( "360" )]
 public sealed class SGERotateAboutAxisNode : ShaderNode
 {
+	public enum SGERotateAboutAxisMode
+	{
+		Radians,
+		Degrees,
+	}
+
 	[Hide]
 	public string Radians => @"
 		float3 Radians( float3 input, float3 axis, float rotation )

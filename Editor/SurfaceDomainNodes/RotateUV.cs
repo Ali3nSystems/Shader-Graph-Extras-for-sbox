@@ -1,14 +1,14 @@
 namespace Editor.ShaderGraph.Nodes;
 
-public enum SGERotateUVMode
-{
-	Radians,
-	Degrees,
-}
-
 [Title( "SGE - Rotate UV" ), Category( "Transform" ), Icon( "360" )]
 public sealed class SGERotateUVNode : ShaderNode
 {
+	public enum SGERotateUVMode
+	{
+		Radians,
+		Degrees,
+	}
+
 	[Hide]
 	public string Radians => @"
 		float2 Radians( float2 input, float2 center, float rotation )
