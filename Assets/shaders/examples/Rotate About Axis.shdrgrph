@@ -1,0 +1,110 @@
+{
+  "IsSubgraph": false,
+  "Path": "shaders/examples/rotate about axis.shdrgrph",
+  "Model": null,
+  "Title": null,
+  "Description": "",
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "EnableShadows": true,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 0.05,
+      "DefaultMetalness": 1,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Albedo": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Time",
+      "Identifier": "1",
+      "Position": "-624,84",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SGERotateAboutAxisNode",
+      "DefaultInput": "0,0,0",
+      "DefaultAxis": "0,0,1",
+      "DefaultRotation": 0,
+      "Mode": "Degrees",
+      "Identifier": "2",
+      "Position": "-216,0",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "Rotation": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "ObjectPosition",
+      "Identifier": "3",
+      "Position": "-432,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "4",
+      "Position": "-276,120",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "5",
+      "Position": "-276,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 10,
+      "Identifier": "6",
+      "Position": "-408,84",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "564,120",
+      "Color": "Green",
+      "Title": "Rotate About Axis",
+      "Description": "Input: -Add Object Space Position or World Space Position.\nAxis: -Which axis to rotate around.\nRotate: -Use Radians or Degrees in the Properties tab to rotate the coordinates.",
+      "Layer": 1,
+      "Identifier": "7",
+      "Position": "168,0",
+      "HandleOffsets": {}
+    }
+  ]
+}
