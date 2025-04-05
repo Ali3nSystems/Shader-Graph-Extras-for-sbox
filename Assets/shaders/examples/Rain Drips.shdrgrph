@@ -1,0 +1,588 @@
+{
+  "IsSubgraph": false,
+  "Path": "shaders/examples/rain drips.shdrgrph",
+  "Model": "models/dev/plane.vmdl",
+  "Title": null,
+  "Description": null,
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "EnableShadows": true,
+    "ShowSkybox": true,
+    "BackgroundColor": "1,1,1,1",
+    "Tint": "1,1,1,1"
+  },
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 1,
+      "DefaultMetalness": 1,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Normal": {
+        "Identifier": "8",
+        "Output": "Result"
+      },
+      "Roughness": {
+        "Identifier": "32",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureCoord",
+      "UseSecondaryCoord": false,
+      "Tiling": "1,1",
+      "Identifier": "1",
+      "Position": "-1896,432",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SGEBlendNormalsNode",
+      "Mode": "Reoriented",
+      "Identifier": "2",
+      "Position": "-696,348",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "29",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "31",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TileAndOffset",
+      "DefaultTile": "1.25,1.25",
+      "DefaultOffset": "0.3,0.5",
+      "WrapTo01": false,
+      "Identifier": "3",
+      "Position": "-1560,252",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "12",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "4",
+      "Position": "-1284,624",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Time",
+      "Identifier": "5",
+      "Position": "-1560,588",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "6",
+      "Position": "-1284,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TileAndOffset",
+      "DefaultTile": "0.75,0.75",
+      "DefaultOffset": "-0.3,0.75",
+      "WrapTo01": false,
+      "Identifier": "7",
+      "Position": "-1560,72",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "13",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SGEBlendNormalsNode",
+      "Mode": "Reoriented",
+      "Identifier": "8",
+      "Position": "-276,72",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "42",
+        "Output": "Normal"
+      },
+      "B": {
+        "Identifier": "25",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "9",
+      "Position": "-1284,312",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "10",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "10",
+      "Position": "-1284,492",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "11",
+      "Position": "-1680,468",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "12",
+      "Position": "-1680,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "11",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "13",
+      "Position": "-1680,108",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "12",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 0.025,
+      "Identifier": "14",
+      "Position": "-192,180",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "15",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Saturate",
+      "Identifier": "15",
+      "Position": "-360,180",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "35",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "16",
+      "Position": "-888,252",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "27",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "43",
+        "Output": "Roughness"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "17",
+      "Position": "-612,252",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "16",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "37",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0.333,
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {},
+      "Identifier": "18",
+      "Position": "-1560,528",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "19",
+      "Position": "-1344,516",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "20",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "20",
+      "Position": "-1344,564",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "18",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "21",
+      "Position": "-1344,384",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "41",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "22",
+      "Position": "-1344,336",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "21",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0.666,
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {},
+      "Identifier": "23",
+      "Position": "-1560,360",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "24",
+      "Position": "-480,384",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "25",
+      "Position": "-480,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "24",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "26",
+      "Position": "-948,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "42",
+        "Output": "Roughness"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "27",
+      "Position": "-948,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "26",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "28",
+      "Position": "-1008,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "43",
+        "Output": "Normal"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "29",
+      "Position": "-1008,384",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "28",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "30",
+      "Position": "-1008,468",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "44",
+        "Output": "Normal"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "31",
+      "Position": "-1008,408",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "30",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "32",
+      "Position": "-60,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "33",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "33",
+      "Position": "-60,216",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "14",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "34",
+      "Position": "-420,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "35",
+      "Position": "-420,216",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "34",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "36",
+      "Position": "-756,492",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "44",
+        "Output": "Roughness"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "37",
+      "Position": "-756,312",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "36",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "468,180",
+      "Color": "Green",
+      "Title": "Rain Drips",
+      "Description": "Coordinates: -Used for mapping the texture.\nTime: -Used to control the water drips animation.\nBlur: -Blurs the edges of the drips. Clamped between 0-1.\nIntensity: -Controls the intensity of the normal map.\nPorousness: -Controls how fast the drips move depending on the surface. Clamped between 0-1.",
+      "Layer": 3,
+      "Identifier": "38",
+      "Position": "168,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "372,156",
+      "Color": "Red",
+      "Title": "Warning!",
+      "Description": "If you see artifacts in the distance when using this shader, turn off mip maps for the texture that has opacity,temporal in its name. This will affect frame rate but there is no other way from what I have tested.",
+      "Layer": 2,
+      "Identifier": "39",
+      "Position": "168,192",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "288,120",
+      "Color": "Blue",
+      "Title": "Gradients",
+      "Description": "There are different gradient textures in the textures folder that you can use to control how long the drips are.",
+      "Layer": 1,
+      "Identifier": "40",
+      "Position": "648,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "41",
+      "Position": "-1344,396",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "23",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/sgsg-weather-rain-drips.shdrfunc",
+      "DefaultValues": {
+        "Coordinates": 0,
+        "Time": 0,
+        "Blur": 0,
+        "Intensity": 5,
+        "Porousness": 0
+      },
+      "Identifier": "42",
+      "Position": "-1224,72",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "7",
+        "Output": "Result"
+      },
+      "Time": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/sgsg-weather-rain-drips.shdrfunc",
+      "DefaultValues": {
+        "Coordinates": 0,
+        "Time": 0,
+        "Blur": 0,
+        "Intensity": 1,
+        "Porousness": 0
+      },
+      "Identifier": "43",
+      "Position": "-1224,252",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "Time": {
+        "Identifier": "9",
+        "Output": "Result"
+      },
+      "Blur": {
+        "Identifier": "22",
+        "Output": "Result"
+      },
+      "Porousness": {
+        "Identifier": "21",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/sgsg-weather-rain-drips.shdrfunc",
+      "DefaultValues": {
+        "Coordinates": 0,
+        "Time": 0,
+        "Blur": 0,
+        "Intensity": 2.5,
+        "Porousness": 0
+      },
+      "Identifier": "44",
+      "Position": "-1224,432",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "11",
+        "Output": "Result"
+      },
+      "Time": {
+        "Identifier": "10",
+        "Output": "Result"
+      },
+      "Blur": {
+        "Identifier": "19",
+        "Output": "Result"
+      },
+      "Porousness": {
+        "Identifier": "20",
+        "Output": "Result"
+      }
+    }
+  ]
+}
