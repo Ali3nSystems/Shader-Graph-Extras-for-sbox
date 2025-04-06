@@ -1,0 +1,132 @@
+{
+  "IsSubgraph": false,
+  "Path": "shaders/examples/gerstner linear.shdrgrph",
+  "Model": "models/subdivided_plane.vmdl",
+  "Title": null,
+  "Description": null,
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "EnableShadows": true,
+    "ShowSkybox": true,
+    "BackgroundColor": "1,1,1,1",
+    "Tint": "1,1,1,1"
+  },
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 0.05,
+      "DefaultMetalness": 1,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Normal": {
+        "Identifier": "6",
+        "Output": "Result"
+      },
+      "PositionOffset": {
+        "Identifier": "8",
+        "Output": "Displacement"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "1",
+      "Position": "-60,180",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "8",
+        "Output": "Normal"
+      }
+    },
+    {
+      "_class": "ObjectPosition",
+      "Identifier": "2",
+      "Position": "-492,144",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 0.1,
+      "Identifier": "3",
+      "Position": "-624,168",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "420,216",
+      "Color": "Green",
+      "Title": "Gerstner Linear",
+      "Description": "Coordinates: -Use Object Space Position or World Space Position.\nTime: -Controls the waves speed.\nDirection: -XY coordinates from which the waves generate.\nGravity: -Using inches value.\nHeight:- How tall or short the waves are.\nIntensity:- Intensity of the normal map.\nLength: -Length of the waves.",
+      "Layer": 2,
+      "Identifier": "4",
+      "Position": "168,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Time",
+      "Identifier": "5",
+      "Position": "-840,168",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "6",
+      "Position": "-60,108",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "420,108",
+      "Color": "Green",
+      "Title": "",
+      "Description": "Steepness: -How sharp the waves are. Clamped between 0-1.",
+      "Layer": 1,
+      "Identifier": "7",
+      "Position": "168,216",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/sgsg-liquid-gerstner-linear.shdrfunc",
+      "DefaultValues": {
+        "Coordinates": 0,
+        "Time": 0,
+        "Direction": "1,1",
+        "Gravity": 385.82678,
+        "Height": 2,
+        "Intensity": 1,
+        "Length": 100,
+        "Steepness": 0
+      },
+      "Identifier": "8",
+      "Position": "-276,144",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "2",
+        "Output": "Result"
+      },
+      "Time": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    }
+  ]
+}
