@@ -97,10 +97,10 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "564,120",
+      "Size": "564,144",
       "Color": "Green",
       "Title": "Rotate About Axis",
-      "Description": "Input: -Add Object Space Position or World Space Position.\nAxis: -Which axis to rotate around.\nRotate: -Use Radians or Degrees in the Properties tab to rotate the coordinates.",
+      "Description": "Input: -Add Object Space Position or World Space Position.\nAxis: -Which axis to rotate around.\nRotation: -Use Radians or Degrees in the Properties tab to rotate the coordinates.",
       "Layer": 1,
       "Identifier": "7",
       "Position": "168,0",
