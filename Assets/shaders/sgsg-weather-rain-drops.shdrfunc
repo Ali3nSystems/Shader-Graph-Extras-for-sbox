@@ -1,0 +1,839 @@
+{
+  "IsSubgraph": true,
+  "Path": "shaders/sgsg-weather-rain-drops.shdrfunc",
+  "Model": "models/dev/plane.vmdl",
+  "Title": "SGE - Rain Drops",
+  "Description": null,
+  "Category": "Weather",
+  "Icon": "water_drop",
+  "AddToNodeLibrary": true,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "EnableShadows": true,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "nodes": [
+    {
+      "_class": "AppendVector",
+      "Identifier": "0",
+      "Position": "-1200,-0",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "12",
+        "Output": "X"
+      },
+      "B": {
+        "Identifier": "12",
+        "Output": "Y"
+      }
+    },
+    {
+      "_class": "FunctionResult",
+      "FunctionOutputs": [
+        {
+          "Id": "e9d157f5-d183-4abd-8114-9daf7e367cb5",
+          "Name": "Normal",
+          "Type": "Vector3",
+          "Priority": 1
+        },
+        {
+          "Id": "3bb48423-cd0c-4347-ac6a-fc8f68723878",
+          "Name": "Roughness",
+          "Type": "float",
+          "Priority": 2
+        }
+      ],
+      "Identifier": "1",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Normal": {
+        "Identifier": "11",
+        "Output": "Output"
+      },
+      "Roughness": {
+        "Identifier": "50",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 2,
+      "Identifier": "2",
+      "Position": "-984,-0",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "0",
+        "Output": "Output"
+      }
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "3",
+      "Position": "-852,-0",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "4",
+      "Position": "-660,0",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "37",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "5",
+      "Position": "-1764,192",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "33",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "24",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Frac",
+      "Identifier": "6",
+      "Position": "-1632,192",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "7",
+      "Position": "-852,504",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "55",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "42",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0,
+      "Name": "Time",
+      "IsAttribute": true,
+      "UI": {
+        "Priority": 2
+      },
+      "Identifier": "8",
+      "Position": "-2376,216",
+      "HandleOffsets": {},
+      "PreviewInput": {
+        "Identifier": "40",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "9",
+      "Position": "-468,-0",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "4",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "53",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 1,
+      "Name": "Intensity",
+      "IsAttribute": false,
+      "UI": {
+        "Priority": 5
+      },
+      "Identifier": "10",
+      "Position": "-936,96",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "AppendVector",
+      "Identifier": "11",
+      "Position": "-276,0",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "9",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "51",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SplitVector",
+      "Identifier": "12",
+      "Position": "-1416,0",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "15",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "OneMinus",
+      "Identifier": "13",
+      "Position": "-192,504",
+      "HandleOffsets": {},
+      "In": {
+        "Identifier": "22",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0,
+      "Name": "Coordinates",
+      "IsAttribute": true,
+      "UI": {
+        "Priority": 1
+      },
+      "Identifier": "14",
+      "Position": "-2316,0",
+      "HandleOffsets": {},
+      "PreviewInput": {
+        "Identifier": "39",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureSampler",
+      "Image": "textures/tex-weather-rain-drops@1-1-1-r-12x12-normal.png",
+      "Sampler": {},
+      "UI": {
+        "Name": "Normal",
+        "Default": "1,1,1,1",
+        "ShowExtension": true,
+        "ColorSpace": "Linear",
+        "PrimaryGroup": {
+          "Name": "Weather"
+        },
+        "SecondaryGroup": {
+          "Name": "Rain Drops"
+        }
+      },
+      "Identifier": "15",
+      "Position": "-1632,0",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "34",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureSampler",
+      "Image": "textures/tex-weather-rain-drops@1-1-1-r-12x12-opacity,temporal.png",
+      "Sampler": {},
+      "UI": {
+        "Name": "Opacity \u0026 Temporal",
+        "Default": "1,1,1,1",
+        "ShowExtension": true,
+        "ColorSpace": "Linear",
+        "PrimaryGroup": {
+          "Name": "Weather"
+        },
+        "SecondaryGroup": {
+          "Name": "Rain Drops"
+        }
+      },
+      "Identifier": "16",
+      "Position": "-2040,432",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "35",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "17",
+      "Position": "-1404,252",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "59",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "20",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "18",
+      "Position": "-1212,336",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "57",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "21",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 1,
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {},
+      "Identifier": "19",
+      "Position": "-2376,276",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "20",
+      "Position": "-1764,276",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "28",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "31",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Divide",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "21",
+      "Position": "-1764,360",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "29",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "30",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "22",
+      "Position": "-720,540",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0,
+      "Name": "Delay",
+      "IsAttribute": false,
+      "UI": {
+        "Priority": 4
+      },
+      "Identifier": "23",
+      "Position": "-2592,384",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "24",
+      "Position": "-1956,216",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "8",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "27",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Saturate",
+      "Identifier": "25",
+      "Position": "-1080,336",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "18",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "26",
+      "Position": "-2160,420",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "36",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "27",
+      "Position": "-2160,276",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "26",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "28",
+      "Position": "-1944,312",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "19",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "29",
+      "Position": "-1944,396",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "28",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "30",
+      "Position": "-1884,420",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "26",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "31",
+      "Position": "-1884,336",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "30",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "32",
+      "Position": "-1824,564",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "16",
+        "Output": "A"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "33",
+      "Position": "-1824,228",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "32",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "34",
+      "Position": "-2100,36",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "14",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "35",
+      "Position": "-2100,468",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "34",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "RemapValue",
+      "In": 0.5,
+      "InMin": 0,
+      "InMax": 1,
+      "OutMin": 1,
+      "OutMax": 0.01,
+      "Clamp": true,
+      "Identifier": "36",
+      "Position": "-2376,384",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "23",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "37",
+      "Position": "-720,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "22",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 1,
+      "Name": "Blur",
+      "IsAttribute": false,
+      "UI": {
+        "Priority": 3
+      },
+      "Identifier": "38",
+      "Position": "-1680,708",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "TextureCoord",
+      "UseSecondaryCoord": false,
+      "Tiling": "1,1",
+      "Identifier": "39",
+      "Position": "-2532,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Time",
+      "Identifier": "40",
+      "Position": "-2592,216",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "41",
+      "Position": "-336,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "12",
+        "Output": "Z"
+      }
+    },
+    {
+      "_class": "RemapValue",
+      "In": 0.5,
+      "InMin": 0,
+      "InMax": 1,
+      "OutMin": 0,
+      "OutMax": 1,
+      "Clamp": true,
+      "Identifier": "42",
+      "Position": "-1128,528",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "61",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "43",
+        "Output": "Result"
+      },
+      "C": {
+        "Identifier": "46",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "RemapValue",
+      "In": 0.5,
+      "InMin": 0,
+      "InMax": 1,
+      "OutMin": 0.9,
+      "OutMax": 0,
+      "Clamp": true,
+      "Identifier": "43",
+      "Position": "-1404,552",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "47",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "RemapValue",
+      "In": 0.5,
+      "InMin": 0,
+      "InMax": 1,
+      "OutMin": 0.95,
+      "OutMax": 1,
+      "Clamp": true,
+      "Identifier": "44",
+      "Position": "-1404,708",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "48",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "45",
+      "Position": "-1188,744",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "44",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "46",
+      "Position": "-1188,612",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "45",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "47",
+      "Position": "-1464,588",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "48",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "48",
+      "Position": "-1464,744",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "38",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "49",
+      "Position": "-60,540",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "13",
+        "Output": "Out"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "50",
+      "Position": "-60,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "49",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "51",
+      "Position": "-336,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "41",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "52",
+      "Position": "-528,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "10",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "53",
+      "Position": "-528,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "52",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "54",
+      "Position": "-912,372",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "25",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "55",
+      "Position": "-912,540",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "54",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "56",
+      "Position": "-1272,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "57",
+      "Position": "-1272,372",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "56",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "58",
+      "Position": "-1464,228",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "59",
+      "Position": "-1464,288",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "58",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "60",
+      "Position": "-1188,540",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "16",
+        "Output": "B"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "61",
+      "Position": "-1188,564",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "60",
+        "Output": "Result"
+      }
+    }
+  ]
+}
