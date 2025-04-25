@@ -1,11 +1,11 @@
 {
   "Title": "Shader Graph Extras",
   "Type": "game",
-  "Org": "local",
+  "Org": "eeight",
   "Ident": "lib-shader_graph_extras",
   "Schema": 1,
   "IncludeSourceFiles": false,
-  "Resources": null,
+  "Resources": "textures/tex-liquid-water-ripples@1-1-1-r-12x12-normal.png\ntextures/tex-liquid-water-ripples@1-2-1-r-12x12-normal.png\ntextures/tex-weather-rain-drips@1-1-1-r-12x12-gradient.png\ntextures/tex-weather-rain-drips@1-1-1-r-12x12-normal.png\ntextures/tex-weather-rain-drips@1-1-1-r-12x12-opacity,temporal.png\ntextures/tex-weather-rain-drops@1-1-1-r-12x12-normal.png\ntextures/tex-weather-rain-drops@1-1-1-r-12x12-opacity,temporal.png\ntextures/tex-weather-rain-ripples@1-1-1-r-12x12-normal.png\ntextures/tex-weather-rain-ripples@1-1-1-r-12x12-opacity,temporal.png",
   "PackageReferences": [],
   "EditorReferences": null,
   "Mounts": null,
