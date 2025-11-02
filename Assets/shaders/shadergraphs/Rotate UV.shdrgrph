@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/examples/rotate uv.shdrgrph",
+  "Path": "shaders/shadergraphs/rotate uv.shdrgrph",
   "Model": "models/dev/plane.vmdl",
   "Title": null,
   "Description": "",
@@ -8,54 +8,43 @@
   "Icon": null,
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
-  "ShadingModel": "Lit",
+  "ShadingModel": "Unlit",
   "Domain": "Surface",
   "PreviewSettings": {
+    "RenderBackfaces": false,
     "EnableShadows": true,
+    "ShowGround": false,
     "ShowSkybox": true,
     "BackgroundColor": "0,0,0,1",
     "Tint": "1,1,1,1"
   },
+  "Version": 1,
   "nodes": [
     {
-      "_class": "Result",
-      "DefaultOpacity": 1,
-      "DefaultRoughness": 0.05,
-      "DefaultMetalness": 1,
-      "DefaultAmbientOcclusion": 1,
-      "Identifier": "0",
-      "Position": "0,0",
-      "HandleOffsets": {},
-      "Albedo": {
-        "Identifier": "7",
-        "Output": "Result"
-      }
-    },
-    {
       "_class": "Time",
-      "Identifier": "1",
+      "Identifier": "0",
       "Position": "-624,84",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "2",
+      "Identifier": "1",
       "Position": "-276,120",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "4",
+        "Identifier": "3",
         "Output": "Result"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "3",
+      "Identifier": "2",
       "Position": "-276,84",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "2",
+        "Identifier": "1",
         "Output": "Result"
       }
     },
@@ -63,11 +52,11 @@
       "_class": "Multiply",
       "DefaultA": 0,
       "DefaultB": 10,
-      "Identifier": "4",
+      "Identifier": "3",
       "Position": "-408,84",
       "HandleOffsets": {},
       "A": {
-        "Identifier": "1",
+        "Identifier": "0",
         "Output": "Result"
       }
     },
@@ -76,9 +65,9 @@
       "Size": "492,144",
       "Color": "Green",
       "Title": "Rotate UV",
-      "Description": "Input: -Add Texture Coordinate.\nCenter: -The XY values from which to rotate the coordinates.\nRotation: -Use Radians or Degrees in the Properties tab to rotate the coordinates.",
+      "Description": "Input: -Add Texture Coordinate.\nCenter: -The XY values from which to rotate the coordinates.\nRotation: -Use Degrees or Radians in the Properties tab to rotate the coordinates.",
       "Layer": 1,
-      "Identifier": "5",
+      "Identifier": "4",
       "Position": "168,0",
       "HandleOffsets": {}
     },
@@ -86,25 +75,38 @@
       "_class": "TextureCoord",
       "UseSecondaryCoord": false,
       "Tiling": "1,1",
-      "Identifier": "6",
+      "Identifier": "5",
       "Position": "-492,0",
       "HandleOffsets": {}
     },
     {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 1,
+      "DefaultMetalness": 0,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "6",
+      "Position": "0,-0",
+      "HandleOffsets": {},
+      "Albedo": {
+        "Identifier": "7",
+        "Output": "Output"
+      }
+    },
+    {
       "_class": "SGERotateUVNode",
-      "DefaultInput": "0,0",
       "DefaultCenter": "0.5,0.5",
       "DefaultRotation": 0,
-      "Mode": "Radians",
+      "Mode": "Degrees",
       "Identifier": "7",
       "Position": "-216,0",
       "HandleOffsets": {},
-      "Input": {
-        "Identifier": "6",
+      "Coordinates": {
+        "Identifier": "5",
         "Output": "Result"
       },
       "Rotation": {
-        "Identifier": "3",
+        "Identifier": "2",
         "Output": "Result"
       }
     }
