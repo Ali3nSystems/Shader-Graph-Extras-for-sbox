@@ -1,6 +1,6 @@
 namespace Editor.ShaderGraph.Nodes;
 
-[Title( "SGE - Rotate About Axis" ), Category( "Transform" ), Icon( "360" )]
+[Title( "SGE - Rotate About Axis" ), Category( "Shader Graph Extras" ), Icon( "360" )]
 public sealed class SGERotateAboutAxisNode : ShaderNode
 {
 	public enum SGERotateAboutAxisMode
