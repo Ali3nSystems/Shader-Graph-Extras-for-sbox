@@ -1,6 +1,6 @@
 namespace Editor.ShaderGraph.Nodes;
 
-[Title( "SGE - Rotate UV" ), Category( "Transform" ), Icon( "360" )]
+[Title( "SGE - Rotate UV" ), Category( "Shader Graph Extras" ), Icon( "360" )]
 public sealed class SGERotateUVNode : ShaderNode
 {
 	public enum SGERotateUVMode
