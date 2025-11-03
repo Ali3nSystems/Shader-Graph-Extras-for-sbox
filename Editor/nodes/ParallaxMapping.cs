@@ -4,7 +4,7 @@ namespace Editor.ShaderGraph.Nodes;
 public sealed class SGEParallaxMappingNode : ShaderNode
 {
 	[Hide]
-	public string SGEParallaxMapping => @"
+	public static string SGEParallaxMapping => @"
 		float3 SGEParallaxMapping(float3 coordinates, float3 viewDirection, float amplitude)
 		{
 			return coordinates - viewDirection * float3( amplitude / viewDirection.z, amplitude / viewDirection.z, amplitude / viewDirection.z );
