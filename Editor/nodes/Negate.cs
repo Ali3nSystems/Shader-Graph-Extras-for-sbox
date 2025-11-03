@@ -4,7 +4,7 @@ namespace Editor.ShaderGraph.Nodes;
 public sealed class SGENegateNode : ShaderNode
 {
 	[Hide]
-	public string SGENegate => @"
+	public static string SGENegate => @"
 		float SGENegate(float3 input)
 		{
 			return -1 * input;
