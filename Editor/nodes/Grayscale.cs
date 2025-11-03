@@ -1,11 +1,11 @@
 namespace Editor.ShaderGraph.Nodes;
 
-[Title( "SGE - Grayscale" ), Category( "Transform" ), Icon( "filter_b_and_w" )]
+[Title( "SGE - Grayscale" ), Category( "Shader Graph Extras" ), Icon( "filter_b_and_w" )]
 public sealed class SGEGrayscaleNode : ShaderNode
 {
 	[Hide]
-	public string Grayscale => @"
-		float Grayscale(float3 input)
+	public static string SGEGrayscale => @"
+		float SGEGrayscale(float3 input)
 		{
 			return float(dot(input, float3(0.299, 0.587, 0.114)));
 		}
@@ -17,10 +17,10 @@ public sealed class SGEGrayscaleNode : ShaderNode
 
 	[Output( typeof( float ) )] 
 	[Hide]
-	public NodeResult.Func Result => ( GraphCompiler compiler ) =>
+	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
 		var input = compiler.ResultOrDefault(Input, Vector3.One).Cast(3);
 
-		return new NodeResult(NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction( Grayscale ), $"{input}"));
+		return new NodeResult(NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction( SGEGrayscale ), $"{input}"));
 	};
 }
