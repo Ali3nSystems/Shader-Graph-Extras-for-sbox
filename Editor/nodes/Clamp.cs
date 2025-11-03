@@ -1,11 +1,11 @@
 namespace Editor.ShaderGraph.Nodes;
 
-[Title( "SGE - Clamp" ), Category( "Unary" ), Icon( "plumbing" )]
+[Title( "SGE - Clamp" ), Category( "Shader Graph Extras" ), Icon( "plumbing" )]
 public sealed class SGEClampNode : ShaderNode
 {
 	[Hide]
-	public string Clamp => @"
-		float Clamp( float input, float min, float max )
+	public string SGEClamp => @"
+		float SGEClamp( float input, float min, float max )
 		{
 			return clamp(input, min, max);
 		}
@@ -24,7 +24,7 @@ public sealed class SGEClampNode : ShaderNode
 	public NodeInput Max {get; set;}
 
 	[InputDefault( nameof( Input ) )]
-	public float DefaultInput {get; set;} = 0f;
+	public float DefaultInput {get; set;} = 0.5f;
 	
 	[InputDefault( nameof( Min ) )]
 	public float DefaultMin {get; set;} = 0f;
@@ -34,12 +34,12 @@ public sealed class SGEClampNode : ShaderNode
 
 	[Output( typeof( float ) )]
 	[Hide]
-	public NodeResult.Func Result => ( GraphCompiler compiler ) =>
+	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
 		var input = compiler.ResultOrDefault(Input, DefaultInput);
 		var min = compiler.ResultOrDefault(Min, DefaultMin);
 		var max = compiler.ResultOrDefault(Max, DefaultMax);
 		
-		return new NodeResult( NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction ( Clamp ), $"{input}, {min}, {max}" ) );
+		return new NodeResult( NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction ( SGEClamp ), $"{input}, {min}, {max}" ) );
 	};
 }
