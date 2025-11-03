@@ -4,7 +4,7 @@ namespace Editor.ShaderGraph.Nodes;
 public sealed class SGESphereMaskNode : ShaderNode
 {
 	[Hide]
-	public string SGESphereMask => @"
+	public static string SGESphereMask => @"
 		float3 SGESphereMask(float3 coordinates, float3 center, float radius, float hardness)
 		{
 			return 1 - saturate((distance(coordinates,center) - radius) / hardness);
