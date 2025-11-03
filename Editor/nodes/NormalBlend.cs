@@ -11,7 +11,7 @@ public sealed class SGENormalBlendNode : ShaderNode
 	}
 	
 	[Hide]
-	public string SGENormalBlendReoriented => @"					
+	public static string SGENormalBlendReoriented => @"					
 		float3 SGENormalBlendReoriented(float3 inputA, float3 inputB)
 		{
 			float3 t = inputA.rgb + float3(0.0, 0.0, 1.0);
@@ -21,7 +21,7 @@ public sealed class SGENormalBlendNode : ShaderNode
 		";
 
 	[Hide]
-	public string SGENormalBlendWhiteout => @"
+	public static string SGENormalBlendWhiteout => @"
 		float3 SGENormalBlendWhiteout(float3 inputA, float3 inputB)
 		{
 			return normalize(float3(inputA.rg + inputB.rg, inputA.b * inputB.b));
