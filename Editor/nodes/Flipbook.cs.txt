@@ -1,0 +1,87 @@
+namespace Editor.ShaderGraph.Nodes;
+
+[Title( "SGE - Flipbook" ), Category( "Shader Graph Extras" ), Icon( "menu_book" )]
+
+public sealed class SGEFlipbookNode : ShaderNode
+{
+	public enum SGEFlipbookMode
+	{
+		Interpolated,
+		Stepped
+	}
+
+	[Input( typeof( Vector2 ) )]
+	[Hide]
+	public NodeInput Coordinates { get; set; }
+
+	[Input( typeof( TextureObject ) )]
+	[Hide]
+	public NodeInput Texture { get; set; }
+
+	[Input( typeof( float ) )]
+	[Hide]
+	public NodeInput Width  { get; set; }
+
+	[Input( typeof( float ) )]
+	[Hide]
+	public NodeInput Height { get; set; }
+
+	[Input( typeof( float ) )]
+	[Hide]
+	public NodeInput Tile { get; set; }
+
+	[Input( typeof( Vector2 ) )]
+	[Hide]
+	public NodeInput Invert { get; set; }
+
+	[Input( typeof( float ) )]
+	[Hide]
+	public NodeInput Loop { get; set; }
+
+	[InputDefault( nameof( Width ) )]
+	public float DefaultWidth { get; set; } = 8f;
+
+	[InputDefault( nameof( Height ) )]
+	public float DefaultHeight { get; set; } = 8f;
+
+	[InputDefault( nameof( Tile ) )]
+	public float DefaultTile { get; set; } = 1f;
+
+	[InputDefault( nameof( Invert ) )]
+	public Vector2 DefaultInvert { get; set; } = new Vector2( 0f, 0f );
+
+	[InputDefault( nameof( Loop ) )]
+	public float DefaultLoop { get; set; } = 1f;
+
+	public SGEFlipbookMode Mode {get; set;} = SGEFlipbookMode.Interpolated;
+
+	[Output( typeof( Color ) )]
+	[Hide]
+	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
+	{
+		var coordinates = compiler.Result(Coordinates);
+		var texture = compiler.Result(Texture);
+		var width = compiler.ResultOrDefault(Width,DefaultWidth);
+		var height = compiler.ResultOrDefault(Height,DefaultHeight);
+		var tile = compiler.ResultOrDefault( Tile, DefaultTile );
+		var invert = compiler.ResultOrDefault( Invert, DefaultInvert );
+		var loop = compiler.ResultOrDefault( Loop, DefaultLoop );
+
+		compiler.RegisterInclude( "shaders/functions/FlipbookFunctions.hlsl" );
+
+		NodeResult nodeResult = new NodeResult();
+
+		switch ( Mode )
+		{
+			case SGEFlipbookMode.Interpolated:
+				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookInterpolated({coordinates}, {texture}, g_sSampler0, {width}, {height}, {tile}, {invert}, {loop})" );
+				break;
+
+			case SGEFlipbookMode.Stepped:
+				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookStepped({coordinates}, {texture}, g_sSampler0, {width}, {height}, {tile}, {invert}, {loop})" );
+				break;
+		}
+
+		return nodeResult;
+	};
+}
