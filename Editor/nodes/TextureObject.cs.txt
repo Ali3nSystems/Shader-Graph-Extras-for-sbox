@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Editor.ShaderGraph.Nodes;
 
-[Title( "Texture Object" ), Category( "Shader Graph Extras" ), Icon( "image" )]
+[Title( "SGE - Texture Object" ), Category( "Shader Graph Extras" ), Icon( "image" )]
 public sealed class SGETextureObjectNode : ShaderNode, ITextureParameterNode
 {
 	public enum SGETextureObjectMode
