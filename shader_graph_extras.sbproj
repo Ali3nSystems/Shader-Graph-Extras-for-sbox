@@ -1,7 +1,7 @@
 {
   "Title": "Shader Graph Extras",
-  "Type": "game",
-  "Org": "eeight",
+  "Type": "library",
+  "Org": "local",
   "Ident": "lib-shader_graph_extras",
   "Schema": 1,
   "IncludeSourceFiles": false,
@@ -23,6 +23,21 @@
     "PerMapRanking": false,
     "LeaderboardType": "None",
     "CsProjName": "",
-    "LaunchMode": "Normal"
+    "LaunchMode": "Normal",
+    "Compiler": {
+      "RootNamespace": "Sandbox",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;",
+      "WarningsAsErrors": "",
+      "TreatWarningsAsErrors": false,
+      "Nullables": false,
+      "ReleaseMode": "Debug",
+      "AssemblyReferences": [],
+      "ReplacementDirectives": {
+        ".Server.cs": "SERVER"
+      },
+      "IgnoreFolders": [],
+      "DistinctAssemblyReferences": []
+    }
   }
 }
