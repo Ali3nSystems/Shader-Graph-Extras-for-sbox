@@ -5,6 +5,7 @@
 # Auto-generated code editor files
 .vs/*
 .vscode/*
+.claude/*
 *.csproj
 obj
 bin
@@ -28,3 +29,9 @@ code/Properties/*
 
 # Exported / standalone games
 Exports/
+
+# Auto-generated TextureObject node files (generated from .cs.txt templates by Upgrader)
+Editor/nodes/Flipbook.cs
+Editor/nodes/ParallaxOcclusionMapping.cs
+Editor/nodes/TextureSample.cs
+Editor/nodes/TextureObject.cs
