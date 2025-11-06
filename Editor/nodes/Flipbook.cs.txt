@@ -14,7 +14,7 @@ public sealed class SGEFlipbookNode : ShaderNode
 	[Hide]
 	public NodeInput Coordinates { get; set; }
 
-	[Input( typeof( TextureObject ) )]
+	[Input( typeof( Texture2DObject ) )]
 	[Hide]
 	public NodeInput Texture { get; set; }
 
