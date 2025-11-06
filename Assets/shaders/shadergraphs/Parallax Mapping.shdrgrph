@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/parallaxmapping.shdrgrph",
+  "Path": "shaders/shadergraphs/parallax mapping.shdrgrph",
   "Model": "models/dev/plane.vmdl",
   "Title": null,
   "Description": "",

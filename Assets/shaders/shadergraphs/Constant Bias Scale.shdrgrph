@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/constantbiasscale.shdrgrph",
+  "Path": "shaders/shadergraphs/constant bias scale.shdrgrph",
   "Model": "models/dev/plane.vmdl",
   "Title": null,
   "Description": "",
