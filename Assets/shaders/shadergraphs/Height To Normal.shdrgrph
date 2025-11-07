@@ -1,21 +1,24 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/examples/height to normal.shdrgrph",
-  "Model": "models/dev/plane.vmdl",
+  "Path": "shaders/shadergraphs/height to normal.shdrgrph",
+  "Model": "models/dev/box.vmdl",
   "Title": null,
   "Description": "",
   "Category": null,
   "Icon": null,
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
-  "ShadingModel": "Lit",
+  "ShadingModel": "Unlit",
   "Domain": "Surface",
   "PreviewSettings": {
+    "RenderBackfaces": false,
     "EnableShadows": true,
+    "ShowGround": false,
     "ShowSkybox": true,
     "BackgroundColor": "0,0,0,1",
     "Tint": "1,1,1,1"
   },
+  "Version": 1,
   "nodes": [
     {
       "_class": "Result",
@@ -26,9 +29,9 @@
       "Identifier": "0",
       "Position": "0,0",
       "HandleOffsets": {},
-      "Normal": {
+      "Albedo": {
         "Identifier": "1",
-        "Output": "Result"
+        "Output": "Output"
       }
     },
     {
@@ -36,7 +39,7 @@
       "DefaultStrength": 1,
       "Mode": "Tangent",
       "Identifier": "1",
-      "Position": "-216,72",
+      "Position": "-216,-0",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "3",
@@ -45,19 +48,19 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "1080,84",
+      "Size": "516,108",
       "Color": "Green",
       "Title": "Height To Normal",
-      "Description": "Converts a height map to a normal map. In the \u0022properties\u0022 tab you can choose either tangent space or world space.",
-      "Layer": 1,
+      "Description": "Input: - Add height here and it will be converted to a normal map.\nStrength: - Strength of the generated normal map.",
+      "Layer": 2,
       "Identifier": "2",
-      "Position": "-924,-96",
+      "Position": "168,-0",
       "HandleOffsets": {}
     },
     {
       "_class": "SimplexNoise",
       "Identifier": "3",
-      "Position": "-432,72",
+      "Position": "-432,-0",
       "HandleOffsets": {},
       "Coords": {
         "Identifier": "4",
@@ -70,7 +73,7 @@
       "DefaultOffset": "0,0",
       "WrapTo01": false,
       "Identifier": "4",
-      "Position": "-648,72",
+      "Position": "-648,0",
       "HandleOffsets": {},
       "Coords": {
         "Identifier": "5",
@@ -82,7 +85,18 @@
       "UseSecondaryCoord": false,
       "Tiling": "1,1",
       "Identifier": "5",
-      "Position": "-924,72",
+      "Position": "-864,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "516,108",
+      "Color": "Purple",
+      "Title": "Mode",
+      "Description": "Tangent: - Outputs the generated normal map in tangent space.\nWorld: - Outputs the generated normal map in world space.\n",
+      "Layer": 1,
+      "Identifier": "6",
+      "Position": "168,120",
       "HandleOffsets": {}
     }
   ]
