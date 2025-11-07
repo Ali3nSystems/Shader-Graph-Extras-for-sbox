@@ -38,13 +38,13 @@
       "_class": "SGETextureSampleNode",
       "Mode": "TextureCubemap",
       "Identifier": "1",
-      "Position": "-348,-0",
+      "Position": "-348,0",
       "HandleOffsets": {},
-      "ViewDirection": {
+      "TextureCubemapCoordinates": {
         "Identifier": "2",
         "Output": "Output"
       },
-      "TextureCubemap": {
+      "TextureCubemapInput": {
         "Identifier": "6",
         "Output": "Result"
       }
@@ -54,7 +54,7 @@
       "SubgraphPath": "shaders/subgraphs/sgsg-interior_mapping.shdrfunc",
       "DefaultValues": {},
       "Identifier": "2",
-      "Position": "-624,-0",
+      "Position": "-624,0",
       "HandleOffsets": {}
     },
     {

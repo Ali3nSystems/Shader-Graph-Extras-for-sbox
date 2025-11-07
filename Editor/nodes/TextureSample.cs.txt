@@ -86,25 +86,25 @@ public sealed class SGETextureSampleNode : ShaderNode
 	[Title( "Coordinates" )]
 	[Input( typeof( Vector2 ) )]
 	[ShowIf( nameof( IsTexture2DMode ), true )]
-	public NodeInput Coordinates { get; set; }
+	public NodeInput Texture2DCoordinates { get; set; }
 
 	[Hide]
 	[Title( "Coordinates" )]
 	[Input( typeof( Vector3 ) )]
 	[ShowIf( nameof( IsTextureCubemapMode ), true )]
-	public NodeInput ViewDirection { get; set; }
+	public NodeInput TextureCubemapCoordinates { get; set; }
 
 	[Hide]
 	[Title("Texture")]
 	[Input(typeof(Texture2DObject))]
 	[ShowIf( nameof( IsTexture2DMode ), true )]
-	public NodeInput Texture2D { get; set; }
+	public NodeInput Texture2DInput { get; set; }
 
 	[Hide]
 	[Title("Texture")]
 	[Input(typeof(TextureCubemapObject))]
 	[ShowIf( nameof( IsTextureCubemapMode ), true )]
-	public NodeInput TextureCubemap { get; set; }
+	public NodeInput TextureCubemapInput { get; set; }
 
 	[Hide]
 	[Output(typeof(Color)), Title("Output")]
@@ -116,8 +116,8 @@ public sealed class SGETextureSampleNode : ShaderNode
 		{
 			case SGETextureSampleMode.Texture2D:
 			{
-				var coordinates = compiler.Result(Coordinates);
-				var texture = compiler.Result(Texture2D);
+				var coordinates = compiler.Result(Texture2DCoordinates);
+				var texture = compiler.Result(Texture2DInput);
 
 				if (!texture.IsValid)
 				{
@@ -141,8 +141,8 @@ public sealed class SGETextureSampleNode : ShaderNode
 
 			case SGETextureSampleMode.TextureCubemap:
 			{
-				var viewDirection = compiler.Result(ViewDirection);
-				var texture = compiler.Result(TextureCubemap);
+				var coordinates = compiler.Result(TextureCubemapCoordinates);
+				var texture = compiler.Result(TextureCubemapInput);
 
 				if (!texture.IsValid)
 				{
@@ -153,13 +153,13 @@ public sealed class SGETextureSampleNode : ShaderNode
 				{
 					result = new NodeResult(4, $"{texture}.SampleLevel(" +
 						$" g_sSampler0," +
-						$" {(viewDirection.IsValid ? $"{viewDirection.Cast(3)}" : "i.vNormalWs")}, 0 )");
+						$" {(coordinates.IsValid ? $"{coordinates.Cast(3)}" : "i.vNormalWs")}, 0 )");
 				}
 				else
 				{
 					result = new NodeResult(4, $"TexCubeS( {texture}," +
 						$" g_sSampler0," +
-						$" {(viewDirection.IsValid ? $"{viewDirection.Cast(3)}" : "i.vNormalWs")} )");
+						$" {(coordinates.IsValid ? $"{coordinates.Cast(3)}" : "i.vNormalWs")} )");
 				}
 				break;
 			}
