@@ -2,7 +2,7 @@
   "IsSubgraph": true,
   "Path": "shaders/subgraphs/sgsg-normal_reconstruct_z.shdrfunc",
   "Model": null,
-  "Title": "Normal Reconstruct Z",
+  "Title": "SGE - Normal Reconstruct Z",
   "Description": null,
   "Category": "Shader Graph Extras",
   "Icon": "construction",
@@ -104,7 +104,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "d777dd09-073f-47c0-a84a-183d839a9d10",
+          "Id": "48a95963-b53b-4e66-a8d9-c1fbc65624a4",
           "Name": "Output",
           "Type": "float",
           "Preview": "None",
