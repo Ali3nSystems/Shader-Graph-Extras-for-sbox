@@ -1,0 +1,658 @@
+{
+  "IsSubgraph": false,
+  "Path": "shaders/shadergraphs/bump offset.shdrgrph",
+  "Model": "models/dev/plane.vmdl",
+  "Title": null,
+  "Description": null,
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "1,1,1,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 1,
+      "DefaultMetalness": 0,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Albedo": {
+        "Identifier": "8",
+        "Output": "Result"
+      },
+      "Normal": {
+        "Identifier": "14",
+        "Output": "Result"
+      },
+      "Roughness": {
+        "Identifier": "22",
+        "Output": "Result"
+      },
+      "Metalness": {
+        "Identifier": "23",
+        "Output": "Result"
+      },
+      "AmbientOcclusion": {
+        "Identifier": "24",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SGEBumpOffsetNode",
+      "DefaultAmplitude": 0.1,
+      "DefaultOffset": 0.3,
+      "Identifier": "1",
+      "Position": "-984,0",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "25",
+        "Output": "Result"
+      },
+      "Input": {
+        "Identifier": "27",
+        "Output": "Result"
+      },
+      "TangentSpaceViewDirection": {
+        "Identifier": "36",
+        "Output": "Result"
+      },
+      "Amplitude": {
+        "Identifier": "39",
+        "Output": "Result"
+      },
+      "Offset": {
+        "Identifier": "40",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TangentViewVector",
+      "Identifier": "2",
+      "Position": "-1476,240",
+      "HandleOffsets": {},
+      "WorldPosition": {
+        "Identifier": "3",
+        "Output": "Result"
+      },
+      "WorldNormal": {
+        "Identifier": "30",
+        "Output": "Result"
+      },
+      "TangentUWs": {
+        "Identifier": "33",
+        "Output": "Result"
+      },
+      "TangentVWs": {
+        "Identifier": "34",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "WorldPosition",
+      "Identifier": "3",
+      "Position": "-1872,240",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "WorldNormal",
+      "Identifier": "4",
+      "Position": "-1872,300",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "WorldTangent",
+      "Identifier": "5",
+      "Position": "-1872,360",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "TextureCoord",
+      "UseSecondaryCoord": false,
+      "Tiling": "1,1",
+      "Identifier": "6",
+      "Position": "-1716,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "TextureSampler",
+      "Image": "decals/impact/concrete/decal_impact_concrete_03_height.png",
+      "Sampler": {
+        "Filter": "Aniso",
+        "AddressU": "Wrap",
+        "AddressV": "Wrap"
+      },
+      "UI": {
+        "Name": "Height",
+        "IsAttribute": false,
+        "Default": "1,1,1,1",
+        "Extension": "Color",
+        "CustomExtension": null,
+        "ShowExtension": true,
+        "Processor": "None",
+        "ColorSpace": "Linear",
+        "ImageFormat": "DXT5",
+        "SrgbRead": false,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "7",
+      "Position": "-1440,48",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "28",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureSampler",
+      "Image": "decals/impact/concrete/decal_impact_concrete_03_color.png",
+      "Sampler": {
+        "Filter": "Aniso",
+        "AddressU": "Wrap",
+        "AddressV": "Wrap"
+      },
+      "UI": {
+        "Name": "Albedo",
+        "IsAttribute": false,
+        "Default": "1,1,1,1",
+        "Extension": "Color",
+        "CustomExtension": null,
+        "ShowExtension": true,
+        "Processor": "None",
+        "ColorSpace": "Srgb",
+        "ImageFormat": "DXT5",
+        "SrgbRead": true,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "8",
+      "Position": "-672,0",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "19",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureSampler",
+      "Image": "decals/impact/concrete/decal_impact_concrete_03_normal.png",
+      "Sampler": {
+        "Filter": "Aniso",
+        "AddressU": "Wrap",
+        "AddressV": "Wrap"
+      },
+      "UI": {
+        "Name": "Normal",
+        "IsAttribute": false,
+        "Default": "1,1,1,1",
+        "Extension": "Color",
+        "CustomExtension": null,
+        "ShowExtension": true,
+        "Processor": "None",
+        "ColorSpace": "Linear",
+        "ImageFormat": "DXT5",
+        "SrgbRead": false,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "9",
+      "Position": "-672,192",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "13",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TextureSampler",
+      "Image": "decals/impact/concrete/decal_impact_concrete_03_rmo.png",
+      "Sampler": {
+        "Filter": "Aniso",
+        "AddressU": "Wrap",
+        "AddressV": "Wrap"
+      },
+      "UI": {
+        "Name": "RMA",
+        "IsAttribute": false,
+        "Default": "1,1,1,1",
+        "Extension": "Color",
+        "CustomExtension": null,
+        "ShowExtension": true,
+        "Processor": "None",
+        "ColorSpace": "Linear",
+        "ImageFormat": "DXT5",
+        "SrgbRead": false,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "10",
+      "Position": "-672,384",
+      "HandleOffsets": {},
+      "Coords": {
+        "Identifier": "12",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TransformNormal",
+      "InputSpace": "Tangent",
+      "OutputSpace": "Tangent",
+      "DecodeNormal": true,
+      "Identifier": "11",
+      "Position": "-456,192",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "12",
+      "Position": "-732,420",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "13",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "13",
+      "Position": "-732,228",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "19",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "14",
+      "Position": "-240,108",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "18",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0.3,
+      "Name": "Offset",
+      "IsAttribute": false,
+      "UI": {
+        "Type": "Default",
+        "Step": 0,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "15",
+      "Position": "-1440,432",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0.15,
+      "Name": "Amplitude",
+      "IsAttribute": false,
+      "UI": {
+        "Type": "Default",
+        "Step": 0,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "16",
+      "Position": "-1440,372",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "17",
+      "Position": "-180,444",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "10",
+        "Output": "R"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "18",
+      "Position": "-240,228",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "11",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "19",
+      "Position": "-732,36",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "1",
+        "Output": "Output"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "20",
+      "Position": "-120,468",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "10",
+        "Output": "G"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "21",
+      "Position": "-60,492",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "10",
+        "Output": "B"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "22",
+      "Position": "-180,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "23",
+      "Position": "-120,156",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "20",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "24",
+      "Position": "-60,180",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "21",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "25",
+      "Position": "-1500,36",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "26",
+      "Position": "-1224,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "27",
+      "Position": "-1224,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "26",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "28",
+      "Position": "-1500,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "25",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "29",
+      "Position": "-1656,336",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "30",
+      "Position": "-1656,300",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "29",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "31",
+      "Position": "-1596,396",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
+        "Output": "U"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "32",
+      "Position": "-1536,420",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
+        "Output": "V"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "33",
+      "Position": "-1596,324",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "31",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "34",
+      "Position": "-1536,348",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "32",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "35",
+      "Position": "-1164,276",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "36",
+      "Position": "-1164,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "35",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "37",
+      "Position": "-1104,408",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "16",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "38",
+      "Position": "-1044,468",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "15",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "39",
+      "Position": "-1104,108",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "37",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "40",
+      "Position": "-1044,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "38",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "552,168",
+      "Color": "Green",
+      "Title": "Bump Offset",
+      "Description": "Coordinates: - Add your coordinates to sample the height.\nInput: - Add your height displacement.\nTangent Space View Direction: - Add \u0022Tangent View Vector\u0022 as shown.\nAmplitude: - Controls the amplitude of the coordinates.\nOffset: - Controls the offset of the coordinates.",
+      "Layer": 1,
+      "Identifier": "41",
+      "Position": "168,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "480,168",
+      "Color": "Orange",
+      "Title": "Info",
+      "Description": "This node is much more cheaper than Parallax Occlusion Mapping but it falls off considerably at very steep angles.\nIt is configured to match the Amplitude and Offset settings on the Parallax Occlusion Mapping node, so feel free to swap between them, they should look similar if the angle is right.",
+      "Layer": 2,
+      "Identifier": "42",
+      "Position": "168,180",
+      "HandleOffsets": {}
+    }
+  ]
+}
