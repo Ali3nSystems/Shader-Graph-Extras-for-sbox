@@ -22,9 +22,6 @@ public sealed class SGEClampNode : ShaderNode
 	[Input (typeof( float ))]
 	[Hide]
 	public NodeInput Max {get; set;}
-
-	[InputDefault( nameof( Input ) )]
-	public float DefaultInput {get; set;} = 0.5f;
 	
 	[InputDefault( nameof( Min ) )]
 	public float DefaultMin {get; set;} = 0f;
@@ -36,7 +33,7 @@ public sealed class SGEClampNode : ShaderNode
 	[Hide]
 	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
-		var input = compiler.ResultOrDefault(Input, DefaultInput);
+		var input = compiler.Result(Input);
 		var min = compiler.ResultOrDefault(Min, DefaultMin);
 		var max = compiler.ResultOrDefault(Max, DefaultMax);
 		

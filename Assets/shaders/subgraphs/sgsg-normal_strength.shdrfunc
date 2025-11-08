@@ -138,7 +138,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "cfdd2b09-ef57-427b-b98f-5fe181c75a83",
+          "Id": "7077727c-6c63-4b45-bb5d-750370c8b2f0",
           "Name": "Output",
           "Type": "Vector3",
           "Preview": "Normal",
@@ -163,7 +163,7 @@
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
       "DefaultTexture": "materials/dev/white_color.tga",
-      "IsRequired": false,
+      "IsRequired": true,
       "PortOrder": 1,
       "Identifier": "10",
       "Position": "-204,3996",

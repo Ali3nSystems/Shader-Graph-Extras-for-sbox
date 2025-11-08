@@ -11,7 +11,7 @@ public sealed class SGEConstantBiasScaleNode : ShaderNode
 		}
 		";
 
-	[Input( typeof( Vector3 ) )]
+	[Input( typeof( float ) )]
 	[Hide]
 	public NodeInput Input { get; set; }
 
@@ -33,7 +33,7 @@ public sealed class SGEConstantBiasScaleNode : ShaderNode
 	[Hide]
 	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
-		var input = compiler.ResultOrDefault( Input, Vector3.One ).Cast( 3 );
+		var input = compiler.Result( Input);
 		var bias = compiler.ResultOrDefault( Bias, DefaultBias ).Cast( 1 );
 		var scale = compiler.ResultOrDefault( Scale, DefaultScale ).Cast( 1 );
 

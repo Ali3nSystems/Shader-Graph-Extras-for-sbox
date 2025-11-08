@@ -14,15 +14,12 @@ public sealed class SGEGrayscaleNode : ShaderNode
 	[Input( typeof( Vector3 ) )]
 	[Hide]
 	public NodeInput Input { get; set; }
-	
-	[InputDefault( nameof( Input ) )]
-	public Vector3 DefaultInput {get; set;} = 0.5f;
 
 	[Output( typeof( float ) )] 
 	[Hide]
 	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
-		var input = compiler.ResultOrDefault(Input, DefaultInput).Cast(3);
+		var input = compiler.Result(Input);
 
 		return new NodeResult(NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction( SGEGrayscale ), $"{input}"));
 	};
