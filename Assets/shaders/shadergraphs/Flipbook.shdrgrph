@@ -10,6 +10,7 @@
   "BlendMode": "Translucent",
   "ShadingModel": "Unlit",
   "Domain": "Surface",
+  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -285,7 +286,7 @@
       "Size": "408,180",
       "Color": "Purple",
       "Title": "Mode",
-      "Description": "Interpolated: - Samples the texture twice and blends between the samples. Best used with a very low framerate. This is a more expensive method.\nStepped: - Normal way of sampling a flipbook texture. It only samples it once and it is fairly cheap but looks bad at very low frame rates.",
+      "Description": "Interpolated: - Samples the texture twice and blends between the samples. Best used with a very low framerate. This is a more expensive method.\nStandard: - Normal way of sampling a flipbook texture. It only samples it once and it is fairly cheap but looks bad at very low frame rates.",
       "Layer": 2,
       "Identifier": "20",
       "Position": "168,192",

@@ -45,7 +45,7 @@ float4 SGEFlipbookInterpolated(float2 coordinates, Texture2D texture, SamplerSta
 	return lerp(currentFrame, nextFrame, frac(tile));
 }
 
-float4 SGEFlipbookStepped(float2 coordinates, Texture2D texture, SamplerState sampler, float width, float height, float tile, float2 invert, float loop)
+float4 SGEFlipbookStandard(float2 coordinates, Texture2D texture, SamplerState sampler, float width, float height, float tile, float2 invert, float loop)
 {
 	float totalTiles = width * height;
 

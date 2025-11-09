@@ -7,7 +7,7 @@ public sealed class SGEFlipbookNode : ShaderNode
 	public enum SGEFlipbookMode
 	{
 		Interpolated,
-		Stepped
+		Standard
 	}
 
 	[Input( typeof( Vector2 ) )]
@@ -53,7 +53,7 @@ public sealed class SGEFlipbookNode : ShaderNode
 	[InputDefault( nameof( Loop ) )]
 	public float DefaultLoop { get; set; } = 1f;
 
-	public SGEFlipbookMode Mode {get; set;} = SGEFlipbookMode.Interpolated;
+	public SGEFlipbookMode Mode {get; set;} = SGEFlipbookMode.Standard;
 
 	[Output( typeof( Color ) )]
 	[Hide]
@@ -77,8 +77,8 @@ public sealed class SGEFlipbookNode : ShaderNode
 				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookInterpolated({coordinates}, {texture}, g_sSampler0, {width}, {height}, {tile}, {invert}, {loop})" );
 				break;
 
-			case SGEFlipbookMode.Stepped:
-				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookStepped({coordinates}, {texture}, g_sSampler0, {width}, {height}, {tile}, {invert}, {loop})" );
+			case SGEFlipbookMode.Standard:
+				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookStandard({coordinates}, {texture}, g_sSampler0, {width}, {height}, {tile}, {invert}, {loop})" );
 				break;
 		}
 
