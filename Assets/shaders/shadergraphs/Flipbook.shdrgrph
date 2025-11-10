@@ -88,6 +88,10 @@
         "Identifier": "6",
         "Output": "Result"
       },
+      "Sampler": {
+        "Identifier": "23",
+        "Output": "Result"
+      },
       "Tile": {
         "Identifier": "8",
         "Output": "Result"
@@ -130,7 +134,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "8",
-      "Position": "-888,108",
+      "Position": "-888,132",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "7",
@@ -185,11 +189,11 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "312,180",
+      "Size": "312,216",
       "Color": "Green",
       "Title": "Flipbook",
-      "Description": "Coordinates: - Add your coordinates here to sample the texture.\nTexture: - Add a \u0022Texture Object\u0022 node here with your flipbook texture.\nWidth: - Amount of horizontal tiles.\nHeight: - Amount of vertical tiles.\n",
-      "Layer": 3,
+      "Description": "Coordinates: - Add your coordinates here to sample the texture.\nTexture: - Add a \u0022Texture Object\u0022 node here with your flipbook texture.\nSampler: - Add your \u0022Sampler\u0022 output here. It will use the correct Sampler.\nWidth: - Amount of horizontal tiles.\nHeight: - Amount of vertical tiles.\n",
+      "Layer": 1,
       "Identifier": "12",
       "Position": "168,0",
       "HandleOffsets": {}
@@ -272,11 +276,11 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "456,168",
+      "Size": "456,156",
       "Color": "Green",
       "Title": "",
       "Description": "Tile: - Current tile index. Value is automatically floored.\nInvert: - Value of 0 iterates through the tiles normally, value of 1 iterates through the tiles in an inverted manner.\nLoop: - Value of 0 will stop the animation once it\u0027s done, value of 1 will continuously loop it.",
-      "Layer": 1,
+      "Layer": 2,
       "Identifier": "19",
       "Position": "492,0",
       "HandleOffsets": {}
@@ -287,9 +291,9 @@
       "Color": "Purple",
       "Title": "Mode",
       "Description": "Interpolated: - Samples the texture twice and blends between the samples. Best used with a very low framerate. This is a more expensive method.\nStandard: - Normal way of sampling a flipbook texture. It only samples it once and it is fairly cheap but looks bad at very low frame rates.",
-      "Layer": 2,
+      "Layer": 3,
       "Identifier": "20",
-      "Position": "168,192",
+      "Position": "168,228",
       "HandleOffsets": {}
     },
     {
@@ -325,6 +329,28 @@
       "Identifier": "21",
       "Position": "-1296,36",
       "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "22",
+      "Position": "-1020,96",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "21",
+        "Output": "Texture2DSampler"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "23",
+      "Position": "-1020,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "22",
+        "Output": "Result"
+      }
     }
   ]
 }

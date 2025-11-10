@@ -10,6 +10,7 @@
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
   "Domain": "Surface",
+  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -47,6 +48,10 @@
       "Texture2DInput": {
         "Identifier": "5",
         "Output": "Result"
+      },
+      "Texture2DSampler": {
+        "Identifier": "9",
+        "Output": "Result"
       }
     },
     {
@@ -54,7 +59,7 @@
       "UseSecondaryCoord": false,
       "Tiling": "1,1",
       "Identifier": "2",
-      "Position": "-492,0",
+      "Position": "-552,0",
       "HandleOffsets": {}
     },
     {
@@ -88,14 +93,14 @@
         }
       },
       "Identifier": "3",
-      "Position": "-492,60",
+      "Position": "-552,60",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "4",
-      "Position": "-276,96",
+      "Position": "-336,96",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "3",
@@ -106,7 +111,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "5",
-      "Position": "-276,60",
+      "Position": "-336,60",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "4",
@@ -129,11 +134,33 @@
       "Size": "336,108",
       "Color": "Purple",
       "Title": "Modes",
-      "Description": "2D: - Outputs a 2D texture.\nCubemap: - Outputs a cubemap texture.",
+      "Description": "2D: - Outputs a 2D texture.\nCubemap: - Outputs a cubemap texture.\nSampler: - Outputs the correct sampler to use.",
       "Layer": 1,
       "Identifier": "7",
       "Position": "168,180",
       "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "8",
+      "Position": "-276,120",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "3",
+        "Output": "Texture2DSampler"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "9",
+      "Position": "-276,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "8",
+        "Output": "Result"
+      }
     }
   ]
 }

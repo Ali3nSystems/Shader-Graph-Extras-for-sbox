@@ -185,8 +185,10 @@ public sealed class SGETextureObjectNode : ShaderNode, ITextureParameterNode
 		}
 	}
 
+	private int _texture2DSamplerIndex = 0;
+
 	[Hide]
-	[Title("Output")]
+	[Title("Texture")]
 	[Output( typeof( Texture2DObject ) )]
 	[ShowIf( nameof( IsTexture2DMode ), true )]
 	public NodeResult.Func Texture2DOutput => ( GraphCompiler compiler ) =>
@@ -200,12 +202,27 @@ public sealed class SGETextureObjectNode : ShaderNode, ITextureParameterNode
 		texture ??= Texture.White;
 
 		var result = compiler.ResultTexture( Sampler, input, texture );
+		_texture2DSamplerIndex = result.Item2;
 
 		return new NodeResult( NodeResultType.Texture2DObject, result.Item1, constant: true );
 	};
 
 	[Hide]
-	[Title("Output")]
+	[Title("Sampler")]
+	[Output( typeof( Sampler ) )]
+	[ShowIf( nameof( IsTexture2DMode ), true )]
+	public NodeResult.Func Texture2DSampler => ( GraphCompiler compiler ) =>
+	{
+		// Trigger the texture output to ensure sampler index is set
+		var textureResult = Texture2DOutput( compiler );
+
+		return new NodeResult( NodeResultType.Sampler, $"g_sSampler{_texture2DSamplerIndex}", constant: true );
+	};
+
+	private int _textureCubemapSamplerIndex = 0;
+
+	[Hide]
+	[Title("Texture")]
 	[Output( typeof( TextureCubemapObject ) )]
 	[ShowIf( nameof( IsTextureCubemapMode ), true )]
 	public NodeResult.Func TextureCubemapOutput => ( GraphCompiler compiler ) =>
@@ -219,7 +236,20 @@ public sealed class SGETextureObjectNode : ShaderNode, ITextureParameterNode
 		texture ??= Texture.White;
 
 		var result = compiler.ResultTexture( Sampler, input, texture );
+		_textureCubemapSamplerIndex = result.Item2;
 
 		return new NodeResult( NodeResultType.TextureCubemapObject, result.Item1, constant: true );
+	};
+
+	[Hide]
+	[Title("Sampler")]
+	[Output( typeof( Sampler ) )]
+	[ShowIf( nameof( IsTextureCubemapMode ), true )]
+	public NodeResult.Func TextureCubemapSampler => ( GraphCompiler compiler ) =>
+	{
+		// Trigger the texture output to ensure sampler index is set
+		var textureResult = TextureCubemapOutput( compiler );
+
+		return new NodeResult( NodeResultType.Sampler, $"g_sSampler{_textureCubemapSamplerIndex}", constant: true );
 	};
 }

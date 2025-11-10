@@ -10,6 +10,7 @@
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
   "Domain": "Surface",
+  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -47,6 +48,10 @@
       "TextureCubemapInput": {
         "Identifier": "4",
         "Output": "Result"
+      },
+      "TextureCubemapSampler": {
+        "Identifier": "9",
+        "Output": "Result"
       }
     },
     {
@@ -80,14 +85,14 @@
         }
       },
       "Identifier": "2",
-      "Position": "-492,60",
+      "Position": "-552,60",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "3",
-      "Position": "-276,96",
+      "Position": "-336,96",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "2",
@@ -98,7 +103,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "4",
-      "Position": "-276,60",
+      "Position": "-336,60",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "3",
@@ -107,10 +112,10 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "432,144",
+      "Size": "432,180",
       "Color": "Green",
       "Title": "Texture Sample",
-      "Description": "Coordinates: - Add the coordinates here that you want to use for sampling your texture.\nTexture: - Add your \u0022Texture Object\u0022 output here. Make sure the modes between the two nodes match.",
+      "Description": "Coordinates: - Add the coordinates here that you want to use for sampling your texture.\nTexture: - Add your \u0022Texture\u0022 output here. Make sure the modes between the two nodes match.\nSampler: - Add your \u0022Sampler\u0022 output here. It will use the correct Sampler instead of an accidental one.",
       "Layer": 2,
       "Identifier": "5",
       "Position": "168,0",
@@ -124,14 +129,36 @@
       "Description": "2D: - Samples a Texture2D. You can use Texture Coordinate, POM, World Space Position, etc. for the coordinates.\nCubemap: - Samples a Cubemap. You should use View Direction, Interior Mapping, etc. for the coordinates.",
       "Layer": 1,
       "Identifier": "6",
-      "Position": "168,156",
+      "Position": "168,192",
       "HandleOffsets": {}
     },
     {
       "_class": "ViewDirection",
       "Identifier": "7",
-      "Position": "-492,-0",
+      "Position": "-552,0",
       "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "8",
+      "Position": "-276,120",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "2",
+        "Output": "TextureCubemapSampler"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "9",
+      "Position": "-276,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "8",
+        "Output": "Result"
+      }
     }
   ]
 }

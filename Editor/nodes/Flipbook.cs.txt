@@ -14,9 +14,12 @@ public sealed class SGEFlipbookNode : ShaderNode
 	[Hide]
 	public NodeInput Coordinates { get; set; }
 
-	[Input( typeof( Texture2DObject ) )]
+	[Input(typeof(Texture2DObject))]
 	[Hide]
 	public NodeInput Texture { get; set; }
+	[Input(typeof(Sampler))]
+	[Hide]
+	public NodeInput Sampler { get; set; }
 
 	[Input( typeof( float ) )]
 	[Hide]
@@ -61,6 +64,7 @@ public sealed class SGEFlipbookNode : ShaderNode
 	{
 		var coordinates = compiler.Result(Coordinates);
 		var texture = compiler.Result(Texture);
+		var sampler = compiler.Result(Sampler);
 		var width = compiler.ResultOrDefault(Width,DefaultWidth);
 		var height = compiler.ResultOrDefault(Height,DefaultHeight);
 		var tile = compiler.ResultOrDefault( Tile, DefaultTile );
@@ -74,11 +78,11 @@ public sealed class SGEFlipbookNode : ShaderNode
 		switch ( Mode )
 		{
 			case SGEFlipbookMode.Interpolated:
-				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookInterpolated({coordinates}, {texture}, g_sSampler0, {width}, {height}, {tile}, {invert}, {loop})" );
+				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookInterpolated({coordinates}, {texture}, {sampler}, {width}, {height}, {tile}, {invert}, {loop})" );
 				break;
 
 			case SGEFlipbookMode.Standard:
-				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookStandard({coordinates}, {texture}, g_sSampler0, {width}, {height}, {tile}, {invert}, {loop})" );
+				nodeResult = new NodeResult( NodeResultType.Color, $"SGEFlipbookStandard({coordinates}, {texture}, {sampler}, {width}, {height}, {tile}, {invert}, {loop})" );
 				break;
 		}
 

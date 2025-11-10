@@ -101,10 +101,22 @@ public sealed class SGETextureSampleNode : ShaderNode
 	public NodeInput Texture2DInput { get; set; }
 
 	[Hide]
+	[Title("Sampler")]
+	[Input(typeof(Sampler))]
+	[ShowIf( nameof( IsTexture2DMode ), true )]
+	public NodeInput Texture2DSampler { get; set; }
+
+	[Hide]
 	[Title("Texture")]
 	[Input(typeof(TextureCubemapObject))]
 	[ShowIf( nameof( IsTextureCubemapMode ), true )]
 	public NodeInput TextureCubemapInput { get; set; }
+
+	[Hide]
+	[Title("Sampler")]
+	[Input(typeof(Sampler))]
+	[ShowIf( nameof( IsTextureCubemapMode ), true )]
+	public NodeInput TextureCubemapSampler { get; set; }
 
 	[Hide]
 	[Output(typeof(Color)), Title("Output")]
@@ -118,6 +130,7 @@ public sealed class SGETextureSampleNode : ShaderNode
 			{
 				var coordinates = compiler.Result(Texture2DCoordinates);
 				var texture = compiler.Result(Texture2DInput);
+				var sampler = compiler.Result(Texture2DSampler);
 
 				if (!texture.IsValid)
 				{
@@ -127,13 +140,13 @@ public sealed class SGETextureSampleNode : ShaderNode
 				if (compiler.Stage == GraphCompiler.ShaderStage.Vertex)
 				{
 					result = new NodeResult(4, $"{texture}.SampleLevel(" +
-						$" g_sSampler0," +
+						$" {sampler}," +
 						$" {(coordinates.IsValid ? $"{coordinates.Cast(2)}" : "i.vTextureCoordinates.xy")}, 0 )");
 				}
 				else
 				{
 					result = new NodeResult(4, $"Tex2DS( {texture}," +
-						$" g_sSampler0," +
+						$" {sampler}," +
 						$" {(coordinates.IsValid ? $"{coordinates.Cast(2)}" : "i.vTextureCoordinates.xy")} )");
 				}
 				break;
@@ -143,6 +156,7 @@ public sealed class SGETextureSampleNode : ShaderNode
 			{
 				var coordinates = compiler.Result(TextureCubemapCoordinates);
 				var texture = compiler.Result(TextureCubemapInput);
+				var sampler = compiler.Result(TextureCubemapSampler);
 
 				if (!texture.IsValid)
 				{
@@ -152,13 +166,13 @@ public sealed class SGETextureSampleNode : ShaderNode
 				if (compiler.Stage == GraphCompiler.ShaderStage.Vertex)
 				{
 					result = new NodeResult(4, $"{texture}.SampleLevel(" +
-						$" g_sSampler0," +
+						$" {sampler}," +
 						$" {(coordinates.IsValid ? $"{coordinates.Cast(3)}" : "i.vNormalWs")}, 0 )");
 				}
 				else
 				{
 					result = new NodeResult(4, $"TexCubeS( {texture}," +
-						$" g_sSampler0," +
+						$" {sampler}," +
 						$" {(coordinates.IsValid ? $"{coordinates.Cast(3)}" : "i.vNormalWs")} )");
 				}
 				break;
