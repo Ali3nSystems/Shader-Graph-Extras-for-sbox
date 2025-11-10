@@ -184,6 +184,7 @@ public sealed class SGETextureObjectNode : ShaderNode, ITextureParameterNode
 			Paint.Draw( rect.Shrink( 2 ), Asset.GetAssetThumb( true ) );
 		}
 	}
+	[Hide]
 
 	private int _texture2DSamplerIndex = 0;
 
@@ -218,6 +219,7 @@ public sealed class SGETextureObjectNode : ShaderNode, ITextureParameterNode
 
 		return new NodeResult( NodeResultType.Sampler, $"g_sSampler{_texture2DSamplerIndex}", constant: true );
 	};
+	[Hide]
 
 	private int _textureCubemapSamplerIndex = 0;
 
