@@ -175,7 +175,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "2adce02c-208c-4f28-b5c8-fbec6eff392b",
+          "Id": "b4d154bd-1fc2-40d4-9e70-6df67a1d7fee",
           "Name": "Output",
           "Type": "float",
           "Preview": "None",
@@ -257,7 +257,7 @@
     },
     {
       "_class": "SubgraphInput",
-      "InputName": "Input",
+      "InputName": "Scale",
       "InputDescription": "",
       "InputType": "Float",
       "DefaultFloat": 1,

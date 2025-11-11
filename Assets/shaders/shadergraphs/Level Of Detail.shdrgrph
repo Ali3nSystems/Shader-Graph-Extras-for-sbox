@@ -29,7 +29,7 @@
       "Description": "Coordinates: - XY of the Screen Position to be sampled.\nInput: - Multiplies the original scene depth value to be closer or further away.\nMinimum: - Remaps the 0 (black) to this value\nMaximum: - Remaps the 1 (white) to this value.",
       "Layer": 2,
       "Identifier": "0",
-      "Position": "168,-0",
+      "Position": "168,0",
       "HandleOffsets": {}
     },
     {
@@ -70,10 +70,11 @@
         "Coordinates": "0,0",
         "Input": 0.116,
         "Minimum": 0.099,
-        "Maximum": 0.101
+        "Maximum": 0.101,
+        "Scale": 0.116
       },
       "Identifier": "4",
-      "Position": "-216,0",
+      "Position": "-216,-0",
       "HandleOffsets": {},
       "Coordinates": {
         "Identifier": "2",
