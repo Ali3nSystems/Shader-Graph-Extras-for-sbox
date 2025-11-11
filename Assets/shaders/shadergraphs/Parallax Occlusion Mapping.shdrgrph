@@ -107,7 +107,7 @@
       "UseSecondaryCoord": false,
       "Tiling": "1,1",
       "Identifier": "6",
-      "Position": "-1560,-0",
+      "Position": "-1560,0",
       "HandleOffsets": {}
     },
     {
@@ -716,7 +716,8 @@
         "Coordinates": "0,0",
         "Input": 1,
         "Minimum": 0,
-        "Maximum": 1
+        "Maximum": 1,
+        "Scale": 1
       },
       "Identifier": "47",
       "Position": "-1560,504",
