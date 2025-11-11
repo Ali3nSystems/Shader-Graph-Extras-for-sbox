@@ -1,0 +1,307 @@
+{
+  "IsSubgraph": true,
+  "Path": "shaders/subgraphs/sgsg-level_of_detail.shdrfunc",
+  "Model": "models/dev/plane.vmdl",
+  "Title": "SGE - Level Of Detail",
+  "Description": null,
+  "Category": "Shader Graph Extras",
+  "Icon": "gradient",
+  "AddToNodeLibrary": true,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Lit",
+  "Domain": "Surface",
+  "TemplatePath": null,
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "0",
+      "Position": "-1260,1632",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "1",
+      "Position": "-1824,1572",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "4",
+        "Output": "Output"
+      },
+      "B": {
+        "Identifier": "13",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Saturate",
+      "Identifier": "2",
+      "Position": "-1428,1572",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "14",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "OneMinus",
+      "Identifier": "3",
+      "Position": "-1692,1572",
+      "HandleOffsets": {},
+      "In": {
+        "Identifier": "1",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SGESceneDepthNode",
+      "Mode": "Eye",
+      "Identifier": "4",
+      "Position": "-2100,1572",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "12",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 0.001,
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {
+        "Type": "Default",
+        "Step": 0,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "5",
+      "Position": "-2100,1632",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "6",
+      "Position": "-1200,1728",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "19",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "RemapValue",
+      "In": 0.5,
+      "InMin": 0,
+      "InMax": 1,
+      "OutMin": 0,
+      "OutMax": 1,
+      "Clamp": true,
+      "Identifier": "7",
+      "Position": "-1140,1572",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "2",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "0",
+        "Output": "Result"
+      },
+      "C": {
+        "Identifier": "10",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "8",
+      "Position": "-1884,1668",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "9",
+      "Position": "-1260,1668",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "18",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "10",
+      "Position": "-1200,1656",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "6",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "FunctionResult",
+      "FunctionOutputs": [
+        {
+          "Id": "2adce02c-208c-4f28-b5c8-fbec6eff392b",
+          "Name": "Output",
+          "Type": "float",
+          "Preview": "None",
+          "Priority": 1
+        }
+      ],
+      "Identifier": "11",
+      "Position": "-924,1572",
+      "HandleOffsets": {},
+      "Output": {
+        "Identifier": "7",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Coordinates",
+      "InputDescription": "",
+      "InputType": "Float2",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "DefaultTexture": "materials/dev/white_color.tga",
+      "IsRequired": true,
+      "PortOrder": 1,
+      "Identifier": "12",
+      "Position": "-2316,1572",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "13",
+      "Position": "-1884,1632",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "8",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "14",
+      "Position": "-1560,1572",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "3",
+        "Output": "Out"
+      },
+      "B": {
+        "Identifier": "15",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "15",
+      "Position": "-1692,1632",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "16",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "16",
+      "Position": "-1692,1728",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "17",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Input",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 1,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "DefaultTexture": "materials/dev/white_color.tga",
+      "IsRequired": false,
+      "PortOrder": 2,
+      "Identifier": "17",
+      "Position": "-2100,1692",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Minimum",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 0,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "DefaultTexture": "materials/dev/white_color.tga",
+      "IsRequired": false,
+      "PortOrder": 3,
+      "Identifier": "18",
+      "Position": "-1476,1632",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SubgraphInput",
+      "InputName": "Maximum",
+      "InputDescription": "",
+      "InputType": "Float",
+      "DefaultFloat": 1,
+      "DefaultFloat2": "0,0",
+      "DefaultFloat3": "0,0,0",
+      "DefaultColor": "1,1,1,1",
+      "DefaultTexture": "materials/dev/white_color.tga",
+      "IsRequired": false,
+      "PortOrder": 4,
+      "Identifier": "19",
+      "Position": "-1476,1692",
+      "HandleOffsets": {}
+    }
+  ]
+}
