@@ -5,9 +5,9 @@ public sealed class SGERandomRangeNode : ShaderNode
 {
 	[Hide]
 	public static string SGERandomRange => @"
-		float SGERandomRange(float2 input, float min, float max)
+		float SGERandomRange(float2 input, float minimum, float maximum)
 		{
-			return lerp(min, max, frac(sin(dot(input, float2(12.9898, 78.233)))*43758.5453));
+			return lerp(minimum, maximum, frac(sin(dot(input, float2(12.9898, 78.233)))*43758.5453));
 		}
 		";
 
@@ -17,26 +17,26 @@ public sealed class SGERandomRangeNode : ShaderNode
 	
 	[Input( typeof( float ) )]
 	[Hide]
-	public NodeInput Min {get; set;}
+	public NodeInput Minimum {get; set;}
 	
 	[Input( typeof( float ) )]
 	[Hide]
-	public NodeInput Max {get; set;}
+	public NodeInput Maximum {get; set;}
 
-	[InputDefault (nameof( Min ))]
-	public float DefaultMin {get; set;} = 0f;
+	[InputDefault (nameof( Minimum ))]
+	public float DefaultMinimum {get; set;} = 0f;
 
-	[InputDefault (nameof( Max ))]
-	public float DefaultMax {get; set;} = 1f;
+	[InputDefault (nameof( Maximum ))]
+	public float DefaultMaximum {get; set;} = 1f;
 	
 	[Output( typeof( float ) )]
 	[Hide]
 	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
 		var input = compiler.Result(Input).Cast(2);
-		var min = compiler.ResultOrDefault(Min, DefaultMin);
-		var max = compiler.ResultOrDefault(Max, DefaultMax);
+		var minimum = compiler.ResultOrDefault(Minimum, DefaultMinimum);
+		var maximum = compiler.ResultOrDefault(Maximum, DefaultMaximum);
 		
-		return new NodeResult( NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction( SGERandomRange ), $"{input}, {min}, {max}" ) );
+		return new NodeResult( NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction( SGERandomRange ), $"{input}, {minimum}, {maximum}" ) );
 	};
 }

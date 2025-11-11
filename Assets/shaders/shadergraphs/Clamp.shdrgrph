@@ -10,6 +10,7 @@
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
   "Domain": "Surface",
+  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -23,7 +24,7 @@
     {
       "_class": "SimplexNoise",
       "Identifier": "0",
-      "Position": "-492,-0",
+      "Position": "-492,0",
       "HandleOffsets": {},
       "Coords": {
         "Identifier": "7",
@@ -59,9 +60,8 @@
     },
     {
       "_class": "SGEClampNode",
-      "DefaultInput": 0.5,
-      "DefaultMin": 0,
-      "DefaultMax": 1,
+      "DefaultMinimum": 0,
+      "DefaultMaximum": 1,
       "Identifier": "4",
       "Position": "-216,0",
       "HandleOffsets": {},
@@ -69,7 +69,7 @@
         "Identifier": "0",
         "Output": "Result"
       },
-      "Max": {
+      "Maximum": {
         "Identifier": "9",
         "Output": "Result"
       }

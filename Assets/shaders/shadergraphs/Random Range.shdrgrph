@@ -10,6 +10,7 @@
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
   "Domain": "Surface",
+  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -204,8 +205,8 @@
     },
     {
       "_class": "SGERandomRangeNode",
-      "DefaultMin": 0,
-      "DefaultMax": 1,
+      "DefaultMinimum": 0,
+      "DefaultMaximum": 1,
       "Identifier": "16",
       "Position": "-216,0",
       "HandleOffsets": {},

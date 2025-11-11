@@ -5,9 +5,9 @@ public sealed class SGEClampNode : ShaderNode
 {
 	[Hide]
 	public string SGEClamp => @"
-		float SGEClamp( float input, float min, float max )
+		float SGEClamp( float input, float minimum, float maximum )
 		{
-			return clamp(input, min, max);
+			return clamp(input, minimum, maximum);
 		}
 		";
 
@@ -17,26 +17,26 @@ public sealed class SGEClampNode : ShaderNode
 	
 	[Input (typeof( float ))]
 	[Hide]
-	public NodeInput Min {get; set;}
+	public NodeInput Minimum {get; set;}
 	
 	[Input (typeof( float ))]
 	[Hide]
-	public NodeInput Max {get; set;}
+	public NodeInput Maximum {get; set;}
 	
-	[InputDefault( nameof( Min ) )]
-	public float DefaultMin {get; set;} = 0f;
+	[InputDefault( nameof( Minimum ) )]
+	public float DefaultMinimum {get; set;} = 0f;
 	
-    [InputDefault( nameof( Max ) )]
-	public float DefaultMax {get; set;} = 1f;
+    [InputDefault( nameof( Maximum ) )]
+	public float DefaultMaximum {get; set;} = 1f;
 
 	[Output( typeof( float ) )]
 	[Hide]
 	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
 		var input = compiler.Result(Input);
-		var min = compiler.ResultOrDefault(Min, DefaultMin);
-		var max = compiler.ResultOrDefault(Max, DefaultMax);
+		var minimum = compiler.ResultOrDefault(Minimum, DefaultMinimum);
+		var maximum = compiler.ResultOrDefault(Maximum, DefaultMaximum);
 		
-		return new NodeResult( NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction ( SGEClamp ), $"{input}, {min}, {max}" ) );
+		return new NodeResult( NodeResultType.Float, compiler.ResultFunction( compiler.RegisterFunction ( SGEClamp ), $"{input}, {minimum}, {maximum}" ) );
 	};
 }
