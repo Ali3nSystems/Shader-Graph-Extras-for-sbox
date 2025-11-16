@@ -20,6 +20,7 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
+  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "Result",
@@ -356,7 +357,7 @@
       "HandleOffsets": {},
       "Input": {
         "Identifier": "45",
-        "Output": "Output"
+        "Output": "TextureCoordinateOutput"
       }
     },
     {
@@ -754,6 +755,17 @@
         "Identifier": "49",
         "Output": "Result"
       }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "588,120",
+      "Color": "White",
+      "Title": "Outputs",
+      "Description": "Texture Coordinate: - Outputs in the texture coordinate.\nWorld Space Position: - Outputs in the world space position. It also works if you scale your UVs. Multiply by 0.01 to see a result.",
+      "Layer": 1,
+      "Identifier": "51",
+      "Position": "168,504",
+      "HandleOffsets": {}
     }
   ]
 }
