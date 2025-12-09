@@ -17,6 +17,7 @@ public sealed class SGEFlipbookNode : ShaderNode
 	[Input(typeof(Texture2DObject))]
 	[Hide]
 	public NodeInput Texture { get; set; }
+	
 	[Input(typeof(Sampler))]
 	[Hide]
 	public NodeInput Sampler { get; set; }
