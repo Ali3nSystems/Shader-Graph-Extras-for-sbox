@@ -189,7 +189,7 @@ public sealed partial class GraphCompiler
 
 		var globalName = $"g_t{name}";
 
-		if ( CurrentResultInput == "Albedo" )
+		if ( CurrentResultInput == "Albedo" && !input.IsAttribute )
 		{
 			result.RepresentativeTexture = globalName;
 		}
@@ -760,6 +760,21 @@ public sealed partial class GraphCompiler
 	/// <summary>
 	/// Generate shader code, will evaluate the graph if it hasn't already.
 	/// Different code is generated for preview and not preview.
+	///
+	/// Template Format Placeholders:
+	/// {0}  - Graph.Description
+	/// {1}  - GenerateCommon() - #defines for S_ALPHA_TEST and S_TRANSLUCENT
+	/// {2}  - GenerateGlobals() (Pixel) - Texture inputs, parameters, sampler states
+	/// {3}  - GenerateLocals() (Pixel) - Local variable declarations
+	/// {4}  - GenerateMaterial() (Pixel) - Material property assignments (m.Albedo, m.Normal, etc.)
+	/// {5}  - GenerateVertex() - Vertex shader body code
+	/// {6}  - GenerateGlobals() (Vertex) - Same as {2} but for vertex stage
+	/// {7}  - GenerateVertexComboRules() - Vertex stage #includes
+	/// {8}  - GeneratePixelComboRules() - Pixel stage #includes and combo rules
+	/// {9}  - GenerateFunctions(PixelResult) - Custom function definitions for pixel stage
+	/// {10} - GenerateFunctions(VertexResult) - Custom function definitions for vertex stage
+	/// {11} - GeneratePixelInit() - Material initialization code (Material::Init)
+	/// {12} - Pixel Output - Final return statement for pixel shader
 	/// </summary>
 	public string Generate()
 	{
@@ -774,7 +789,20 @@ public sealed partial class GraphCompiler
 		if ( Errors.Any() )
 			return null;
 
-		return string.Format( ShaderTemplate.Code,
+		// Determine which template to use based on Domain
+		string templateCode;
+		if ( Graph.Domain == ShaderDomain.Custom && !string.IsNullOrWhiteSpace( Graph.TemplatePath ) )
+		{
+			// Load custom template from a class with static Code property
+			templateCode = ShaderTemplate.LoadTemplate( Graph.TemplatePath );
+		}
+		else
+		{
+			// Use default template
+			templateCode = ShaderTemplate.Code;
+		}
+
+		return string.Format( templateCode,
 			Graph.Description,
 			IndentString( GenerateCommon(), 1 ),
 			IndentString( GenerateGlobals(), 1 ),
@@ -860,6 +888,10 @@ public sealed partial class GraphCompiler
 			sb.AppendLine( "DynamicCombo( D_RENDER_BACKFACES, 0..1, Sys( ALL ) );" );
 			sb.AppendLine( "RenderState( CullMode, D_RENDER_BACKFACES ? NONE : BACK );" );
 		}
+		else
+		{
+			sb.AppendLine( "RenderState( CullMode, F_RENDER_BACKFACES ? NONE : DEFAULT );" );
+		}
 
 		return sb.ToString();
 	}
@@ -867,8 +899,13 @@ public sealed partial class GraphCompiler
 	private string GeneratePixelInit()
 	{
 		Stage = ShaderStage.Pixel;
-		if ( Graph.ShadingModel == ShadingModel.Lit && Graph.Domain != ShaderDomain.PostProcess )
-			return ShaderTemplate.Material_init;
+		if ( Graph.ShadingModel == ShadingModel.Lit && Graph.Domain != ShaderDomain.PostProcess || Graph.Domain == ShaderDomain.Custom )
+		{
+			// Use template-specific Pixel_init if using a custom template
+			if ( Graph.Domain == ShaderDomain.Custom && !string.IsNullOrWhiteSpace( Graph.TemplatePath ) )
+				return ShaderTemplate.GetPixelInit( Graph.TemplatePath );
+			return ShaderTemplate.Pixel_init;
+		}
 		return "";
 	}
 
@@ -889,10 +926,12 @@ public sealed partial class GraphCompiler
 			string opacity = opacityResult.Cast( 1 ) ?? "1.00";
 			return $"return float4( {albedo}, {opacity} );";
 		}
-		else if ( Graph.ShadingModel == ShadingModel.Lit )
+		else if ( Graph.ShadingModel == ShadingModel.Lit || Graph.Domain == ShaderDomain.Custom )
 		{
-
-			return ShaderTemplate.Material_output;
+			// Use template-specific Pixel_output if using a custom template
+			if ( Graph.Domain == ShaderDomain.Custom && !string.IsNullOrWhiteSpace( Graph.TemplatePath ) )
+				return ShaderTemplate.GetPixelOutput( Graph.TemplatePath );
+			return ShaderTemplate.Pixel_output;
 		}
 		return null;
 	}
@@ -1076,7 +1115,7 @@ public sealed partial class GraphCompiler
 		Stage = ShaderStage.Pixel;
 		Subgraph = null;
 		SubgraphStack.Clear();
-		if ( Graph.ShadingModel != ShadingModel.Lit || Graph.Domain == ShaderDomain.PostProcess ) return "";
+		if ( (Graph.ShadingModel != ShadingModel.Lit && Graph.Domain != ShaderDomain.Custom) || Graph.Domain == ShaderDomain.PostProcess ) return "";
 
 		var resultNode = Graph.Nodes.OfType<BaseResult>().FirstOrDefault();
 		if ( resultNode == null )
@@ -1171,6 +1210,28 @@ public sealed partial class GraphCompiler
 					i.vPositionWs = float3(v.vTexCoord, 0.0f);
 					" );
 				break;
+			case ShaderDomain.Custom:
+				// Use template-specific Vertex_init if using a custom template
+				if ( !string.IsNullOrWhiteSpace( Graph.TemplatePath ) )
+				{
+					var customInit = ShaderTemplate.GetVertexInit( Graph.TemplatePath );
+					if ( !string.IsNullOrWhiteSpace( customInit ) )
+					{
+						sb.AppendLine( customInit );
+						break;
+					}
+				}
+				// Default vertex initialization for Custom domain
+				sb.AppendLine( @"
+					PixelInput i = ProcessVertex( v );
+					i.vPositionOs = v.vPositionOs.xyz;
+					i.vColor = v.vColor;
+
+					ExtraShaderData_t extraShaderData = GetExtraPerInstanceShaderData( v.nInstanceTransformID );
+					i.vTintColor = extraShaderData.vTint;
+
+					VS_DecodeObjectSpaceNormalAndTangent( v, i.vNormalOs, i.vTangentUOs_flTangentVSign );" );
+				break;
 		}
 
 		NodeResult result;
@@ -1202,6 +1263,20 @@ public sealed partial class GraphCompiler
 				break;
 			case ShaderDomain.PostProcess:
 				sb.AppendLine( "return i;" );
+				break;
+			case ShaderDomain.Custom:
+				// Use template-specific Vertex_output if using a custom template
+				if ( !string.IsNullOrWhiteSpace( Graph.TemplatePath ) )
+				{
+					var customOutput = ShaderTemplate.GetVertexOutput( Graph.TemplatePath );
+					if ( !string.IsNullOrWhiteSpace( customOutput ) )
+					{
+						sb.AppendLine( customOutput );
+						break;
+					}
+				}
+				// Default vertex output for Custom domain
+				sb.AppendLine( "return FinalizeVertex( i );" );
 				break;
 		}
 
