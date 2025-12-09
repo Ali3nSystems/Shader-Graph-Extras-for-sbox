@@ -55,13 +55,6 @@ public sealed class SubgraphInput : ShaderNode, IErroringNode
 	public Color DefaultColor { get; set; } = Color.White;
 
 	/// <summary>
-	/// Default texture path for Texture2D inputs
-	/// </summary>
-	[ShowIf( nameof( InputType ), InputType.Texture2D )]
-	[ImageAssetPath]
-	public string DefaultTexture { get; set; } = "materials/dev/white_color.tga";
-
-	/// <summary>
 	/// Whether this input is required (must have a connection in order to compile)
 	/// </summary>
 	public bool IsRequired { get; set; } = false;
@@ -120,6 +113,39 @@ public sealed class SubgraphInput : ShaderNode, IErroringNode
 			return new NodeResult( NodeResultType.Texture2DObject, result.Item1, constant: true );
 		}
 
+		// Special handling for TextureCube inputs
+		if ( InputType == InputType.TextureCube )
+		{
+			// For subgraphs, just pass through the texture reference
+			if ( compiler.Graph.IsSubgraph )
+			{
+				return new NodeResult( NodeResultType.TextureCubemapObject, outputValue?.ToString() ?? "materials/default/default_cube.vtex", constant: true );
+			}
+
+			// For normal graphs, load and register the cubemap texture
+			var texturePath = outputValue?.ToString() ?? "materials/default/default_cube.vtex";
+			var texture = Texture.Load( texturePath ) ?? Texture.White;
+			var sampler = new Sampler();
+			var textureInput = new TextureInput
+			{
+				Name = InputName,
+				Type = TextureType.TexCube,
+				ImageFormat = TextureFormat.DXT5,
+				SrgbRead = true,
+				Default = Color.White
+			};
+
+			var result = compiler.ResultTexture( sampler, textureInput, texture );
+			return new NodeResult( NodeResultType.TextureCubemapObject, result.Item1, constant: true );
+		}
+
+		// Special handling for Sampler inputs
+		if ( InputType == InputType.Sampler )
+		{
+			var samplerValue = (outputValue is Sampler s) ? s : new Sampler();
+			return compiler.ResultValue( samplerValue );
+		}
+
 		// If we're in a subgraph context, just return the value directly
 		if ( compiler.Graph.IsSubgraph )
 		{
@@ -145,7 +171,9 @@ public sealed class SubgraphInput : ShaderNode, IErroringNode
 			InputType.Float2 => DefaultFloat2,
 			InputType.Float3 => DefaultFloat3,
 			InputType.Color => DefaultColor,
-			InputType.Texture2D => DefaultTexture,
+			InputType.Sampler => new Sampler(),
+			InputType.Texture2D => "materials/dev/white_color.tga",
+			InputType.TextureCube => "materials/default/default_cube.vtex",
 			_ => DefaultFloat
 		};
 	}
@@ -199,7 +227,12 @@ public enum InputType
 
 	[Title( "Color" ), Icon( "palette" )]
 	Color,
+	[Title( "Sampler" ), Icon( "settings" )]
+	Sampler,
 
 	[Title( "Texture2D" ), Icon( "image" )]
-	Texture2D
+	Texture2D,
+
+	[Title( "TextureCube" ), Icon( "panorama_photosphere" )]
+	TextureCube
 }

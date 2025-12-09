@@ -86,7 +86,9 @@ public sealed class SubgraphNode : ShaderNode, IErroringNode
 				InputType.Float2 => typeof( Vector2 ),
 				InputType.Float3 => typeof( Vector3 ),
 				InputType.Color => typeof( Color ),
+				InputType.Sampler => typeof( Sampler ),
 				InputType.Texture2D => typeof( Texture2DObject ),
+				InputType.TextureCube => typeof( TextureCubemapObject ),
 				_ => typeof( float )
 			};
 
@@ -306,17 +308,20 @@ internal class SubgraphNodeControlWidget : ControlWidget
 					}, x => SetDefaultValue( name, x )
 				) );
 			}
+			else if ( type == typeof( Sampler ) )
+			{
+				// Sampler is not editable in the UI - will use default value from SubgraphInput
+				// Skip adding a control widget for this type
+			}
 			else if ( type == typeof( Texture2DObject ) )
 			{
-				Sheet.AddRow( TypeLibrary.CreateProperty<string>(
-					displayName, () =>
-					{
-						var val = getter();
-						if ( val is JsonElement el ) return el.GetString();
-						return val?.ToString() ?? "materials/dev/white_color.tga";
-					}, x => SetDefaultValue( name, x ),
-					[new ImageAssetPathAttribute()]
-				) );
+				// Texture2DObject is not editable in the UI - must be connected via node
+				// Skip adding a control widget for this type
+			}
+			else if ( type == typeof( TextureCubemapObject ) )
+			{
+				// TextureCubemapObject is not editable in the UI - must be connected via node
+				// Skip adding a control widget for this type
 			}
 		}
 
