@@ -1,7 +1,7 @@
 {
   "IsSubgraph": false,
   "Path": "shaders/shadergraphs/tutorials/nodes/gerstner waves.shdrgrph",
-  "Model": "models/subdivided_plane.vmdl",
+  "Model": "models/mdl-subdivided_plane.vmdl",
   "Title": null,
   "Description": "",
   "Category": null,
