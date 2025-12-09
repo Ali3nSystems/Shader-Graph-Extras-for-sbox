@@ -8,6 +8,15 @@ public static class ShaderGraphUpgrader
 	private const string BaseNodeResult = "addons/tools/Code/ShaderGraph/Compiler/NodeResult.cs";
 	private const string UpgradedNodeResult = "Editor/upgrader/files/NodeResult.cs.txt";
 
+	private const string BaseShaderTemplate = "addons/tools/Code/ShaderGraph/Compiler/ShaderTemplate.cs";
+	private const string UpgradedShaderTemplate = "Editor/upgrader/files/ShaderTemplate.cs.txt";
+
+	private const string BaseResult = "addons/tools/Code/ShaderGraph/Result.cs";
+	private const string UpgradedResult = "Editor/upgrader/files/Result.cs.txt";
+
+	private const string BaseShaderGraph = "addons/tools/Code/ShaderGraph/ShaderGraph.cs";
+	private const string UpgradedShaderGraph = "Editor/upgrader/files/ShaderGraph.cs.txt";
+
 	private const string BaseSubgraphInput = "addons/tools/Code/ShaderGraph/SubgraphInput.cs";
 	private const string UpgradedSubgraphInput = "Editor/upgrader/files/SubgraphInput.cs.txt";
 
@@ -21,6 +30,9 @@ public static class ShaderGraphUpgrader
 	[
 		(BaseGraphCompiler, UpgradedGraphCompiler),
 		(BaseNodeResult, UpgradedNodeResult),
+		(BaseShaderTemplate, UpgradedShaderTemplate),
+		(BaseResult, UpgradedResult),
+		(BaseShaderGraph, UpgradedShaderGraph),
 		(BaseSubgraphInput, UpgradedSubgraphInput),
 		(BaseSubgraphNode, UpgradedSubgraphNode),
 		(BaseTexture, UpgradedTexture)
