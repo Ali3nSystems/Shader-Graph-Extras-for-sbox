@@ -40,6 +40,8 @@ public static class ShaderGraphUpgrader
 
 	private static readonly string[] TextureObjectNodeFiles =
 	[
+		"Blur.cs",
+		"ChromaticAberration.cs",
 		"Flipbook.cs",
 		"ParallaxOcclusionMapping.cs",
 		"TextureSample.cs",
