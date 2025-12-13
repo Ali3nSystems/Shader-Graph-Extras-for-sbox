@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/level of detail.shdrgrph",
+  "Path": "shaders/shadergraphs/tutorials/nodes/level of detail.shdrgrph",
   "Model": "models/dev/plane.vmdl",
   "Title": null,
   "Description": "",
@@ -20,13 +20,14 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
+  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "CommentNode",
       "Size": "444,168",
       "Color": "Green",
       "Title": "Level Of Detail",
-      "Description": "Coordinates: - XY of the Screen Position to be sampled.\nInput: - Multiplies the original scene depth value to be closer or further away.\nMinimum: - Remaps the 0 (black) to this value\nMaximum: - Remaps the 1 (white) to this value.",
+      "Description": "Coordinates: - XY of the Screen Position to be sampled.\nValue: -Distance based on centimeters.\nMinimum: - Remaps the 0 (black) to this value\nMaximum: - Remaps the 1 (white) to this value.",
       "Layer": 2,
       "Identifier": "0",
       "Position": "168,0",
@@ -71,7 +72,8 @@
         "Input": 0.116,
         "Minimum": 0.099,
         "Maximum": 0.101,
-        "Scale": 0.116
+        "Scale": 0.116,
+        "Value": 600
       },
       "Identifier": "4",
       "Position": "-216,-0",

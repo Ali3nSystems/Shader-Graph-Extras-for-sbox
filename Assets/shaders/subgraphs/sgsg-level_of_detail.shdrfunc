@@ -20,6 +20,7 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
+  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "Reroute",
@@ -37,7 +38,7 @@
       "DefaultA": 0,
       "DefaultB": 1,
       "Identifier": "1",
-      "Position": "-1824,1572",
+      "Position": "-2016,1572",
       "HandleOffsets": {},
       "A": {
         "Identifier": "4",
@@ -54,14 +55,14 @@
       "Position": "-1428,1572",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "14",
+        "Identifier": "21",
         "Output": "Result"
       }
     },
     {
       "_class": "OneMinus",
       "Identifier": "3",
-      "Position": "-1692,1572",
+      "Position": "-1884,1572",
       "HandleOffsets": {},
       "In": {
         "Identifier": "1",
@@ -72,7 +73,7 @@
       "_class": "SGESceneDepthNode",
       "Mode": "Eye",
       "Identifier": "4",
-      "Position": "-2100,1572",
+      "Position": "-2292,1572",
       "HandleOffsets": {},
       "Coordinates": {
         "Identifier": "12",
@@ -100,7 +101,7 @@
         }
       },
       "Identifier": "5",
-      "Position": "-2100,1632",
+      "Position": "-2292,1632",
       "HandleOffsets": {}
     },
     {
@@ -142,7 +143,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "8",
-      "Position": "-1884,1668",
+      "Position": "-2076,1668",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "5",
@@ -175,7 +176,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "b4d154bd-1fc2-40d4-9e70-6df67a1d7fee",
+          "Id": "f4275c8b-9ee2-4407-bc1e-f91081a1d67f",
           "Name": "Output",
           "Type": "float",
           "Preview": "None",
@@ -199,18 +200,17 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": true,
       "PortOrder": 1,
       "Identifier": "12",
-      "Position": "-2316,1572",
+      "Position": "-2508,1572",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "13",
-      "Position": "-1884,1632",
+      "Position": "-2076,1632",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "8",
@@ -220,16 +220,12 @@
     {
       "_class": "Multiply",
       "DefaultA": 0,
-      "DefaultB": 1,
+      "DefaultB": 0.001,
       "Identifier": "14",
-      "Position": "-1560,1572",
+      "Position": "-1884,1692",
       "HandleOffsets": {},
       "A": {
-        "Identifier": "3",
-        "Output": "Out"
-      },
-      "B": {
-        "Identifier": "15",
+        "Identifier": "17",
         "Output": "Result"
       }
     },
@@ -237,7 +233,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "15",
-      "Position": "-1692,1632",
+      "Position": "-1620,1632",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "16",
@@ -248,27 +244,26 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "16",
-      "Position": "-1692,1728",
+      "Position": "-1620,1728",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "17",
+        "Identifier": "22",
         "Output": "Result"
       }
     },
     {
       "_class": "SubgraphInput",
-      "InputName": "Scale",
+      "InputName": "Value",
       "InputDescription": "",
       "InputType": "Float",
-      "DefaultFloat": 1,
+      "DefaultFloat": 1000,
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 2,
       "Identifier": "17",
-      "Position": "-2100,1692",
+      "Position": "-2292,1692",
       "HandleOffsets": {}
     },
     {
@@ -280,7 +275,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 3,
       "Identifier": "18",
@@ -296,12 +290,51 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 4,
       "Identifier": "19",
       "Position": "-1476,1692",
       "HandleOffsets": {}
+    },
+    {
+      "_class": "Subtract",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "20",
+      "Position": "-1752,1572",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "3",
+        "Output": "Out"
+      }
+    },
+    {
+      "_class": "Add",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "21",
+      "Position": "-1560,1572",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "20",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "15",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 0.39370078,
+      "Identifier": "22",
+      "Position": "-1752,1692",
+      "HandleOffsets": {},
+      "A": {
+        "Identifier": "14",
+        "Output": "Result"
+      }
     }
   ]
 }
