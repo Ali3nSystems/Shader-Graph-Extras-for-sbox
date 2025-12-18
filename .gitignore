@@ -31,6 +31,8 @@ code/Properties/*
 Exports/
 
 # Auto-generated TextureObject node files (generated from .cs.txt templates by Upgrader)
+Editor/nodes/Blur.cs
+Editor/nodes/ChromaticAberration.cs
 Editor/nodes/Flipbook.cs
 Editor/nodes/ParallaxOcclusionMapping.cs
 Editor/nodes/TextureSample.cs
