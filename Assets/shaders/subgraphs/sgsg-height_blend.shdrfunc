@@ -5,7 +5,7 @@
   "Title": "SGE - Height Blend",
   "Description": null,
   "Category": "Shader Graph Extras",
-  "Icon": "masks",
+  "Icon": "height",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
@@ -20,13 +20,12 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
-  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "b366df2b-255e-436c-9e0f-b6b78284bbbd",
+          "Id": "351234ec-fde8-40bc-b307-c2ab71519ad4",
           "Name": "Output",
           "Type": "float",
           "Preview": "None",
