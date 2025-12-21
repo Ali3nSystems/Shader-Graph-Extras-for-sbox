@@ -26,6 +26,21 @@ public static class ShaderGraphUpgrader
 	private const string BaseTexture = "addons/tools/Code/ShaderGraph/Texture.cs";
 	private const string UpgradedTexture = "Editor/upgrader/files/Texture.cs.txt";
 
+	private const string BaseEnumerationEditor = "addons/tools/Code/ShaderGraph/EnumerationEditor.cs";
+	private const string UpgradedEnumerationEditor = "Editor/upgrader/files/EnumerationEditor.cs.txt";
+
+	private const string BaseUnlit = "addons/tools/Code/ShaderGraph/Compiler/ShadingModels/Unlit.cs";
+	private const string UpgradedUnlit = "Editor/upgrader/files/Unlit.cs.txt";
+
+	private const string BaseLit = "addons/tools/Code/ShaderGraph/Compiler/ShadingModels/Lit.cs";
+	private const string UpgradedLit = "Editor/upgrader/files/Lit.cs.txt";
+
+	private const string BaseSurface = "addons/tools/Code/ShaderGraph/Compiler/Templates/Surface.cs";
+	private const string UpgradedSurface = "Editor/upgrader/files/Surface.cs.txt";
+	
+	private const string BasePostProcess = "addons/tools/Code/ShaderGraph/Compiler/Templates/PostProcess.cs";
+	private const string UpgradedPostProcess = "Editor/upgrader/files/PostProcess.cs.txt";
+
 	private static readonly (string BaseFile, string UpgradeFile)[] ShaderGraphFiles =
 	[
 		(BaseGraphCompiler, UpgradedGraphCompiler),
@@ -35,7 +50,12 @@ public static class ShaderGraphUpgrader
 		(BaseShaderGraph, UpgradedShaderGraph),
 		(BaseSubgraphInput, UpgradedSubgraphInput),
 		(BaseSubgraphNode, UpgradedSubgraphNode),
-		(BaseTexture, UpgradedTexture)
+		(BaseTexture, UpgradedTexture),
+		(BaseEnumerationEditor, UpgradedEnumerationEditor),
+		(BaseLit, UpgradedLit),
+		(BaseUnlit, UpgradedUnlit),
+		(BaseSurface, UpgradedSurface),
+		(BasePostProcess, UpgradedPostProcess)
 	];
 
 	private static readonly string[] TextureObjectNodeFiles =
@@ -182,17 +202,27 @@ public static class ShaderGraphUpgrader
 			return false;
 		}
 
-		if ( !File.Exists( baseFilePath ) )
-		{
-			Log.Error( $"✗ Base file not found: {baseFilePath}" );
-			Log.Error( $"  Make sure s&box is properly installed and this library is in the correct location." );
-			return false;
-		}
-
 		try
 		{
+			// Create directory if it doesn't exist
+			string baseDirectory = Path.GetDirectoryName( baseFilePath );
+			if ( !Directory.Exists( baseDirectory ) )
+			{
+				Directory.CreateDirectory( baseDirectory );
+				Log.Info( $"✓ Created directory: {baseDirectory}" );
+			}
+
 			File.WriteAllText( baseFilePath, File.ReadAllText( upgradedFilePath ) );
-			Log.Info( $"✓ Successfully upgraded: {Path.GetFileName( baseFilePath )}" );
+
+			if ( File.Exists( baseFilePath ) )
+			{
+				Log.Info( $"✓ Successfully upgraded: {Path.GetFileName( baseFilePath )}" );
+			}
+			else
+			{
+				Log.Info( $"✓ Successfully created: {Path.GetFileName( baseFilePath )}" );
+			}
+
 			return true;
 		}
 		catch ( Exception ex )

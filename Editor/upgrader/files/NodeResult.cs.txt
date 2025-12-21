@@ -1,4 +1,4 @@
-﻿namespace Editor.ShaderGraph;
+namespace Editor.ShaderGraph;
 
 public enum NodeResultType
 {

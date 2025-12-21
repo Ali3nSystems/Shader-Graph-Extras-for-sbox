@@ -1,0 +1,25 @@
+namespace Editor.ShaderGraph;
+public static class UnlitShadingModel
+{
+	public static Dictionary<string, bool> Features => new()
+	{
+        { "SupportsAlbedo", true},
+		{ "SupportsEmission", false },
+        { "SupportsOpacity", true},
+		{ "SupportsNormal", false },
+		{ "SupportsRoughness", false },
+		{ "SupportsMetalness", false },
+		{ "SupportsAmbientOcclusion", false },
+		{ "SupportsPositionOffset", true },
+        { "SupportsPixelDepthOffset", true},
+
+		{"SupportsOpaqueBlendMode", true},
+		{"SupportsMaskedBlendMode", true},
+		{"SupportsTranslucentBlendMode", true},
+		{"SupportsDynamicBlendMode", true}
+	};
+
+	public static string Include => "shaders/HLSL/ShadingModels/SMDL-unlit.hlsl";
+	public static string Code => @"
+return ShadingModelUnlit::Shade( m );";
+}

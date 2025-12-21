@@ -1,4 +1,4 @@
-﻿using Editor.NodeEditor;
+using Editor.NodeEditor;
 using Sandbox.Resources;
 using System.Text.Json.Serialization;
 
