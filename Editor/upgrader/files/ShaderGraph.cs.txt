@@ -1,4 +1,4 @@
-﻿using Editor.NodeEditor;
+using Editor.NodeEditor;
 using System.Text.Json.Serialization;
 
 namespace Editor.ShaderGraph;
@@ -11,6 +11,8 @@ public enum BlendMode
 	Masked,
 	[Icon( "blur_on" )]
 	Translucent,
+	[Icon( "tune" )]
+	Dynamic,
 }
 
 public enum ShadingModel
@@ -19,6 +21,8 @@ public enum ShadingModel
 	Lit,
 	[Icon( "brightness_3" )]
 	Unlit,
+	[Icon( "palette" )]
+	Custom,
 }
 
 public enum ShaderDomain
@@ -87,28 +91,124 @@ public sealed partial class ShaderGraph : IGraph
 
 	public BlendMode BlendMode { get; set; }
 
-	[ShowIf( nameof( ShowShadingModel ), true )]
 	public ShadingModel ShadingModel { get; set; }
-	[Hide] private bool ShowShadingModel => Domain != ShaderDomain.PostProcess;
+
+	[ShowIf( nameof( ShadingModel ), ShadingModel.Custom )]
+	public string ShadingModelPath { get; set; }
 
 	public ShaderDomain Domain { get; set; }
 
 	[ShowIf( nameof( Domain ), ShaderDomain.Custom )]
 	public string TemplatePath { get; set; }
 
+	// Feature helpers for shading model support (used by custom editors)
+	[Hide]
+	public bool SupportsLitShadingModel => GetFeature( "SupportsLitShadingModel", true );
+	[Hide]
+	public bool SupportsUnlitShadingModel => GetFeature( "SupportsUnlitShadingModel", true );
+	[Hide]
+	public bool SupportsCustomShadingModel => GetFeature( "SupportsCustomShadingModel", true );
+
+	// Feature helpers for blend mode support (used by custom editors)
+	[Hide]
+	public bool SupportsOpaqueBlendMode => GetFeature( "SupportsOpaqueBlendMode", true );
+	[Hide]
+	public bool SupportsMaskedBlendMode => GetFeature( "SupportsMaskedBlendMode", true );
+	[Hide]
+	public bool SupportsTranslucentBlendMode => GetFeature( "SupportsTranslucentBlendMode", true );
+	[Hide]
+	public bool SupportsDynamicBlendMode => GetFeature( "SupportsDynamicBlendMode", true );
+
+	private bool GetFeature( string featureName, bool defaultValue )
+	{
+		// Get template path based on domain
+		string templatePath = Domain switch
+		{
+			ShaderDomain.Surface => "Compiler/Templates/Surface.cs",
+			ShaderDomain.PostProcess => "Compiler/Templates/PostProcess.cs",
+			ShaderDomain.Custom => TemplatePath,
+			_ => null
+		};
+
+		// Get shading model path based on selection
+		string shadingModelPath = ShadingModel switch
+		{
+			ShadingModel.Lit => "Compiler/ShadingModels/Lit.cs",
+			ShadingModel.Unlit => "Compiler/ShadingModels/Unlit.cs",
+			ShadingModel.Custom => ShadingModelPath,
+			_ => null
+		};
+
+		bool templateValue = defaultValue;
+		bool shadingModelValue = defaultValue;
+
+		// Check template features
+		if ( !string.IsNullOrWhiteSpace( templatePath ) )
+		{
+			var templateFeatures = ShaderTemplate.GetTemplateFeatures( templatePath );
+			if ( templateFeatures.TryGetValue( featureName, out var value ) )
+				templateValue = value;
+		}
+
+		// Check shading model features
+		if ( !string.IsNullOrWhiteSpace( shadingModelPath ) )
+		{
+			var shadingModelFeatures = ShaderTemplate.GetShadingModelFeatures( shadingModelPath );
+			if ( shadingModelFeatures.TryGetValue( featureName, out var value ) )
+				shadingModelValue = value;
+		}
+
+		// Both template and shading model must support the feature
+		return templateValue && shadingModelValue;
+	}
+
+	/// <summary>
+	/// Validates and auto-corrects BlendMode and ShadingModel if current values are not supported
+	/// </summary>
+	public void ValidateSettings()
+	{
+		// Auto-correct BlendMode if current is not supported
+		bool currentBlendModeSupported = BlendMode switch
+		{
+			BlendMode.Opaque => SupportsOpaqueBlendMode,
+			BlendMode.Masked => SupportsMaskedBlendMode,
+			BlendMode.Translucent => SupportsTranslucentBlendMode,
+			BlendMode.Dynamic => SupportsDynamicBlendMode,
+			_ => false
+		};
+
+		if ( !currentBlendModeSupported )
+		{
+			// Find the first supported blend mode
+			if ( SupportsOpaqueBlendMode ) BlendMode = BlendMode.Opaque;
+			else if ( SupportsMaskedBlendMode ) BlendMode = BlendMode.Masked;
+			else if ( SupportsTranslucentBlendMode ) BlendMode = BlendMode.Translucent;
+			else if ( SupportsDynamicBlendMode ) BlendMode = BlendMode.Dynamic;
+		}
+
+		// Auto-correct ShadingModel if current is not supported
+		bool currentShadingModelSupported = ShadingModel switch
+		{
+			ShadingModel.Lit => SupportsLitShadingModel,
+			ShadingModel.Unlit => SupportsUnlitShadingModel,
+			ShadingModel.Custom => SupportsCustomShadingModel,
+			_ => false
+		};
+
+		if ( !currentShadingModelSupported )
+		{
+			// Find the first supported shading model
+			if ( SupportsLitShadingModel ) ShadingModel = ShadingModel.Lit;
+			else if ( SupportsUnlitShadingModel ) ShadingModel = ShadingModel.Unlit;
+			else if ( SupportsCustomShadingModel ) ShadingModel = ShadingModel.Custom;
+		}
+	}
+
 	[Hide]
 	public PreviewSettings PreviewSettings { get; set; } = new();
 
 	[Hide]
 	public int Version { get; set; } = 1;
-
-	/// <summary>
-	/// Template metadata for conditional node input visibility.
-	/// Key: feature name (e.g., "SupportsNormal", "IsDeferred")
-	/// Value: boolean indicating if feature is enabled
-	/// </summary>
-	[Hide]
-	public Dictionary<string, bool> TemplateFeatures { get; set; } = new();
 
 	public ShaderGraph()
 	{
