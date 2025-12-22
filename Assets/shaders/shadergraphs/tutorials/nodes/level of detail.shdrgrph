@@ -9,6 +9,7 @@
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
+  "ShadingModelPath": null,
   "Domain": "Surface",
   "TemplatePath": null,
   "PreviewSettings": {
@@ -20,14 +21,13 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
-  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "CommentNode",
       "Size": "444,168",
       "Color": "Green",
       "Title": "Level Of Detail",
-      "Description": "Coordinates: - XY of the Screen Position to be sampled.\nValue: -Distance based on centimeters.\nMinimum: - Remaps the 0 (black) to this value\nMaximum: - Remaps the 1 (white) to this value.",
+      "Description": "Coordinates: - XY of the Screen Position to be sampled.\nValue: -Distance based on meters.\nMinimum: - Remaps the 0 (black) to this value\nMaximum: - Remaps the 1 (white) to this value.",
       "Layer": 2,
       "Identifier": "0",
       "Position": "168,0",
@@ -70,13 +70,13 @@
       "DefaultValues": {
         "Coordinates": "0,0",
         "Input": 0.116,
-        "Minimum": 0.099,
-        "Maximum": 0.101,
+        "Minimum": 0,
+        "Maximum": 0.1,
         "Scale": 0.116,
-        "Value": 600
+        "Value": 4
       },
       "Identifier": "4",
-      "Position": "-216,-0",
+      "Position": "-216,0",
       "HandleOffsets": {},
       "Coordinates": {
         "Identifier": "2",
