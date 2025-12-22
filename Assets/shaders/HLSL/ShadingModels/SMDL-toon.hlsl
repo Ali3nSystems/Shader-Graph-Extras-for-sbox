@@ -9,6 +9,8 @@
 //-----------------------------------------------------------------------------
 // Toon/Cel Shading Model - Simple anime-style two-tone shading
 //-----------------------------------------------------------------------------
+
+// Vibe coded since I couldn't be bothered, it's only meant to be an example. -eEight
 class ShadingModelToon
 {
     static float4 Shade( Material m )
