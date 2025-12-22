@@ -19,6 +19,7 @@ code/Properties/*
 *.*_c
 *.shader
 *.shader_c
+*.meta
 *.vmat
 *.los
 *.vpk
