@@ -152,6 +152,10 @@ PS
 
 		i.vTextureCoords.xy = 1.0 - decalUV;
 
+		i.vNormalWs = -i.vDecalRight;
+		i.vTangentUWs = -i.vDecalUp;
+		i.vTangentVWs = -i.vDecalForward;
+
 		float3 rotatedY = float3( -vProjected.z, vProjected.y, vProjected.x );
 		i.vPositionOs = float3( -rotatedY.x, -rotatedY.y, rotatedY.z );
 
@@ -177,8 +181,8 @@ PS
 		m.Normal = m.Normal;
 
 		// Toolvis:
-		m.WorldTangentU = -i.vDecalUp;
-		m.WorldTangentV = -i.vDecalForward;
+		m.WorldTangentU = i.vTangentUWs;
+		m.WorldTangentV = i.vTangentVWs;
 		m.TextureCoords = i.vTextureCoords.xy;
 
 {13}
