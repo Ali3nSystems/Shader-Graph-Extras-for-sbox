@@ -5,22 +5,22 @@ public sealed class SGENegateNode : ShaderNode
 {
 	[Hide]
 	public static string SGENegate => @"
-		float4 SGENegate(float4 input)
+		float3 SGENegate(float3 input)
 		{
 			return -1 * input;
 		}
 		";
 
-	[Input( typeof( Color ) )] 
+	[Input( typeof( Vector3 ) )] 
 	[Hide]
 	public NodeInput Input { get; set; }
 
-	[Output( typeof( Color ) )] 
+	[Output( typeof( Vector3 ) )] 
 	[Hide]
 	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
 		var input = compiler.Result(Input);
 
-		return new NodeResult(NodeResultType.Color, compiler.ResultFunction( compiler.RegisterFunction( SGENegate ), $"{input}"));
+		return new NodeResult(NodeResultType.Vector3, compiler.ResultFunction( compiler.RegisterFunction( SGENegate ), $"{input}"));
 	};
 }
