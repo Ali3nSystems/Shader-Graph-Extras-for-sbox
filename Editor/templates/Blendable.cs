@@ -90,6 +90,8 @@ VS
 		PixelInput i = ProcessVertex( v );
 		i.vBlendValues = v.vColorBlendValues;
 		i.vPaintValues = v.vColorPaintValues;
+
+		{8}
 	
 		return FinalizeVertex( i );
 	}}
@@ -100,7 +102,7 @@ PS
 	StaticCombo( S_MULTIBLEND, F_MULTIBLEND, Sys( PC ) );
 
 	#include ""common/pixel.hlsl""
-{8}{9}{10}
+{9}{10}{11}
 	float4 MainPs( PixelInput i ) : SV_Target0
 	{{
 		Material m = Material::Init();
@@ -113,7 +115,7 @@ PS
 		m.Opacity = 1;
 		m.Emission = float3( 0, 0, 0 );
 		m.Transmission = 0;
-{11}
+{12}
 		m.AmbientOcclusion = saturate( m.AmbientOcclusion );
 		m.Roughness = saturate( m.Roughness );
 		m.Metalness = saturate( m.Metalness );
@@ -121,7 +123,7 @@ PS
 
 		// Result node takes normal as tangent space, convert it to world space now
 		m.Normal = TransformNormal( m.Normal, i.vNormalWs, i.vTangentUWs, i.vTangentVWs );
-{12}
+{13}
 	}}
 }}";
 }

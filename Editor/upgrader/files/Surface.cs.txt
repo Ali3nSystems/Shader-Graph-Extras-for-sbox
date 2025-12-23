@@ -86,15 +86,16 @@ VS
 		i.vTintColor = extraShaderData.vTint;
 
 		VS_DecodeObjectSpaceNormalAndTangent( v, i.vNormalOs, i.vTangentUOs_flTangentVSign );
+{8}
 		return FinalizeVertex( i );
-	
+
 	}}
 }}
 
 PS
 {{
 	#include ""common/pixel.hlsl""
-{8}{9}{10}
+{9}{10}{11}
 	float4 MainPs( PixelInput i ) : SV_Target0
 	{{
 
@@ -108,7 +109,7 @@ PS
 		m.Opacity = 1;
 		m.Emission = float3( 0, 0, 0 );
 		m.Transmission = 0;
-{11}
+{12}
 		m.AmbientOcclusion = saturate( m.AmbientOcclusion );
 		m.Roughness = saturate( m.Roughness );
 		m.Metalness = saturate( m.Metalness );
@@ -121,7 +122,7 @@ PS
 		m.WorldTangentU = i.vTangentUWs;
 		m.WorldTangentV = i.vTangentVWs;
 		m.TextureCoords = i.vTextureCoords.xy;
-{12}
+{13}
 	}}
 }}
 ";

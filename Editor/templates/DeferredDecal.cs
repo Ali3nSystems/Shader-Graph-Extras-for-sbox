@@ -1,5 +1,4 @@
 namespace Editor.ShaderGraph;
-
 public static class SGEDeferredDecalTemplate
 {
 	public static Dictionary<string, bool> Features => new()
@@ -76,9 +75,9 @@ VS
 	#include ""common/vertex.hlsl""
 	#include ""instancing.fxc""
 {5}{6}{7}
-	PixelInput MainVs( VertexInput i )
+	PixelInput MainVs( VertexInput v )
 	{{
-		float3x4 matObjectToWorld = GetTransformMatrix( i.nInstanceTransformID );
+		float3x4 matObjectToWorld = GetTransformMatrix( v.nInstanceTransformID );
 
 		float3 vRight = mul( matObjectToWorld, float4( 1, 0, 0, 0 ) );
 		float3 vUp = mul( matObjectToWorld, float4( 0, 1, 0, 0 ) );
@@ -86,36 +85,36 @@ VS
 
 		float3 vScale = float3( length( vRight ), length( vUp ), length( vForward ) );
 
-		float3 vBoundsHalfSize = abs( i.vPositionOs.xyz );
+		float3 vBoundsHalfSize = abs( v.vPositionOs.xyz );
 
 		vBoundsHalfSize *= vScale;
 
 		float projectionDepth = 1;
-		float3 vScaledPositionOs = i.vPositionOs.xyz;
+		float3 vScaledPositionOs = v.vPositionOs.xyz;
 		vScaledPositionOs.x *= projectionDepth;
 		vBoundsHalfSize.x *= projectionDepth;
 
 		float3 vPositionWs = mul( matObjectToWorld, float4( vScaledPositionOs, 1.0 ) );
 
-		PixelInput o = ProcessVertex( i );
+		PixelInput i = ProcessVertex( v );
 
-		o.vPositionOs = i.vPositionOs.xyz;
-		o.vColor = i.vColor;
+		i.vPositionOs = v.vPositionOs.xyz;
+		i.vColor = v.vColor;
 
-		ExtraShaderData_t extraShaderData = GetExtraPerInstanceShaderData( i.nInstanceTransformID );
-		o.vTintColor = extraShaderData.vTint;
+		ExtraShaderData_t extraShaderData = GetExtraPerInstanceShaderData( v.nInstanceTransformID );
+		i.vTintColor = extraShaderData.vTint;
 
-		o.vPositionPs = Position3WsToPs( vPositionWs );
+		i.vPositionPs = Position3WsToPs( vPositionWs );
 
-		o.vDecalOrigin = mul( matObjectToWorld, float4( 0, 0, 0, 1.0 ) );
+		i.vDecalOrigin = mul( matObjectToWorld, float4( 0, 0, 0, 1.0 ) );
 
-		o.vDecalScale = vBoundsHalfSize;
+		i.vDecalScale = vBoundsHalfSize;
 
-		o.vDecalRight = vRight / vScale.x;
-		o.vDecalUp = vUp / vScale.y;
-		o.vDecalForward = vForward / vScale.z;
-
-		return FinalizeVertex( o );
+		i.vDecalRight = vRight / vScale.x;
+		i.vDecalUp = vUp / vScale.y;
+		i.vDecalForward = vForward / vScale.z;
+{8}
+		return FinalizeVertex( i );
 	}}
 }}
 
@@ -123,7 +122,7 @@ PS
 {{
 	#include ""common/pixel.hlsl""
 	#include ""common/classes/Depth.hlsl""
-{8}{9}{10}
+{9}{10}{11}
 	RenderState( BlendEnable, true );
 	RenderState( SrcBlend, SRC_ALPHA );
 	RenderState( DstBlend, INV_SRC_ALPHA );
@@ -172,7 +171,7 @@ PS
 		m.Opacity = 1;
 		m.Emission = float3( 0, 0, 0 );
 		m.Transmission = 0;
-{11}
+{12}
 		m.AmbientOcclusion = saturate( m.AmbientOcclusion );
 		m.Roughness = saturate( m.Roughness );
 		m.Metalness = saturate( m.Metalness );
@@ -186,7 +185,7 @@ PS
 		m.WorldTangentV = i.vTangentVWs;
 		m.TextureCoords = i.vTextureCoords.xy;
 
-{12}
+{13}
 	}}
 }}";
 }

@@ -81,7 +81,7 @@ VS
 		PixelInput i;
 		i.vPositionPs = float4(v.vPositionOs.xy, 0.0f, 1.0f );
 		i.vPositionWs = float3(v.vTexCoord, 0.0f);
-							
+{8}					
 		return i;
 	}}
 }}
@@ -92,7 +92,7 @@ PS
 	#include ""postprocess/functions.hlsl""
 	#include ""postprocess/common.hlsl""
 
-{8}{9}{10}
+{9}{10}{11}
 
 	Texture2D g_tColorBuffer < Attribute( ""ColorBuffer"" ); SrgbRead ( true ); >;
 
@@ -101,9 +101,9 @@ PS
 		Material m = Material::Init( i );
 		m.Albedo = float3( 1, 1, 1 );
 		m.Opacity = 1;
-{11}
-		m.Opacity = saturate( m.Opacity );
 {12}
+		m.Opacity = saturate( m.Opacity );
+{13}
 
 	}}
 }}
