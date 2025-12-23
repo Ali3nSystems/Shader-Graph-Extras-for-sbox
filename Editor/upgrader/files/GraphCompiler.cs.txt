@@ -791,6 +791,7 @@ public sealed partial class GraphCompiler
 		// and populates ShaderResult with globals, textures, parameters, etc.
 		_cachedMaterial = GenerateMaterial();
 		var pixelOutput = GeneratePixelOutput();
+		var vertexLocals = GenerateVertexLocals();
 
 		// If we have any errors after evaluating, no point going further
 		if ( Errors.Any() )
@@ -825,7 +826,7 @@ public sealed partial class GraphCompiler
 			IndentString( GenerateVertexComboRules(), 1 ), // {5} Vertex stage #includes.
 			IndentString( GenerateGlobals(), 1 ), // {6}
 			IndentString( GenerateFunctions( VertexResult ), 1 ), // {7} Custom function definitions for vertex stage.
-			IndentString( GenerateVertexLocals(), 2 ), // {8} Position offset for vertex shader.
+			IndentString( vertexLocals, 2 ), // {8} Position offset for vertex shader.
 			IndentString( GeneratePixelComboRules(), 1 ), // {9} Pixel stage #includes and combo rules.
 			IndentString( GenerateGlobals(), 1 ), // {10} Texture inputs, parameters, sampler states.
 			IndentString( GenerateFunctions( PixelResult ), 1 ), // {11} Custom function definitions for pixel stage.
@@ -1127,7 +1128,6 @@ public sealed partial class GraphCompiler
 
 	private string GenerateMaterial()
 	{
-		Stage = ShaderStage.Pixel;
 		Subgraph = null;
 		SubgraphStack.Clear();
 
@@ -1185,10 +1185,51 @@ public sealed partial class GraphCompiler
 
 		return sb.ToString();
 	}
+	private string GenerateVertexLocals()
+	{
+		Stage = ShaderStage.Vertex;
+
+		var resultNode = Graph.Nodes.OfType<BaseResult>().FirstOrDefault();
+		if ( resultNode == null )
+			return null;
+
+		var positionOffsetInput = resultNode.GetPositionOffset();
+
+		var sb = new StringBuilder();
+
+
+		NodeResult result;
+
+
+		if (positionOffsetInput is NodeInput connection && connection.IsValid())
+		{
+			result = Result( positionOffsetInput );
+		
+			if ( !Errors.Any() && result.IsValid() && !string.IsNullOrWhiteSpace( result.Code ) )
+			{
+				var componentCount = GetComponentCount( typeof( Vector3 ) );
+
+				sb.AppendLine();
+
+				foreach ( var local in ShaderResult.Results )
+				{
+					sb.AppendLine( $"{local.Item2.TypeName} {local.Item1} = {local.Item2.Code};" );
+				}
+
+				sb.AppendLine( $"i.vPositionWs.xyz += {result.Cast( componentCount )};" );
+				sb.AppendLine( "i.vPositionPs.xyzw = Position3WsToPs( i.vPositionWs.xyz );" );
+			}
+		}
+		return sb.ToString();
+	}
 
 	private string GeneratePixelLocals()
 	{
+
+		Stage = ShaderStage.Pixel;
 		var sb = new StringBuilder();
+
+
 
 		if ( ShaderResult.Results.Any() )
 		{
@@ -1223,37 +1264,4 @@ public sealed partial class GraphCompiler
 		return sb.ToString();
 	}
 
-	private string GenerateVertexLocals()
-	{
-		Stage = ShaderStage.Vertex;
-
-		var resultNode = Graph.Nodes.OfType<BaseResult>().FirstOrDefault();
-		if ( resultNode == null )
-			return "";
-
-		var positionOffsetInput = resultNode.GetPositionOffset();
-
-		if ( !positionOffsetInput.IsValid() )
-			return "";
-
-		var result = Result( positionOffsetInput );
-
-		if ( Errors.Any() || !result.IsValid() || string.IsNullOrWhiteSpace( result.Code ) )
-			return "";
-
-		var sb = new StringBuilder();
-		var componentCount = GetComponentCount( typeof( Vector3 ) );
-
-		sb.AppendLine();
-
-		foreach ( var local in ShaderResult.Results )
-		{
-			sb.AppendLine( $"{local.Item2.TypeName} {local.Item1} = {local.Item2.Code};" );
-		}
-
-		sb.AppendLine( $"i.vPositionWs.xyz += {result.Cast( componentCount )};" );
-		sb.AppendLine( "i.vPositionPs.xyzw = Position3WsToPs( i.vPositionWs.xyz );" );
-
-		return sb.ToString();
-	}
 }
