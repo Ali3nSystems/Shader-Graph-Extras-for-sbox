@@ -1025,16 +1025,32 @@ public sealed partial class GraphCompiler
 
 	private string GenerateGlobals()
 	{
+		// Combine globals from both PixelResult and VertexResult
+		// PixelResult has material nodes, VertexResult has position offset nodes
 		var sb = new StringBuilder();
 
-		foreach ( var global in ShaderResult.Globals )
+		// Collect all globals from both stages
+		var allGlobals = new Dictionary<string, string>();
+		foreach ( var global in PixelResult.Globals )
+			allGlobals[global.Key] = global.Value;
+		foreach ( var global in VertexResult.Globals )
+			if ( !allGlobals.ContainsKey( global.Key ) )
+				allGlobals[global.Key] = global.Value;
+
+		foreach ( var global in allGlobals )
 		{
 			sb.AppendLine( global.Value );
 		}
 
-		for ( int i = 0; i < ShaderResult.SamplerStates.Count; ++i )
+		// Combine sampler states from both stages
+		var allSamplers = new List<Sampler>( PixelResult.SamplerStates );
+		foreach ( var sampler in VertexResult.SamplerStates )
+			if ( !allSamplers.Contains( sampler ) )
+				allSamplers.Add( sampler );
+
+		for ( int i = 0; i < allSamplers.Count; ++i )
 		{
-			var sampler = ShaderResult.SamplerStates[i];
+			var sampler = allSamplers[i];
 			sb.Append( $"SamplerState g_sSampler{i} <" )
 			  .Append( $" Filter( {sampler.Filter.ToString().ToUpper()} );" )
 			  .Append( $" AddressU( {sampler.AddressU.ToString().ToUpper()} );" )
@@ -1042,19 +1058,40 @@ public sealed partial class GraphCompiler
 			  .AppendLine();
 		}
 
+		// Combine texture inputs from both stages
+		var allTextureInputs = new Dictionary<string, TextureInput>( PixelResult.TextureInputs );
+		foreach ( var texInput in VertexResult.TextureInputs )
+			if ( !allTextureInputs.ContainsKey( texInput.Key ) )
+				allTextureInputs[texInput.Key] = texInput.Value;
+
+		// Combine attributes from both stages
+		var allAttributes = new Dictionary<string, object>( PixelResult.Attributes );
+		foreach ( var attr in VertexResult.Attributes )
+			if ( !allAttributes.ContainsKey( attr.Key ) )
+				allAttributes[attr.Key] = attr.Value;
+
+		// Combine parameters from both stages
+		var allParameters = new Dictionary<string, (string Options, NodeResult Result)>( PixelResult.Parameters );
+		foreach ( var param in VertexResult.Parameters )
+			if ( !allParameters.ContainsKey( param.Key ) )
+				allParameters[param.Key] = param.Value;
+
+		// Use pixel result's representative texture (vertex stage shouldn't have one)
+		var representativeTexture = PixelResult.RepresentativeTexture;
+
 		if ( IsPreview )
 		{
-			foreach ( var result in ShaderResult.TextureInputs )
+			foreach ( var texInput in allTextureInputs )
 			{
-				sb.Append( $"{result.Value.CreateTexture( result.Key )} <" )
-				  .Append( $" Attribute( \"{result.Key}\" );" )
-				  .Append( $" SrgbRead( {result.Value.SrgbRead} ); >;" )
+				sb.Append( $"{texInput.Value.CreateTexture( texInput.Key )} <" )
+				  .Append( $" Attribute( \"{texInput.Key}\" );" )
+				  .Append( $" SrgbRead( {texInput.Value.SrgbRead} ); >;" )
 				  .AppendLine();
 			}
 
-			foreach ( var result in ShaderResult.Attributes )
+			foreach ( var attr in allAttributes )
 			{
-				var typeName = result.Value switch
+				var typeName = attr.Value switch
 				{
 					Color _ => "float4",
 					Vector4 _ => "float4",
@@ -1065,7 +1102,7 @@ public sealed partial class GraphCompiler
 					_ => null
 				};
 
-				sb.AppendLine( $"{typeName} {result.Key} < Attribute( \"{result.Key}\" ); >;" );
+				sb.AppendLine( $"{typeName} {attr.Key} < Attribute( \"{attr.Key}\" ); >;" );
 			}
 
 			sb.AppendLine( "float g_flPreviewTime < Attribute( \"g_flPreviewTime\" ); >;" );
@@ -1073,46 +1110,46 @@ public sealed partial class GraphCompiler
 		}
 		else
 		{
-			foreach ( var result in ShaderResult.TextureInputs )
+			foreach ( var texInput in allTextureInputs )
 			{
 				// If we're an attribute, we don't care about texture inputs
-				if ( result.Value.IsAttribute )
+				if ( texInput.Value.IsAttribute )
 					continue;
 
-				var defaultTex = result.Value.DefaultTexture;
-				sb.Append( $"{result.Value.CreateInput}( {result.Key}, {result.Value.ColorSpace}, 8," )
-				  .Append( $" \"{result.Value.Processor.ToString()}\"," )
-				  .Append( $" \"_{result.Value.ExtensionString.ToLower()}\"," )
-				  .Append( $" \"{result.Value.UIGroup}\"," )
+				var defaultTex = texInput.Value.DefaultTexture;
+				sb.Append( $"{texInput.Value.CreateInput}( {texInput.Key}, {texInput.Value.ColorSpace}, 8," )
+				  .Append( $" \"{texInput.Value.Processor.ToString()}\"," )
+				  .Append( $" \"_{texInput.Value.ExtensionString.ToLower()}\"," )
+				  .Append( $" \"{texInput.Value.UIGroup}\"," )
 				  .Append( string.IsNullOrEmpty( defaultTex )
-							? $" Default4( {result.Value.Default} ) );"
+							? $" Default4( {texInput.Value.Default} ) );"
 							: $" DefaultFile( \"{defaultTex}\" ) );" )
 				  .AppendLine();
 			}
 
-			foreach ( var result in ShaderResult.TextureInputs )
+			foreach ( var texInput in allTextureInputs )
 			{
 				// If we're an attribute, we don't care about the UI options
-				if ( result.Value.IsAttribute )
+				if ( texInput.Value.IsAttribute )
 				{
-					sb.AppendLine( $"{result.Value.CreateTexture( result.Key )} < Attribute( \"{result.Key}\" ); >;" );
+					sb.AppendLine( $"{texInput.Value.CreateTexture( texInput.Key )} < Attribute( \"{texInput.Key}\" ); >;" );
 				}
 				else
 				{
-					sb.Append( $"{result.Value.CreateTexture( result.Key )} < Channel( RGBA, Box( {result.Key} ), {(result.Value.SrgbRead ? "Srgb" : "Linear")} );" )
-					  .Append( $" OutputFormat( {result.Value.ImageFormat} );" )
-					  .Append( $" SrgbRead( {result.Value.SrgbRead} ); >;" )
+					sb.Append( $"{texInput.Value.CreateTexture( texInput.Key )} < Channel( RGBA, Box( {texInput.Key} ), {(texInput.Value.SrgbRead ? "Srgb" : "Linear")} );" )
+					  .Append( $" OutputFormat( {texInput.Value.ImageFormat} );" )
+					  .Append( $" SrgbRead( {texInput.Value.SrgbRead} ); >;" )
 					  .AppendLine();
 				}
 			}
 
-			if ( !string.IsNullOrWhiteSpace( ShaderResult.RepresentativeTexture ) )
+			if ( !string.IsNullOrWhiteSpace( representativeTexture ) )
 			{
-				sb.AppendLine( $"TextureAttribute( LightSim_DiffuseAlbedoTexture, {ShaderResult.RepresentativeTexture} )" );
-				sb.AppendLine( $"TextureAttribute( RepresentativeTexture, {ShaderResult.RepresentativeTexture} )" );
+				sb.AppendLine( $"TextureAttribute( LightSim_DiffuseAlbedoTexture, {representativeTexture} )" );
+				sb.AppendLine( $"TextureAttribute( RepresentativeTexture, {representativeTexture} )" );
 			}
 
-			foreach ( var parameter in ShaderResult.Parameters )
+			foreach ( var parameter in allParameters )
 			{
 				sb.AppendLine( $"{parameter.Value.Result.TypeName} {parameter.Key} < {parameter.Value.Options} >;" );
 			}
@@ -1128,6 +1165,7 @@ public sealed partial class GraphCompiler
 
 	private string GenerateMaterial()
 	{
+		Stage = ShaderStage.Pixel;
 		Subgraph = null;
 		SubgraphStack.Clear();
 
