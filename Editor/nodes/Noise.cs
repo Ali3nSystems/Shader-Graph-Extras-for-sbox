@@ -122,7 +122,7 @@ public sealed class SGENoiseNode : ShaderNode
 	{
 		var coordinates = compiler.Result(Coordinates);
 
-		compiler.RegisterInclude("shaders/functions/NoiseFunctions.hlsl");
+		compiler.RegisterInclude("shaders/HLSL/Functions/FUNC-Noise.hlsl");
 
 		NodeResult result = new NodeResult();
 

@@ -31,7 +31,7 @@ public sealed class SGEHeightToNormalNode : ShaderNode
 		var worldSpacePosition = "i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz";
 		var worldSpaceNormal = "i.vNormalWs";
 
-		compiler.RegisterInclude( "shaders/functions/HeightToNormalFunctions.hlsl" );
+		compiler.RegisterInclude( "shaders/HLSL/Functions/FUNC-HeightToNormal.hlsl" );
 
 		NodeResult nodeResult = new NodeResult();
 

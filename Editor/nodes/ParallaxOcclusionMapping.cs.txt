@@ -98,7 +98,7 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 		var offset = compiler.ResultOrDefault(Offset, DefaultOffset);
 		int channel = (int)Channel;
 
-		compiler.RegisterInclude( "shaders/functions/ParallaxOcclusionMappingFunctions.hlsl" );
+		compiler.RegisterInclude( "shaders/HLSL/Functions/FUNC-ParallaxOcclusionMapping.hlsl" );
 
 		NodeResult nodeResult = new NodeResult();
 
@@ -139,7 +139,7 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 		var worldTangentU = "i.vTangentUWs";
 		var worldTangentV = "i.vTangentVWs";
 
-		compiler.RegisterInclude( "shaders/functions/ParallaxOcclusionMappingFunctions.hlsl" );
+		compiler.RegisterInclude( "shaders/HLSL/Functions/FUNC-ParallaxOcclusionMapping.hlsl" );
 
 		NodeResult nodeResult = new NodeResult();
 
