@@ -23,16 +23,6 @@
   "Version": 1,
   "nodes": [
     {
-      "_class": "SGEGrayscaleNode",
-      "Identifier": "0",
-      "Position": "-276,0",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "1",
-        "Output": "Result"
-      }
-    },
-    {
       "_class": "TextureSampler",
       "Image": "decals/impact/dirt/decal_impact_dirt_01_color.png",
       "Sampler": {
@@ -61,11 +51,11 @@
           "Priority": 0
         }
       },
-      "Identifier": "1",
-      "Position": "-492,0",
+      "Identifier": "0",
+      "Position": "-468,-0",
       "HandleOffsets": {},
       "Coords": {
-        "Identifier": "3",
+        "Identifier": "2",
         "Output": "Result"
       }
     },
@@ -76,7 +66,7 @@
       "Title": "Angle Attenuation",
       "Description": "Input: - Value between 0-1 to determine the opacity.",
       "Layer": 2,
-      "Identifier": "2",
+      "Identifier": "1",
       "Position": "168,0",
       "HandleOffsets": {}
     },
@@ -84,8 +74,8 @@
       "_class": "TextureCoord",
       "UseSecondaryCoord": false,
       "Tiling": "1,1",
-      "Identifier": "3",
-      "Position": "-708,0",
+      "Identifier": "2",
+      "Position": "-684,-0",
       "HandleOffsets": {}
     },
     {
@@ -94,38 +84,49 @@
       "DefaultRoughness": 1,
       "DefaultMetalness": 0,
       "DefaultAmbientOcclusion": 1,
-      "Identifier": "4",
+      "Identifier": "3",
       "Position": "0,0",
       "HandleOffsets": {},
       "Albedo": {
         "Identifier": "0",
-        "Output": "Output"
+        "Output": "Result"
       },
       "Opacity": {
-        "Identifier": "8",
+        "Identifier": "7",
         "Output": "Result"
       }
     },
     {
       "_class": "SGEAngleAttenuationNode",
       "DefaultInput": 1,
-      "Identifier": "5",
-      "Position": "-492,192",
+      "Identifier": "4",
+      "Position": "-468,192",
       "HandleOffsets": {}
     },
     {
       "_class": "Multiply",
       "DefaultA": 0,
       "DefaultB": 1,
-      "Identifier": "6",
+      "Identifier": "5",
       "Position": "-192,96",
       "HandleOffsets": {},
       "A": {
-        "Identifier": "1",
+        "Identifier": "0",
         "Output": "A"
       },
       "B": {
-        "Identifier": "10",
+        "Identifier": "9",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "6",
+      "Position": "-60,132",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "5",
         "Output": "Result"
       }
     },
@@ -133,7 +134,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "7",
-      "Position": "-60,132",
+      "Position": "-60,60",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "6",
@@ -144,32 +145,21 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "8",
-      "Position": "-60,60",
+      "Position": "-252,228",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "7",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "9",
-      "Position": "-264,228",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "5",
+        "Identifier": "4",
         "Output": "Output"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "10",
-      "Position": "-264,156",
+      "Identifier": "9",
+      "Position": "-252,156",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "9",
+        "Identifier": "8",
         "Output": "Result"
       }
     },
@@ -180,7 +170,7 @@
       "Title": "Info",
       "Description": "Angle Attenuation controls how a decal\u0027s opacity fades based on the angle between the surface it\u0027s projected onto and the decal\u0027s projection direction. Must be used with the decal template: Editor/templates/deferreddecal.cs",
       "Layer": 1,
-      "Identifier": "11",
+      "Identifier": "10",
       "Position": "168,96",
       "HandleOffsets": {}
     }
