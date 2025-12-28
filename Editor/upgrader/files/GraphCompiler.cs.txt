@@ -824,11 +824,11 @@ public sealed partial class GraphCompiler
 			IndentString( GenerateVertexInput(), 1 ), // {3}
 			IndentString( GeneratePixelInput(), 1 ), // {4}
 			IndentString( GenerateVertexComboRules(), 1 ), // {5} Vertex stage #includes.
-			IndentString( GenerateGlobals(), 1 ), // {6}
+			IndentString( GenerateVertexGlobals(), 1 ), // {6} Vertex stage globals (textures, parameters, samplers).
 			IndentString( GenerateFunctions( VertexResult ), 1 ), // {7} Custom function definitions for vertex stage.
 			IndentString( vertexLocals, 2 ), // {8} Position offset for vertex shader.
 			IndentString( GeneratePixelComboRules(), 1 ), // {9} Pixel stage #includes and combo rules.
-			IndentString( GenerateGlobals(), 1 ), // {10} Texture inputs, parameters, sampler states.
+			IndentString( GeneratePixelGlobals(), 1 ), // {10} Pixel stage globals (textures, parameters, samplers).
 			IndentString( GenerateFunctions( PixelResult ), 1 ), // {11} Custom function definitions for pixel stage.
 			IndentString( GeneratePixelLocals(), 2 ), // {12} Local variable declarations.
 			IndentString( pixelOutput, 2 ) // {13} Final return statement for pixel shader.
@@ -1023,34 +1023,18 @@ public sealed partial class GraphCompiler
 		return $"{result.Cast( componentCount )}";
 	}
 
-	private string GenerateGlobals()
+	private string GenerateGlobals( CompileResult result, bool includeRepresentativeTexture = false )
 	{
-		// Combine globals from both PixelResult and VertexResult
-		// PixelResult has material nodes, VertexResult has position offset nodes
 		var sb = new StringBuilder();
 
-		// Collect all globals from both stages
-		var allGlobals = new Dictionary<string, string>();
-		foreach ( var global in PixelResult.Globals )
-			allGlobals[global.Key] = global.Value;
-		foreach ( var global in VertexResult.Globals )
-			if ( !allGlobals.ContainsKey( global.Key ) )
-				allGlobals[global.Key] = global.Value;
-
-		foreach ( var global in allGlobals )
+		foreach ( var global in result.Globals )
 		{
 			sb.AppendLine( global.Value );
 		}
 
-		// Combine sampler states from both stages
-		var allSamplers = new List<Sampler>( PixelResult.SamplerStates );
-		foreach ( var sampler in VertexResult.SamplerStates )
-			if ( !allSamplers.Contains( sampler ) )
-				allSamplers.Add( sampler );
-
-		for ( int i = 0; i < allSamplers.Count; ++i )
+		for ( int i = 0; i < result.SamplerStates.Count; ++i )
 		{
-			var sampler = allSamplers[i];
+			var sampler = result.SamplerStates[i];
 			sb.Append( $"SamplerState g_sSampler{i} <" )
 			  .Append( $" Filter( {sampler.Filter.ToString().ToUpper()} );" )
 			  .Append( $" AddressU( {sampler.AddressU.ToString().ToUpper()} );" )
@@ -1058,30 +1042,9 @@ public sealed partial class GraphCompiler
 			  .AppendLine();
 		}
 
-		// Combine texture inputs from both stages
-		var allTextureInputs = new Dictionary<string, TextureInput>( PixelResult.TextureInputs );
-		foreach ( var texInput in VertexResult.TextureInputs )
-			if ( !allTextureInputs.ContainsKey( texInput.Key ) )
-				allTextureInputs[texInput.Key] = texInput.Value;
-
-		// Combine attributes from both stages
-		var allAttributes = new Dictionary<string, object>( PixelResult.Attributes );
-		foreach ( var attr in VertexResult.Attributes )
-			if ( !allAttributes.ContainsKey( attr.Key ) )
-				allAttributes[attr.Key] = attr.Value;
-
-		// Combine parameters from both stages
-		var allParameters = new Dictionary<string, (string Options, NodeResult Result)>( PixelResult.Parameters );
-		foreach ( var param in VertexResult.Parameters )
-			if ( !allParameters.ContainsKey( param.Key ) )
-				allParameters[param.Key] = param.Value;
-
-		// Use pixel result's representative texture (vertex stage shouldn't have one)
-		var representativeTexture = PixelResult.RepresentativeTexture;
-
 		if ( IsPreview )
 		{
-			foreach ( var texInput in allTextureInputs )
+			foreach ( var texInput in result.TextureInputs )
 			{
 				sb.Append( $"{texInput.Value.CreateTexture( texInput.Key )} <" )
 				  .Append( $" Attribute( \"{texInput.Key}\" );" )
@@ -1089,7 +1052,7 @@ public sealed partial class GraphCompiler
 				  .AppendLine();
 			}
 
-			foreach ( var attr in allAttributes )
+			foreach ( var attr in result.Attributes )
 			{
 				var typeName = attr.Value switch
 				{
@@ -1110,7 +1073,7 @@ public sealed partial class GraphCompiler
 		}
 		else
 		{
-			foreach ( var texInput in allTextureInputs )
+			foreach ( var texInput in result.TextureInputs )
 			{
 				// If we're an attribute, we don't care about texture inputs
 				if ( texInput.Value.IsAttribute )
@@ -1127,7 +1090,7 @@ public sealed partial class GraphCompiler
 				  .AppendLine();
 			}
 
-			foreach ( var texInput in allTextureInputs )
+			foreach ( var texInput in result.TextureInputs )
 			{
 				// If we're an attribute, we don't care about the UI options
 				if ( texInput.Value.IsAttribute )
@@ -1143,13 +1106,13 @@ public sealed partial class GraphCompiler
 				}
 			}
 
-			if ( !string.IsNullOrWhiteSpace( representativeTexture ) )
+			if ( includeRepresentativeTexture && !string.IsNullOrWhiteSpace( result.RepresentativeTexture ) )
 			{
-				sb.AppendLine( $"TextureAttribute( LightSim_DiffuseAlbedoTexture, {representativeTexture} )" );
-				sb.AppendLine( $"TextureAttribute( RepresentativeTexture, {representativeTexture} )" );
+				sb.AppendLine( $"TextureAttribute( LightSim_DiffuseAlbedoTexture, {result.RepresentativeTexture} )" );
+				sb.AppendLine( $"TextureAttribute( RepresentativeTexture, {result.RepresentativeTexture} )" );
 			}
 
-			foreach ( var parameter in allParameters )
+			foreach ( var parameter in result.Parameters )
 			{
 				sb.AppendLine( $"{parameter.Value.Result.TypeName} {parameter.Key} < {parameter.Value.Options} >;" );
 			}
@@ -1161,6 +1124,16 @@ public sealed partial class GraphCompiler
 		}
 
 		return sb.ToString();
+	}
+
+	private string GenerateVertexGlobals()
+	{
+		return GenerateGlobals( VertexResult, includeRepresentativeTexture: false );
+	}
+
+	private string GeneratePixelGlobals()
+	{
+		return GenerateGlobals( PixelResult, includeRepresentativeTexture: true );
 	}
 
 	private string GenerateMaterial()
