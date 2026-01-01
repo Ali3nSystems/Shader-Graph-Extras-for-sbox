@@ -40,7 +40,7 @@ FEATURES
 MODES
 {{
 	Forward();
-	Depth(S_MODE_DEPTH);
+	Depth();
 	ToolsShadingComplexity( ""tools_shading_complexity.shader"" );
 }}
 
@@ -49,9 +49,7 @@ COMMON
 {2}
 	#include ""common/shared.hlsl""
 	#include ""procedural.hlsl""
-
 	#define S_UV2 1
-	#define CUSTOM_MATERIAL_INPUTS
 }}
 
 struct VertexInput
@@ -66,9 +64,10 @@ struct VertexInput
 struct PixelInput
 {{
 	#include ""common/pixelinput.hlsl""
-	float4 vBlendValues		 : TEXCOORD14;
-	float4 vPaintValues		 : TEXCOORD15;
+	float4 vBlendValues	: TEXCOORD14;
+	float4 vPaintValues : TEXCOORD15;
 	float4 vColor : COLOR0;
+
 {4}
 }};
 
@@ -90,9 +89,15 @@ VS
 		PixelInput i = ProcessVertex( v );
 		i.vBlendValues = v.vColorBlendValues;
 		i.vPaintValues = v.vColorPaintValues;
+		i.vColor = v.vColor;
+
+		// Models don't have vertex paint data, let's avoid painting them black
+		[flatten]
+		if( i.vPaintValues.w == 0 )
+			i.vPaintValues = 1.0f;
 
 		{8}
-	
+
 		return FinalizeVertex( i );
 	}}
 }}
@@ -105,7 +110,8 @@ PS
 {9}{10}{11}
 	float4 MainPs( PixelInput i ) : SV_Target0
 	{{
-		Material m = Material::Init();
+
+		Material m = Material::Init( i );
 		m.Albedo = float3( 1, 1, 1 );
 		m.Normal = float3( 0, 0, 1 );
 		m.Roughness = 1;
@@ -123,6 +129,11 @@ PS
 
 		// Result node takes normal as tangent space, convert it to world space now
 		m.Normal = TransformNormal( m.Normal, i.vNormalWs, i.vTangentUWs, i.vTangentVWs );
+
+		// Toolvis:
+		m.WorldTangentU = i.vTangentUWs;
+		m.WorldTangentV = i.vTangentVWs;
+		m.TextureCoords = i.vTextureCoords.xy;
 {13}
 	}}
 }}";
