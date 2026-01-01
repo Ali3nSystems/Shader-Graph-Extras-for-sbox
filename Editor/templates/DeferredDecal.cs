@@ -176,9 +176,6 @@ PS
 		m.Roughness = saturate( m.Roughness );
 		m.Metalness = saturate( m.Metalness );
 		m.Opacity = saturate( m.Opacity );
-		
-		// Result node takes normal as tangent space, convert it to world space now
-		m.Normal = m.Normal;
 
 		// Toolvis:
 		m.WorldTangentU = i.vTangentUWs;
