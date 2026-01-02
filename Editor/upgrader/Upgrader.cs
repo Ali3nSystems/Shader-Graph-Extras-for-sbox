@@ -65,7 +65,8 @@ public static class ShaderGraphUpgrader
 		"Flipbook.cs",
 		"ParallaxOcclusionMapping.cs",
 		"TextureSample.cs",
-		"TextureObject.cs"
+		"TextureObject.cs",
+		"VectorTransform.cs"
 	];
 
 	/// <summary>

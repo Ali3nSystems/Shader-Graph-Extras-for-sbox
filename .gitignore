@@ -38,3 +38,4 @@ Editor/nodes/Flipbook.cs
 Editor/nodes/ParallaxOcclusionMapping.cs
 Editor/nodes/TextureSample.cs
 Editor/nodes/TextureObject.cs
+Editor/nodes/VectorTransform.cs
