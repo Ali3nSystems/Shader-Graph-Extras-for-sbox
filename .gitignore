@@ -24,7 +24,7 @@ code/Properties/*
 *.los
 *.vpk
 *launchSettings.json
-*.sln
+
 
 *idea
 
