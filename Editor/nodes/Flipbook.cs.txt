@@ -72,7 +72,7 @@ public sealed class SGEFlipbookNode : ShaderNode
 		var invert = compiler.ResultOrDefault( Invert, DefaultInvert );
 		var loop = compiler.ResultOrDefault( Loop, DefaultLoop );
 
-		compiler.RegisterInclude( "shaders/HLSL/Functions/FUNC-Flipbook.hlsl" );
+		compiler.RegisterInclude( "shaders/HLSL/Functions/FUNC-flipbook.hlsl" );
 
 		NodeResult nodeResult = new NodeResult();
 

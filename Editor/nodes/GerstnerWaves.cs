@@ -145,7 +145,7 @@ public sealed class SGEGerstnerWavesNode : ShaderNode
 		var gravity = compiler.ResultOrDefault( Gravity, DefaultGravity ).Cast( 1 );
 		var steepness = compiler.ResultOrDefault( Steepness, DefaultSteepness ).Cast( 1 );
 
-		compiler.RegisterInclude( "shaders/HLSL/Functions/FUNC-GerstnerWaves.hlsl" );
+		compiler.RegisterInclude( "shaders/hlsl/functions/func-gerstner_waves.hlsl" );
 
 		NodeResult nodeResult = new NodeResult();
 
@@ -177,7 +177,7 @@ public sealed class SGEGerstnerWavesNode : ShaderNode
 		var gravity = compiler.ResultOrDefault( Gravity, DefaultGravity ).Cast( 1 );
 		var steepness = compiler.ResultOrDefault( Steepness, DefaultSteepness ).Cast( 1 );
 
-		compiler.RegisterInclude( "shaders/HLSL/Functions/FUNC-GerstnerWaves.hlsl" );
+		compiler.RegisterInclude( "shaders/hlsl/functions/func-gerstner_waves.hlsl" );
 
 		NodeResult nodeResult = new NodeResult();
 
