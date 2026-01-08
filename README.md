@@ -37,7 +37,7 @@ After installing, in order too activate all features, navigate to the **Shader G
 ### 🐛 Bug Fixes
 - Resolves multiple GitHub issues:
 
-    - #7327, #7380, #7471, #8088, #8244, #8544, #8588, #8741, #8743, #8781, #8814, #9027, #9589.
+    - [#7327](https://github.com/Facepunch/sbox-issues/issues/7327), [#7380](https://github.com/Facepunch/sbox-issues/issues/7380), [#7471](https://github.com/Facepunch/sbox-issues/issues/7471), [#8088](https://github.com/Facepunch/sbox-issues/issues/8088), [#8244](https://github.com/Facepunch/sbox-issues/issues/8244), [#8544](https://github.com/Facepunch/sbox-issues/issues/8544), [#8588](https://github.com/Facepunch/sbox-issues/issues/8588), [#8741](https://github.com/Facepunch/sbox-issues/issues/8741), [#8743](https://github.com/Facepunch/sbox-issues/issues/8743), [#8781](https://github.com/Facepunch/sbox-issues/issues/8781), [#8814](https://github.com/Facepunch/sbox-issues/issues/8814), [#9027](https://github.com/Facepunch/sbox-issues/issues/9027), [#9589](https://github.com/Facepunch/sbox-issues/issues/9589).
 
 ### 📚 Tutorials
 - In-depth tutorials for every node, subgraph, shader template, and shading domain located in `Assets\shaders\shadergraphs\tutorials\`.
@@ -46,6 +46,6 @@ After installing, in order too activate all features, navigate to the **Shader G
 
 ## Support
 
-For issues, feature requests, or contributions, please refer to the project's issue tracker or contact eeight3d on discord.
+For issues, feature requests, or contributions, please refer to the project's issue tracker or contact [eeight3d](https://discord.com/users/1187194205580312726) on discord.
 
 ---
