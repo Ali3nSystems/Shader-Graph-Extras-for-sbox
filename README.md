@@ -1,6 +1,6 @@
 # Shader Graph Extras for s&box
 
-![Icon](Assets/textures/icon-shader_graph_extras@10x10.png)
+![Icon](Assets/textures/ICON-shader_graph_extras@10x10.png)
 
 Enhanced capabilities for s&box's Shader Graph with additional nodes, subgraphs, HLSL functions, custom shader templates, custom shading models, various optimizations and other advanced features.
 
