@@ -4,13 +4,10 @@ namespace Editor.ShaderGraph.Nodes;
 public sealed class SGEBlurNode : ShaderNode
 {
 	[Hide]
-	public string Blur => @"
-		float3 Blur( float2 coordinates, Texture2D texture, SamplerState sampler, float value )
+	public string SGEBlur => @"
+		float3 SGEBlur( float2 coordinates, Texture2D texture, SamplerState sampler, float value, float directions, float quality, float taps )
 		{
 			float twoPi = 6.28318530718f;
-			float directions = 16.0f;
-			float quality = 4.0f;
-			float taps = 1.0f;
 
 			float3 color = texture.Sample( sampler, coordinates ).rgb;
 
@@ -43,19 +40,43 @@ public sealed class SGEBlurNode : ShaderNode
 	[Input( typeof( float ) )] 
 	[Hide]
 	public NodeInput Value { get; set; }
+
+	[Input( typeof( float ) )] 
+	[Hide]
+	public NodeInput Directions { get; set; }
 	
+	[Input( typeof( float ) )] 
+	[Hide]
+	public NodeInput Quality { get; set; }
+	
+	[Input( typeof( float ) )] 
+	[Hide]
+	public NodeInput Taps { get; set; }
+
 	[InputDefault( nameof( Value ) )]
 	public float DefaultValue { get; set; } = 1f;
 
+	[InputDefault( nameof( Directions ) )]
+	public float DefaultDirections { get; set; } = 16f;
+	
+	[InputDefault( nameof( Quality ) )]
+	public float DefaultQuality { get; set; } = 4f;
+	
+	[InputDefault( nameof( Taps ) )]
+	public float DefaultTaps { get; set; } = 1f;
+
 	[Output( typeof( Vector3 ) )] 
 	[Hide]
-	public NodeResult.Func Result => ( GraphCompiler compiler ) =>
+	public NodeResult.Func Output => ( GraphCompiler compiler ) =>
 	{
 		var coordinates = compiler.Result(Coordinates);
 		var texture = compiler.Result(Texture);
 		var sampler = compiler.Result(Sampler);
 		var value = compiler.ResultOrDefault(Value, DefaultValue);
+		var directions = compiler.ResultOrDefault(Directions, DefaultDirections);
+		var quality = compiler.ResultOrDefault(Quality, DefaultQuality);
+		var taps = compiler.ResultOrDefault(Taps, DefaultTaps);
 
-		return new NodeResult(NodeResultType.Vector3, compiler.ResultFunction(compiler.RegisterFunction(Blur), $"{coordinates}, {texture}, {sampler}, {value}"));
+		return new NodeResult(NodeResultType.Vector3, compiler.ResultFunction(compiler.RegisterFunction(SGEBlur), $"{coordinates}, {texture}, {sampler}, {value}, {directions}, {quality}, {taps}"));
 	};
 }

@@ -9,6 +9,7 @@
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
+  "ShadingModelPath": null,
   "Domain": "Surface",
   "TemplatePath": null,
   "PreviewSettings": {
@@ -20,7 +21,6 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
-  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "Reroute",
@@ -46,11 +46,11 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "432,144",
+      "Size": "612,180",
       "Color": "Green",
       "Title": "Blur",
-      "Description": "Coordinates: -Coordinates to sample the texture with.\nTexture: -Input texture.\nSampler: -Sampler of the texture.\nValue: -Value of the blur.",
-      "Layer": 1,
+      "Description": "Coordinates: - Coordinates to sample the texture with.\nTexture: - Input texture.\nSampler: - Sampler of the texture.\nValue: - Value of the blur.\nDirections: - Number of radial angles to sample in a circle around the center pixel.",
+      "Layer": 2,
       "Identifier": "2",
       "Position": "168,0",
       "HandleOffsets": {}
@@ -74,14 +74,17 @@
       "HandleOffsets": {},
       "Albedo": {
         "Identifier": "5",
-        "Output": "Result"
+        "Output": "Output"
       }
     },
     {
       "_class": "SGEBlurNode",
       "DefaultValue": 1,
+      "DefaultDirections": 16,
+      "DefaultQuality": 4,
+      "DefaultTaps": 1,
       "Identifier": "5",
-      "Position": "-216,0",
+      "Position": "-216,-0",
       "HandleOffsets": {},
       "Coordinates": {
         "Identifier": "3",
@@ -201,6 +204,17 @@
         "Identifier": "10",
         "Output": "Result"
       }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "612,108",
+      "Color": "Green",
+      "Title": "",
+      "Description": "Quality: - Number of samples along each radial direction from center outward.\nTaps: - Starting sample count used as divisor for averaging.",
+      "Layer": 1,
+      "Identifier": "12",
+      "Position": "168,180",
+      "HandleOffsets": {}
     }
   ]
 }
