@@ -1,7 +1,7 @@
 {
   "IsSubgraph": false,
   "Path": "shaders/shadergraphs/tutorials/nodes/refract.shdrgrph",
-  "Model": "models/dev/box.vmdl",
+  "Model": null,
   "Title": null,
   "Description": "",
   "Category": null,
@@ -48,7 +48,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "2",
-      "Position": "-684,120",
+      "Position": "-900,120",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "5",
@@ -60,7 +60,7 @@
       "DefaultA": 0,
       "DefaultB": 1,
       "Identifier": "3",
-      "Position": "-348,-0",
+      "Position": "-348,0",
       "HandleOffsets": {},
       "A": {
         "Identifier": "6",
@@ -89,7 +89,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "5",
-      "Position": "-684,156",
+      "Position": "-900,156",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "10",
@@ -109,15 +109,15 @@
       "Position": "-408,96",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "8",
-        "Output": "Output"
+        "Identifier": "12",
+        "Output": "Result"
       }
     },
     {
       "_class": "SGERefractionNode",
       "DefaultIndexOfRefraction": 0.5,
       "Identifier": "8",
-      "Position": "-624,60",
+      "Position": "-840,60",
       "HandleOffsets": {},
       "ViewDirection": {
         "Identifier": "9",
@@ -131,25 +131,38 @@
     {
       "_class": "ViewDirection",
       "Identifier": "9",
-      "Position": "-900,60",
+      "Position": "-1116,60",
       "HandleOffsets": {}
     },
     {
       "_class": "WorldNormal",
       "Identifier": "10",
-      "Position": "-900,120",
+      "Position": "-1116,120",
       "HandleOffsets": {}
     },
     {
       "_class": "SceneColor",
-      "AddressU": "Mirror",
-      "AddressV": "Mirror",
+      "AddressU": "Wrap",
+      "AddressV": "Wrap",
       "Identifier": "11",
       "Position": "-216,0",
       "HandleOffsets": {},
       "Coords": {
         "Identifier": "3",
         "Output": "Result"
+      }
+    },
+    {
+      "_class": "TransformNormal",
+      "InputSpace": "World",
+      "OutputSpace": "Tangent",
+      "DecodeNormal": false,
+      "Identifier": "12",
+      "Position": "-624,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "8",
+        "Output": "Output"
       }
     }
   ]
