@@ -6,8 +6,6 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 
 	public enum SGEParallaxOcclusionMappingMode
 	{
-		[Title("Contact Refinement")]
-		ContactRefinement,
 		Standard,
 		Steep
 	}
@@ -66,7 +64,7 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 	}
 
 	public SGEParallaxOcclusionMappingMode Mode { get; set; } = SGEParallaxOcclusionMappingMode.Standard;
-	public SGEParallaxOcclusionMappingChannel Channel { get; set; } = SGEParallaxOcclusionMappingChannel.Blue;
+	public SGEParallaxOcclusionMappingChannel Channel { get; set; } = SGEParallaxOcclusionMappingChannel.Alpha;
 
 	[InputDefault( nameof( Amplitude ) )]
 	public float DefaultAmplitude { get; set; } = 0.1f;
@@ -83,9 +81,9 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 	[InputDefault( nameof( Offset ) )]
 	public float DefaultOffset { get; set; } = 0.3f;
 
-	[Output(typeof(Vector2)), Title("Texture Coordinate")]
+	[Output(typeof(Vector2))]
 	[Hide]
-	public NodeResult.Func TextureCoordinateOutput => (GraphCompiler compiler) =>
+	public NodeResult.Func Output => (GraphCompiler compiler) =>
     {
 		var coordinates = compiler.Result(Coordinates);
 		var texture = compiler.Result( Texture );
@@ -104,10 +102,6 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 
 		switch (Mode)
 		{
-			case SGEParallaxOcclusionMappingMode.ContactRefinement:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingContactRefinementTextureCoordinate({coordinates}, {texture}, {sampler} ,{tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
-				break;
-
 			case SGEParallaxOcclusionMappingMode.Standard:
 				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingStandardTextureCoordinate({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
 				break;
@@ -115,46 +109,6 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 
 			case SGEParallaxOcclusionMappingMode.Steep:
 				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingSteepTextureCoordinate({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
-				break;
-		}
-
-		return nodeResult;
-	};
-
-	[Output(typeof(Vector2)), Title("World Space Position")]
-	[Hide]
-	public NodeResult.Func WorldSpacePositionOutput => (GraphCompiler compiler) =>
-    {
-		var coordinates = compiler.Result(Coordinates);
-		var texture = compiler.Result( Texture );
-		var sampler = compiler.Result( Sampler );
-		var tangentSpaceViewDirection = compiler.Result(TangentSpaceViewDirection);
-		var amplitude = compiler.ResultOrDefault(Amplitude, DefaultAmplitude);
-		var maximumIterations = compiler.ResultOrDefault(MaximumIterations, DefaultMaximumIterations);
-		var minimumIterations = compiler.ResultOrDefault(MinimumIterations, DefaultMinimumIterations);
-		var levelOfDetail = compiler.ResultOrDefault( LevelOfDetail, DefaultLevelOfDetail );
-		var offset = compiler.ResultOrDefault(Offset, DefaultOffset);
-		int channel = (int)Channel;
-		var worldSpacePosition = "i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz";
-		var worldTangentU = "i.vTangentUWs";
-		var worldTangentV = "i.vTangentVWs";
-
-		compiler.RegisterInclude( "shaders/hlsl/functions/func-parallax_occlusion_mapping.hlsl" );
-
-		NodeResult nodeResult = new NodeResult();
-
-		switch (Mode)
-		{
-			case SGEParallaxOcclusionMappingMode.ContactRefinement:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingContactRefinementWorldSpacePosition( {coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel}, {worldSpacePosition},{worldTangentU}, {worldTangentV})");
-				break;
-
-			case SGEParallaxOcclusionMappingMode.Standard:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingStandardWorldSpacePosition( {coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel}, {worldSpacePosition},{worldTangentU}, {worldTangentV})");
-				break;
-
-			case SGEParallaxOcclusionMappingMode.Steep:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingSteepWorldSpacePosition( {coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel}, {worldSpacePosition},{worldTangentU}, {worldTangentV})");
 				break;
 		}
 
