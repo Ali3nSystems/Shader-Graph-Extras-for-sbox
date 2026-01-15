@@ -9,6 +9,7 @@
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
+  "ShadingModelPath": null,
   "Domain": "Surface",
   "TemplatePath": null,
   "PreviewSettings": {
@@ -20,7 +21,6 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
-  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "Result",
@@ -227,10 +227,10 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "516,108",
+      "Size": "516,120",
       "Color": "Purple",
       "Title": "Mode",
-      "Description": "Texture2D: -Samples the texture 3 times at different coordinates.\nVector: Applies derivative-based color offset to any input.\n",
+      "Description": "Texture2D: - Samples the texture 3 times at different coordinates.\nVector: - Applies derivative-based color offset to any input.\n",
       "Layer": 2,
       "Identifier": "17",
       "Position": "168,192",
@@ -415,7 +415,7 @@
       "DefaultB": 1,
       "Fraction": 1,
       "Identifier": "26",
-      "Position": "-216,-0",
+      "Position": "-216,0",
       "HandleOffsets": {},
       "A": {
         "Identifier": "22",
