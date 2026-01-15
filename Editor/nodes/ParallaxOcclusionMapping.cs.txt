@@ -103,12 +103,12 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 		switch (Mode)
 		{
 			case SGEParallaxOcclusionMappingMode.Standard:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingStandardTextureCoordinate({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
+				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingStandard({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
 				break;
 
 
 			case SGEParallaxOcclusionMappingMode.Steep:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingSteepTextureCoordinate({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
+				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingSteep({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
 				break;
 		}
 

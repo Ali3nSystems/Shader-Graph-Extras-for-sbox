@@ -1,4 +1,4 @@
-float2 SGEParallaxOcclusionMappingStandardTextureCoordinate(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel)
+float2 SGEParallaxOcclusionMappingStandard(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel)
 {
     float layerNumbers = lerp(minimumIterations, maximumIterations, levelOfDetail);
     float layerDepth = 1 / layerNumbers;
@@ -27,7 +27,7 @@ float2 SGEParallaxOcclusionMappingStandardTextureCoordinate(float2 coordinates, 
     return currentCoordinates;
 }
 
-float2 SGEParallaxOcclusionMappingSteepTextureCoordinate(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel)
+float2 SGEParallaxOcclusionMappingSteep(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel)
     {
         float layerNumbers = lerp(minimumIterations, maximumIterations, levelOfDetail);
         float layerDepth = 1 / layerNumbers;
