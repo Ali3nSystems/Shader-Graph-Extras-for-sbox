@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/clamp.shdrgrph",
+  "Path": "shaders/shadergraphs/tutorials/nodes/clamp.shdrgrph",
   "Model": "models/dev/plane.vmdl",
   "Title": null,
   "Description": "",
@@ -9,6 +9,7 @@
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
+  "ShadingModelPath": null,
   "Domain": "Surface",
   "TemplatePath": null,
   "PreviewSettings": {
@@ -36,7 +37,7 @@
       "Size": "312,168",
       "Color": "Green",
       "Title": "Clamp",
-      "Description": "Input: -Can be noise or anything else.\nMin: -Clamps the generated value to the minimum specified value.\nMax: -Clamps the generated value to the maximum specified value.",
+      "Description": "Input: - Can be noise or anything else.\nMin: - Clamps the generated value to the minimum specified value.\nMax: - Clamps the generated value to the maximum specified value.",
       "Layer": 1,
       "Identifier": "1",
       "Position": "168,0",
