@@ -28,6 +28,9 @@ public static class ShaderGraphUpgrader
 
 	private const string BaseEnumerationEditor = "addons/tools/Code/ShaderGraph/EnumerationEditor.cs";
 	private const string UpgradedEnumerationEditor = "Editor/upgrader/files/EnumerationEditor.cs.txt";
+	
+	private const string BaseComboDeclaration = "addons/tools/Code/ShaderGraph/ComboDeclaration.cs";
+	private const string UpgradedComboDeclaration = "Editor/upgrader/files/ComboDeclaration.cs.txt";
 
 	private const string BaseUnlit = "addons/tools/Code/ShaderGraph/Compiler/ShadingModels/Unlit.cs";
 	private const string UpgradedUnlit = "Editor/upgrader/files/Unlit.cs.txt";
@@ -52,6 +55,7 @@ public static class ShaderGraphUpgrader
 		(BaseSubgraphNode, UpgradedSubgraphNode),
 		(BaseTexture, UpgradedTexture),
 		(BaseEnumerationEditor, UpgradedEnumerationEditor),
+		(BaseComboDeclaration, UpgradedComboDeclaration),
 		(BaseLit, UpgradedLit),
 		(BaseUnlit, UpgradedUnlit),
 		(BaseSurface, UpgradedSurface),
@@ -61,6 +65,7 @@ public static class ShaderGraphUpgrader
 	private static readonly string[] TextureObjectNodeFiles =
 	[
 		"Blur.cs",
+		"BumpOffset.cs",
 		"ChromaticAberration.cs",
 		"Flipbook.cs",
 		"ParallaxOcclusionMapping.cs",

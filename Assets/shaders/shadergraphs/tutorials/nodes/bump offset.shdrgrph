@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/bump offset.shdrgrph",
+  "Path": "shaders/shadergraphs/tutorials/nodes/bump offset.shdrgrph",
   "Model": "models/dev/plane.vmdl",
   "Title": null,
   "Description": null,
@@ -9,7 +9,9 @@
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
+  "ShadingModelPath": null,
   "Domain": "Surface",
+  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -52,17 +54,26 @@
     },
     {
       "_class": "SGEBumpOffsetNode",
+      "Mode": "Iterative",
+      "Channel": "Blue",
       "DefaultAmplitude": 0.1,
+      "DefaultMinimumIterations": 0,
+      "DefaultMaximumIterations": 4,
+      "DefaultLevelOfDetail": 1,
       "DefaultOffset": 0.3,
       "Identifier": "1",
       "Position": "-984,0",
       "HandleOffsets": {},
       "Coordinates": {
-        "Identifier": "25",
+        "Identifier": "6",
         "Output": "Result"
       },
-      "Input": {
-        "Identifier": "27",
+      "Texture": {
+        "Identifier": "26",
+        "Output": "Result"
+      },
+      "Sampler": {
+        "Identifier": "28",
         "Output": "Result"
       },
       "TangentSpaceViewDirection": {
@@ -73,6 +84,10 @@
         "Identifier": "39",
         "Output": "Result"
       },
+      "LevelOfDetail": {
+        "Identifier": "45",
+        "Output": "Result"
+      },
       "Offset": {
         "Identifier": "40",
         "Output": "Result"
@@ -81,7 +96,7 @@
     {
       "_class": "TangentViewVector",
       "Identifier": "2",
-      "Position": "-1476,240",
+      "Position": "-1560,276",
       "HandleOffsets": {},
       "WorldPosition": {
         "Identifier": "3",
@@ -103,19 +118,19 @@
     {
       "_class": "WorldPosition",
       "Identifier": "3",
-      "Position": "-1872,240",
+      "Position": "-1956,276",
       "HandleOffsets": {}
     },
     {
       "_class": "WorldNormal",
       "Identifier": "4",
-      "Position": "-1872,300",
+      "Position": "-1956,336",
       "HandleOffsets": {}
     },
     {
       "_class": "WorldTangent",
       "Identifier": "5",
-      "Position": "-1872,360",
+      "Position": "-1956,396",
       "HandleOffsets": {}
     },
     {
@@ -123,43 +138,23 @@
       "UseSecondaryCoord": false,
       "Tiling": "1,1",
       "Identifier": "6",
-      "Position": "-1716,0",
+      "Position": "-1560,0",
       "HandleOffsets": {}
     },
     {
-      "_class": "TextureSampler",
-      "Image": "decals/impact/concrete/decal_impact_concrete_03_height.png",
-      "Sampler": {
-        "Filter": "Aniso",
-        "AddressU": "Wrap",
-        "AddressV": "Wrap"
-      },
-      "UI": {
-        "Name": "Height",
-        "IsAttribute": false,
-        "Default": "1,1,1,1",
-        "Extension": "Color",
-        "CustomExtension": null,
-        "ShowExtension": true,
-        "Processor": "None",
-        "ColorSpace": "Linear",
-        "ImageFormat": "DXT5",
-        "SrgbRead": false,
-        "Priority": 0,
-        "PrimaryGroup": {
-          "Name": null,
-          "Priority": 0
-        },
-        "SecondaryGroup": {
-          "Name": null,
-          "Priority": 0
-        }
+      "_class": "SubgraphNode",
+      "SubgraphPath": "shaders/subgraphs/sgsg-level_of_detail.shdrfunc",
+      "DefaultValues": {
+        "Coordinates": "0,0",
+        "Value": 8,
+        "Minimum": 0,
+        "Maximum": 0.5
       },
       "Identifier": "7",
-      "Position": "-1440,48",
+      "Position": "-1524,468",
       "HandleOffsets": {},
-      "Coords": {
-        "Identifier": "28",
+      "Coordinates": {
+        "Identifier": "48",
         "Output": "Result"
       }
     },
@@ -324,7 +319,7 @@
       "_class": "Float",
       "Min": 0,
       "Max": 1,
-      "Value": 0.3,
+      "Value": 0,
       "Name": "Offset",
       "IsAttribute": false,
       "UI": {
@@ -341,14 +336,14 @@
         }
       },
       "Identifier": "15",
-      "Position": "-1440,432",
+      "Position": "-1524,600",
       "HandleOffsets": {}
     },
     {
       "_class": "Float",
       "Min": 0,
       "Max": 1,
-      "Value": 0.15,
+      "Value": 0.5,
       "Name": "Amplitude",
       "IsAttribute": false,
       "UI": {
@@ -365,7 +360,7 @@
         }
       },
       "Identifier": "16",
-      "Position": "-1440,372",
+      "Position": "-1524,408",
       "HandleOffsets": {}
     },
     {
@@ -460,40 +455,18 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "25",
-      "Position": "-1500,36",
+      "Position": "-1344,96",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "6",
-        "Output": "Result"
+        "Identifier": "43",
+        "Output": "Texture2DOutput"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "26",
-      "Position": "-1224,84",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "7",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "27",
-      "Position": "-1224,60",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "26",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "28",
-      "Position": "-1500,84",
+      "Position": "-1344,60",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "25",
@@ -503,8 +476,30 @@
     {
       "_class": "Reroute",
       "Comment": null,
+      "Identifier": "27",
+      "Position": "-1284,120",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "43",
+        "Output": "Texture2DSampler"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "28",
+      "Position": "-1284,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "27",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
       "Identifier": "29",
-      "Position": "-1656,336",
+      "Position": "-1740,372",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "4",
@@ -515,7 +510,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "30",
-      "Position": "-1656,300",
+      "Position": "-1740,336",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "29",
@@ -526,7 +521,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "31",
-      "Position": "-1596,396",
+      "Position": "-1680,432",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "5",
@@ -537,7 +532,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "32",
-      "Position": "-1536,420",
+      "Position": "-1620,456",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "5",
@@ -548,7 +543,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "33",
-      "Position": "-1596,324",
+      "Position": "-1680,360",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "31",
@@ -559,7 +554,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "34",
-      "Position": "-1536,348",
+      "Position": "-1620,384",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "32",
@@ -570,7 +565,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "35",
-      "Position": "-1164,276",
+      "Position": "-1224,312",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "2",
@@ -581,7 +576,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "36",
-      "Position": "-1164,84",
+      "Position": "-1224,108",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "35",
@@ -592,7 +587,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "37",
-      "Position": "-1104,408",
+      "Position": "-1164,444",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "16",
@@ -603,7 +598,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "38",
-      "Position": "-1044,468",
+      "Position": "-1044,636",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "15",
@@ -614,7 +609,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "39",
-      "Position": "-1104,108",
+      "Position": "-1164,132",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "37",
@@ -625,7 +620,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "40",
-      "Position": "-1044,132",
+      "Position": "-1044,228",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "38",
@@ -637,8 +632,8 @@
       "Size": "600,168",
       "Color": "Green",
       "Title": "Bump Offset",
-      "Description": "Coordinates: - Add your coordinates to sample the height.\nInput: - Add your height displacement.\nTangent Space View Direction: - Add \u0022Tangent View Vector\u0022 node as shown.\nAmplitude: - Controls the amplitude of the coordinates.\nOffset: - Controls the offset of the coordinates.",
-      "Layer": 1,
+      "Description": "Coordinates: - Add your coordinates to sample the height.\nTexture: - Add your height texture.\nSampler: - Add your height sampler.\nTangent Space View Direction: - Add \u0022Tangent View Vector\u0022 node as shown.\nAmplitude: - Controls the amplitude of the coordinates.\n",
+      "Layer": 3,
       "Identifier": "41",
       "Position": "168,0",
       "HandleOffsets": {}
@@ -649,8 +644,114 @@
       "Color": "Orange",
       "Title": "Info",
       "Description": "This node is much more cheaper than Parallax Occlusion Mapping but it falls off considerably at very steep angles.\nIt is configured to match the Amplitude and Offset settings on the Parallax Occlusion Mapping node, so feel free to swap between them, they should look similar if the angle is right.",
-      "Layer": 2,
+      "Layer": 1,
       "Identifier": "42",
+      "Position": "780,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "SGETextureObjectNode",
+      "Mode": "Texture2D",
+      "Image": "decals/impact/concrete/decal_impact_concrete_03_height.png",
+      "Sampler": {
+        "Filter": "Aniso",
+        "AddressU": "Wrap",
+        "AddressV": "Wrap"
+      },
+      "UI": {
+        "Name": "Height",
+        "IsAttribute": false,
+        "Default": "1,1,1,1",
+        "Extension": "Color",
+        "CustomExtension": null,
+        "ShowExtension": true,
+        "Processor": "None",
+        "ColorSpace": "Linear",
+        "ImageFormat": "DXT5",
+        "SrgbRead": false,
+        "Priority": 0,
+        "PrimaryGroup": {
+          "Name": null,
+          "Priority": 0
+        },
+        "SecondaryGroup": {
+          "Name": null,
+          "Priority": 0
+        }
+      },
+      "Identifier": "43",
+      "Position": "-1560,60",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "44",
+      "Position": "-1104,504",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "7",
+        "Output": "Output"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "45",
+      "Position": "-1104,204",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "44",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "ScreenPosition",
+      "Identifier": "46",
+      "Position": "-1956,480",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "47",
+      "Position": "-1584,540",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "46",
+        "Output": "XY"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "48",
+      "Position": "-1584,504",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "47",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "540,144",
+      "Color": "Purple",
+      "Title": "Mode",
+      "Description": "Iterative: - Samples the height texture and the coordinates multiple times for a better displacement.\nStandard: - Optimized to Sample the height texture only once for the displacement.\n",
+      "Layer": 3,
+      "Identifier": "49",
+      "Position": "780,180",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "600,168",
+      "Color": "Green",
+      "Title": "",
+      "Description": "Minimum Iterations: - Minimum amount of times to sample the height texture.\nMaximum Iterations: - Maximum amount of times to sample the height texture.\nLevel Of Detail: - Mask to lerp between minimum and maximum iterations.\nOffset: - Controls the offset of the coordinates.",
+      "Layer": 2,
+      "Identifier": "50",
       "Position": "168,180",
       "HandleOffsets": {}
     }
