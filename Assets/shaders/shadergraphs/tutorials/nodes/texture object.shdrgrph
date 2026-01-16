@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/texture object.shdrgrph",
+  "Path": "shaders/shadergraphs/tutorials/nodes/texture object.shdrgrph",
   "Model": "models/dev/plane.vmdl",
   "Title": null,
   "Description": null,
@@ -9,6 +9,7 @@
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
+  "ShadingModelPath": null,
   "Domain": "Surface",
   "TemplatePath": null,
   "PreviewSettings": {
@@ -131,7 +132,7 @@
     },
     {
       "_class": "CommentNode",
-      "Size": "336,108",
+      "Size": "384,132",
       "Color": "Purple",
       "Title": "Modes",
       "Description": "2D: - Outputs a 2D texture.\nCubemap: - Outputs a cubemap texture.\nSampler: - Outputs the correct sampler to use.",
