@@ -75,8 +75,8 @@
     {
       "_class": "CommentNode",
       "Size": "612,144",
-      "Color": "Purple",
-      "Title": "Modes",
+      "Color": "Blue",
+      "Title": "Outputs",
       "Description": "Texture Coordinate: - The 2D UVs of the virtual plane coordinates.\nWorld Space Position: - The world position at each point on the virtual plane.\nWorld Space Position - Centered: - The world position centered on the specified position. This means position will be 0,0,0 at the specified center.",
       "Layer": 1,
       "Identifier": "4",
