@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/interior mapping.shdrgrph",
+  "Path": "shaders/shadergraphs/tutorials/nodes/interior mapping.shdrgrph",
   "Model": "models/dev/box.vmdl",
   "Title": null,
   "Description": null,
@@ -9,7 +9,9 @@
   "AddToNodeLibrary": false,
   "BlendMode": "Opaque",
   "ShadingModel": "Unlit",
+  "ShadingModelPath": null,
   "Domain": "Surface",
+  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -47,6 +49,10 @@
       "TextureCubemapInput": {
         "Identifier": "6",
         "Output": "Result"
+      },
+      "TextureCubemapSampler": {
+        "Identifier": "10",
+        "Output": "Result"
       }
     },
     {
@@ -54,7 +60,7 @@
       "SubgraphPath": "shaders/subgraphs/sgsg-interior_mapping.shdrfunc",
       "DefaultValues": {},
       "Identifier": "2",
-      "Position": "-624,0",
+      "Position": "-684,-0",
       "HandleOffsets": {}
     },
     {
@@ -88,7 +94,7 @@
         }
       },
       "Identifier": "3",
-      "Position": "-624,60",
+      "Position": "-684,60",
       "HandleOffsets": {}
     },
     {
@@ -107,7 +113,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "5",
-      "Position": "-408,96",
+      "Position": "-468,96",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "3",
@@ -118,7 +124,7 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "6",
-      "Position": "-408,60",
+      "Position": "-468,60",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "5",
@@ -146,6 +152,28 @@
       "Identifier": "8",
       "Position": "168,180",
       "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "9",
+      "Position": "-408,120",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "3",
+        "Output": "TextureCubemapSampler"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "10",
+      "Position": "-408,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "9",
+        "Output": "Result"
+      }
     }
   ]
 }
