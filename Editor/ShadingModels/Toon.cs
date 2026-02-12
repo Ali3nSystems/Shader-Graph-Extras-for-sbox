@@ -1,4 +1,4 @@
-namespace Editor.ShaderGraph;
+namespace Editor.ShaderGraphExtras;
 
 public static class SGEToonShadingModel
 {

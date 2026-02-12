@@ -1,4 +1,4 @@
-namespace Editor.ShaderGraph;
+namespace Editor.ShaderGraphExtras;
 public static class SGEDeferredDecalTemplate
 {
 	public static Dictionary<string, bool> Features => new()
