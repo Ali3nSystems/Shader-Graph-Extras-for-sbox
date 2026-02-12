@@ -4,14 +4,12 @@
   "Model": null,
   "Title": "SGE - Inverse Transform Matrix",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "alt_route",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
-  "ShadingModelPath": null,
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -54,7 +52,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "f48e954e-bab0-45cc-88e9-957370982146",
+          "Id": "9a464695-0811-46f7-967f-1ce4d28dbf1d",
           "Name": "Output",
           "Type": "Vector3",
           "Preview": "None",

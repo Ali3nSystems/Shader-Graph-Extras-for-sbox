@@ -4,14 +4,12 @@
   "Model": null,
   "Title": "SGE - Virtual Plane Coordinates",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "airplanemode_active",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
-  "ShadingModelPath": null,
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -38,21 +36,21 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "8bbe8bac-f5dc-462a-9821-d26b0fad6767",
+          "Id": "1a34c1f7-d247-4b12-a6c1-02555a8538d3",
           "Name": "Texture Coordinate",
           "Type": "Vector3",
           "Preview": "None",
           "Priority": 1
         },
         {
-          "Id": "bb9f1464-6227-47fb-87dc-e083ebf89e6c",
+          "Id": "8ec402e6-cbf2-4917-9fd2-dbc6fe17b785",
           "Name": "World Space Position",
           "Type": "Vector3",
           "Preview": "None",
           "Priority": 2
         },
         {
-          "Id": "ed7a27fd-43ba-406f-9e8c-2bd93b46359d",
+          "Id": "09898c9c-833f-497c-8acf-76962c23fc29",
           "Name": "World Space Position - Centered",
           "Type": "Vector3",
           "Preview": "None",

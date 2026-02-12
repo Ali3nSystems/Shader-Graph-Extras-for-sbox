@@ -4,13 +4,12 @@
   "Model": null,
   "Title": "SGE - Normal Blend Mode",
   "Description": "",
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "burst_mode",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -20,13 +19,12 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
-  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "791d6e51-9b41-4c2b-a2d4-35f4febb839a",
+          "Id": "3b76ff7d-fb15-40be-8f28-e66201f5e926",
           "Name": "Output",
           "Type": "Vector3",
           "Preview": "None",

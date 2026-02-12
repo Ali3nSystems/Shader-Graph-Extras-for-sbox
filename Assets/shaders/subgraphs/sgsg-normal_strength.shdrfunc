@@ -4,7 +4,7 @@
   "Model": null,
   "Title": "SGE - Normal Strength",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "1x_mobiledata",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
@@ -39,7 +39,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 2,
       "Identifier": "1",
@@ -138,7 +137,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "7077727c-6c63-4b45-bb5d-750370c8b2f0",
+          "Id": "73bd71f0-94e8-460f-ad53-10e2a3e924b8",
           "Name": "Output",
           "Type": "Vector3",
           "Preview": "Normal",
@@ -162,7 +161,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": true,
       "PortOrder": 1,
       "Identifier": "10",

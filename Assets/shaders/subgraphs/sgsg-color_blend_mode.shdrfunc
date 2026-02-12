@@ -4,13 +4,12 @@
   "Model": null,
   "Title": "SGE - Color Blend Mode",
   "Description": "",
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "burst_mode",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -20,13 +19,12 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
-  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "740f4faa-05bd-4fc2-a964-56d52e4f6ed8",
+          "Id": "11f0eba8-5444-4da4-a0a8-20cf1613f875",
           "Name": "Output",
           "Type": "Color",
           "Preview": "None",

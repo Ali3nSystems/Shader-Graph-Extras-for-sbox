@@ -4,7 +4,7 @@
   "Model": null,
   "Title": "SGE - Hue Saturation Value",
   "Description": "",
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "settings_brightness",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
@@ -24,7 +24,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "70750796-2739-4ec1-87a1-304a879bf58d",
+          "Id": "758e7510-816e-4088-880b-ed950db57ec6",
           "Name": "Output",
           "Type": "Color",
           "Preview": "Albedo",
@@ -52,7 +52,7 @@
     {
       "_class": "HSVtoRGB",
       "Identifier": "2",
-      "Position": "-492,-0",
+      "Position": "-492,0",
       "HandleOffsets": {},
       "In": {
         "Identifier": "6",
@@ -90,7 +90,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 2,
       "Identifier": "5",
@@ -128,7 +127,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 3,
       "Identifier": "7",
@@ -144,7 +142,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 4,
       "Identifier": "8",
@@ -160,7 +157,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": true,
       "PortOrder": 1,
       "Identifier": "9",

@@ -4,7 +4,7 @@
   "Model": null,
   "Title": "SGE - Depth Intersection",
   "Description": "",
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "join_inner",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
@@ -24,7 +24,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "4c5bd22c-dc90-447d-b6c0-ba42a0d34569",
+          "Id": "696b99ca-57f9-4ba0-bdea-27172aa4f1f5",
           "Name": "Output",
           "Type": "float",
           "Preview": "None",
@@ -150,7 +150,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": false,
       "PortOrder": 1,
       "Identifier": "10",

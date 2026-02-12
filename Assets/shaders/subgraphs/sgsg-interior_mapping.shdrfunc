@@ -4,7 +4,7 @@
   "Model": "models/dev/box.vmdl",
   "Title": "SGE - Interior Mapping",
   "Description": "",
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "inventory",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
@@ -24,7 +24,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "95e5201b-b107-45ef-9bd6-e5cd4b0d726d",
+          "Id": "54ed74ec-1425-4824-b06f-3cae0de093d7",
           "Name": "Output",
           "Type": "Vector3",
           "Preview": "None",

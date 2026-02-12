@@ -4,14 +4,12 @@
   "Model": null,
   "Title": "SGE - Safe Normalize",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "safety_check",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
-  "ShadingModelPath": null,
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -75,14 +73,14 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "7ed7cf14-b885-4705-aec3-221194dab1f4",
+          "Id": "d90f8929-68d3-47cd-8dad-2a124133889b",
           "Name": "Output",
           "Type": "Vector3",
           "Preview": "None",
           "Priority": 1
         },
         {
-          "Id": "6fcce468-d17b-441d-acc1-dd2cb264b69b",
+          "Id": "095428a7-34d2-4ff0-bacc-6b203cba6237",
           "Name": "Length",
           "Type": "float",
           "Preview": "None",

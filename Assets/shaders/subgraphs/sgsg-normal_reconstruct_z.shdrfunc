@@ -4,7 +4,7 @@
   "Model": null,
   "Title": "SGE - Normal Reconstruct Z",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "construction",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
@@ -93,7 +93,6 @@
       "DefaultFloat2": "0,0",
       "DefaultFloat3": "0,0,0",
       "DefaultColor": "1,1,1,1",
-      "DefaultTexture": "materials/dev/white_color.tga",
       "IsRequired": true,
       "PortOrder": 1,
       "Identifier": "5",
@@ -104,7 +103,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "48a95963-b53b-4e66-a8d9-c1fbc65624a4",
+          "Id": "c896326d-2e20-4c14-b8ec-6eed1d562a06",
           "Name": "Output",
           "Type": "float",
           "Preview": "None",

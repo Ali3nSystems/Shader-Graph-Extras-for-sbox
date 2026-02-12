@@ -4,14 +4,12 @@
   "Model": null,
   "Title": "SGE - Third Orthogonal Vector",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "create",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
-  "ShadingModelPath": null,
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -64,21 +62,21 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "05f89a34-b8e4-47a6-969f-3218a375a27d",
+          "Id": "796087b9-daa9-4796-989a-393783ea8134",
           "Name": "Output A",
           "Type": "Vector3",
           "Preview": "None",
           "Priority": 1
         },
         {
-          "Id": "6204b196-2cb1-44e9-bcce-a3586e9e01c2",
+          "Id": "8a6816b7-9071-4587-a792-600921b02e5d",
           "Name": "Output B",
           "Type": "Vector3",
           "Preview": "None",
           "Priority": 2
         },
         {
-          "Id": "80cb877a-8d4f-4f51-9ff7-507bfd3f5186",
+          "Id": "7043b2e9-5f8e-4e4b-b716-67489f5b92b2",
           "Name": "Output C",
           "Type": "Vector3",
           "Preview": "None",

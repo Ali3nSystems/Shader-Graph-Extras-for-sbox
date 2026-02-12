@@ -4,13 +4,12 @@
   "Model": null,
   "Title": "SGE - Normal Decode",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "transform",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -20,7 +19,6 @@
     "Tint": "1,1,1,1"
   },
   "Version": 1,
-  "TemplateFeatures": {},
   "nodes": [
     {
       "_class": "Multiply",
@@ -38,7 +36,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "053a6dc5-645b-479a-ab01-b125951a22e5",
+          "Id": "ec1c7748-28f7-457b-8cd9-4e7c7d89e81f",
           "Name": "Output",
           "Type": "Vector3",
           "Preview": "Normal",

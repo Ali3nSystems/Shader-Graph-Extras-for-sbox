@@ -4,14 +4,12 @@
   "Model": "models/dev/plane.vmdl",
   "Title": "SGE - Level Of Detail",
   "Description": null,
-  "Category": "Shader Graph Extras",
+  "Category": "Shader Graph Extras - Universal",
   "Icon": "gradient",
   "AddToNodeLibrary": true,
   "BlendMode": "Opaque",
   "ShadingModel": "Lit",
-  "ShadingModelPath": null,
   "Domain": "Surface",
-  "TemplatePath": null,
   "PreviewSettings": {
     "RenderBackfaces": false,
     "EnableShadows": true,
@@ -162,7 +160,7 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "dc56880a-d1c2-422e-ac7c-2b60ffe2bed5",
+          "Id": "4c5ecb16-492e-4540-8ff6-1e835b2fa85c",
           "Name": "Output",
           "Type": "float",
           "Preview": "None",
