@@ -1,4 +1,5 @@
 global using Sandbox;
+global using Sandbox.Rendering;
 global using Editor;
 global using System;
 global using System.Runtime.CompilerServices;
