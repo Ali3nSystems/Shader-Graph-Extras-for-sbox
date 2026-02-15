@@ -1,6 +1,6 @@
 namespace Editor.ShaderGraphExtras.Nodes;
 
-[Title( "SGE - Angle Attenuation" ), Category( "Shader Graph Extras - Universal" ), Icon( "opacity" )]
+[Title( "SGE - Angle Attenuation" ), Category( "Shader Graph Extras - Upgraded" ), Icon( "opacity" )]
 public sealed class SGEAngleAttenuationNode : ShaderNode
 {
 	[Hide]
