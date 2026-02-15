@@ -1,6 +1,6 @@
 {
   "IsSubgraph": false,
-  "Path": "shaders/shadergraphs/tutorials/nodes/universalnodes/shdr-refract.shdrgrph",
+  "Path": "shaders/shadergraphs/tutorials/nodes/universalnodes/shdr-refraction.shdrgrph",
   "Model": null,
   "Title": null,
   "Description": "",
@@ -24,7 +24,7 @@
       "_class": "CommentNode",
       "Size": "432,132",
       "Color": "Green",
-      "Title": "Refract",
+      "Title": "Refraction",
       "Description": "View Direction: - Add view direction node here.\nWorld Normal: -Add world normal node here.\nIndex Of Refraction: -Controls the index of refraction.",
       "Layer": 1,
       "Identifier": "0",
