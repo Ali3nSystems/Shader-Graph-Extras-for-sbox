@@ -101,40 +101,40 @@ public sealed class SGEComboNode : ShaderNode
 	private int _stateCount = 2;
 
 	[Title( "Name" ),Group("UI")]
-	public ComboName Name { get; set; } = "My Combo";
+	public ComboName Name { get; set; } = "Combo Name";
 
 	[Title( "Group" ),Group("UI")]
-	public ComboGroup Group { get; set; } = "Advanced";
+	public ComboGroup Group { get; set; } = "Combo Group";
 
-	[Title( "State Name 1" ),Group("UI")]
+	[Title( "State 1" ),Group("UI")]
 	[ShowIf( nameof( IsEnumMode ), true )]
 	public string State1 { get; set; } = "State 1";
 
-	[Title( "State Name 2" ),Group("UI")]
+	[Title( "State 2" ),Group("UI")]
 	[ShowIf( nameof( IsEnumMode ), true )]
 	public string State2 { get; set; } = "State 2";
 
-	[Title( "State Name 3" ),Group("UI")]
+	[Title( "State 3" ),Group("UI")]
 	[ShowIf( nameof( HasState3 ), true )]
 	public string State3 { get; set; } = "State 3";
 
-	[Title( "State Name 4" ),Group("UI")]
+	[Title( "State 4" ),Group("UI")]
 	[ShowIf( nameof( HasState4 ), true )]
 	public string State4 { get; set; } = "State 4";
 
-	[Title( "State Name 5" ),Group("UI")]
+	[Title( "State 5" ),Group("UI")]
 	[ShowIf( nameof( HasState5 ), true )]
 	public string State5 { get; set; } = "State 5";
 
-	[Title( "State Name 6" ),Group("UI")]
+	[Title( "State 6" ),Group("UI")]
 	[ShowIf( nameof( HasState6 ), true )]
 	public string State6 { get; set; } = "State 6";
 
-	[Title( "State Name 7" ),Group("UI")]
+	[Title( "State 7" ),Group("UI")]
 	[ShowIf( nameof( HasState7 ), true )]
 	public string State7 { get; set; } = "State 7";
 
-	[Title( "State Name 8" ),Group("UI")]
+	[Title( "State 8" ),Group("UI")]
 	[ShowIf( nameof( HasState8 ), true )]
 	public string State8 { get; set; } = "State 8";
 
@@ -243,8 +243,8 @@ public sealed class SGEComboNode : ShaderNode
 
 				displayInfo.Name = property.Name switch
 				{
-					nameof( InputTrue ) => State1 == "State 1" ? "True" : State1,
-					nameof( InputFalse ) => State2 == "State 2" ? "False" : State2,
+					nameof( InputTrue ) => "True",
+					nameof( InputFalse ) => "False",
 					nameof( InputState1 ) => State1,
 					nameof( InputState2 ) => State2,
 					nameof( InputState3 ) => State3,
