@@ -15,7 +15,7 @@ class ShadingModelToon
 {
     static float4 Shade( Material m )
     {
-        Decals::Apply( m.WorldPosition, m.ScreenPosition.xy, m );
+        Decals::Apply( m.WorldPosition, m );
 
         #if ( S_ALPHA_TEST )
         {
@@ -33,10 +33,10 @@ class ShadingModelToon
         float3 diffuse = m.Albedo * 0.5;
 
         // Process all lights with cel shading
-        uint nLightCount = Light::Count( m.ScreenPosition.xy );
+        uint nLightCount = Light::Count( m.WorldPosition );
         for ( uint i = 0; i < nLightCount; i++ )
         {
-            Light light = Light::From( m.ScreenPosition.xy, m.WorldPosition, i, m.LightmapUV );
+            Light light = Light::From( m.WorldPosition, i, m.LightmapUV );
 
             float NdotL = dot( m.Normal, light.Direction );
 
