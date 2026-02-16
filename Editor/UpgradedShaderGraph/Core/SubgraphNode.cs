@@ -205,7 +205,8 @@ public sealed class SubgraphNode : ShaderNode, IErroringNode
 		var shader = AssetSystem.FindByPath( SubgraphPath );
 		if ( shader is null ) return;
 
-		shader.OpenInEditor();
+		var window = new MainWindowFunc();
+		window.AssetOpen( shader );
 	}
 }
 
