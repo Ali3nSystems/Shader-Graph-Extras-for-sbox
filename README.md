@@ -40,7 +40,7 @@ Simply right click on an already existing .shdrgrph or .shdrfunc in the asset br
     
     <img src="Assets\documentation\images\Shader Template.png" alt="Shader Template" width="512">
 
-### Combo Definitions
+### 🔀 Combo Definitions
 - Using the combo node, you can define whenever to use a combo with static/dynamic mode or bool/enum type for your shader logic. Can be controlled via material editor or C# just like regular written combos.
 
     <img src="Assets\documentation\images\Combo.png"
