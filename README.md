@@ -2,13 +2,13 @@
 
 <img src="Assets/textures/ICON-shader_graph_extras@10x10.png" alt="Shader Graph Extras Icon" width="512">
 
-Enhanced capabilities for s&box's Shader Graph with additional nodes, subgraphs, HLSL functions, custom shader templates, custom shading models, various optimizations and other advanced features.
+A brand new "Upgraded Shader Graph" with additional nodes, subgraphs, HLSL functions, custom shader templates, custom shading models, various optimizations and other advanced features. Some nodes and subgraphs are available in both the base Shader Graph and Upgraded Shader Graph under the "Shader Graph Extras - Universal" menu when selecting nodes in the graph. Upgraded Shader Graph is already compatible with .shdrgrph and .shdrfunc files created using base Shader Graph.
 
 ---
 
 ## Getting Started
 
-After installing, in order too activate all features, navigate to the **Shader Graph Extras** tab in the top bar and click **"Upgrade Files"**.
+Simply right click on an already existing .shdrgrph or .shdrfunc in the asset browser and click "Open with Upgraded Shader Graph", or go top left in your editor in the tools tab and select "Upgraded Shader Graph" there. If you use any nodes in the "Shader Graph Extras - Upgraded" menu only available in the Upgraded Shader Graph graph and hit save, then your files won't be compatible with base Shader Graph anymore.
 
 ---
 
@@ -18,7 +18,7 @@ After installing, in order too activate all features, navigate to the **Shader G
 - Define **Texture Sampler**, **Texture 2D**, and **Texture Cubemap** inputs and outputs for nodes and subgraphs.
 
 ### ✨ New Nodes, Subgraphs and HLSL functions.
-- Access to **43 additional combined nodes and subgraphs** along with **HLSL functions which can be used without Shader Graph**.
+- Access to **45 additional combined nodes and subgraphs** along with **HLSL functions which can be used without Shader Graph**.
     - Nodes are located in `Editor\nodes\`.
     - Subgraphs are located in `Assets\shaders\subgraphs\`.
     - HLSL functions are located in `Assets\shaders\hlsl\`.
@@ -39,6 +39,12 @@ After installing, in order too activate all features, navigate to the **Shader G
     - Examples of Shader Templates located in `Editor\templates\`.
     
     <img src="Assets\documentation\images\Shader Template.png" alt="Shader Template" width="512">
+
+### Combo Definitions
+- Using the combo node, you can define whenever to use a combo with static/dynamic mode or bool/enum type for your shader logic. Can be controlled via material editor or C# just like regular written combos.
+
+    <img src="Assets\documentation\images\Combo.png"
+    alt="Shader Template" width="512">
 
 ### 🐛 Bug Fixes
 - Resolves multiple GitHub issues:
