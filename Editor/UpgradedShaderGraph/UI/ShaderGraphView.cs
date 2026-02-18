@@ -403,18 +403,27 @@ public class ShaderGraphView : GraphView
 
 	private void SelectionChanged()
 	{
-		var item = SelectedItems
+		var selectedNodes = SelectedItems
 			.OfType<NodeUI>()
-			.OrderByDescending( n => n is CommentUI )
-			.FirstOrDefault();
+			.Where( n => n is not CommentUI )
+			.ToList();
 
-		if ( !item.IsValid() )
+		if ( selectedNodes.Count == 0 )
 		{
 			_window.OnNodeSelected( null );
 			return;
 		}
 
-		_window.OnNodeSelected( (BaseNode)item.Node );
+		if ( selectedNodes.Count == 1 )
+		{
+			_window.OnNodeSelected( (BaseNode)selectedNodes[0].Node );
+			return;
+		}
+
+		var nodes = selectedNodes
+			.Select( n => (BaseNode)n.Node )
+			.ToList();
+		_window.OnMultipleNodesSelected( nodes );
 	}
 
 	protected override void OnNodeCreated( INode node )

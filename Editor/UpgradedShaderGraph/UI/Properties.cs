@@ -1,4 +1,4 @@
-﻿
+
 namespace Editor.ShaderGraphExtras;
 
 public class Properties : Widget
@@ -8,6 +8,10 @@ public class Properties : Widget
 	private string filterText;
 
 	private object _target;
+	private List<BaseNode> _multiEditTargets;
+
+	public List<BaseNode> MultiEditTargets => _multiEditTargets;
+
 	public object Target
 	{
 		get => _target;
@@ -17,6 +21,7 @@ public class Properties : Widget
 				return;
 
 			_target = value;
+			_multiEditTargets = null;
 
 			Editor.Clear( true );
 
@@ -65,6 +70,30 @@ public class Properties : Widget
 
 		Editor = Layout.AddRow( 1 );
 		Layout.AddStretchCell();
+	}
+
+	public void SetMultiEditTargets( List<BaseNode> nodes )
+	{
+		_target = null;
+		_multiEditTargets = nodes;
+
+		Editor.Clear( true );
+
+		if ( nodes == null || nodes.Count == 0 )
+			return;
+
+		var multiPanel = new MultiEditPanel( this, nodes );
+		multiPanel.PropertyUpdated += () => PropertyUpdated?.Invoke();
+
+		scroller = new ScrollArea( this );
+		scroller.Canvas = new Widget();
+		scroller.Canvas.Layout = Layout.Column();
+		scroller.Canvas.VerticalSizeMode = SizeMode.CanGrow;
+		scroller.Canvas.HorizontalSizeMode = SizeMode.Flexible;
+		scroller.Canvas.Layout.Add( multiPanel );
+		scroller.Canvas.Layout.AddStretchCell();
+
+		Editor.Add( scroller );
 	}
 
 	private void OnFilterEdited( string filter )

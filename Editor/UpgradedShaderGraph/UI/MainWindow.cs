@@ -118,6 +118,12 @@ public class MainWindow : DockWindow
 		_preview.SetStage( _compiledNodes.IndexOf( node ) + 1 );
 	}
 
+	public void OnMultipleNodesSelected( List<BaseNode> nodes )
+	{
+		_properties.SetMultiEditTargets( nodes );
+		_preview.SetStage( 0 );
+	}
+
 	private void OpenGeneratedShader()
 	{
 		if ( _asset is null )
@@ -1199,6 +1205,11 @@ public class MainWindow : DockWindow
 		if ( _properties.Target is BaseNode node )
 		{
 			_graphView.UpdateNode( node );
+		}
+		else if ( _properties.MultiEditTargets is { Count: > 0 } multiNodes )
+		{
+			foreach ( var multiNode in multiNodes )
+				_graphView.UpdateNode( multiNode );
 		}
 
 		var shouldEvaluate = _properties.Target is not CommentNode;
