@@ -854,9 +854,10 @@ public sealed partial class GraphCompiler
 		// Dynamic blend mode: Add Feature declarations for material editor toggles
 		if ( IsDynamicBlendMode )
 		{
-			sb.AppendLine( "Feature( F_ALPHA_TEST, 0..1, \"Translucent\" );" );
-			sb.AppendLine( "Feature( F_TRANSLUCENT, 0..1, \"Translucent\" );" );
+			sb.AppendLine( "Feature( F_ALPHA_TEST, 0..1, \"Blending\" );" );
+			sb.AppendLine( "Feature( F_TRANSLUCENT, 0..1, \"Blending\" );" );
 			sb.AppendLine( "FeatureRule( Allow1( F_TRANSLUCENT, F_ALPHA_TEST ), \"Alpha Test and Translucent are not compatible\" );" );
+			sb.AppendLine( "FeatureRule( Requires1( F_ADDITIVE_BLEND, F_TRANSLUCENT ), \"Requires translucency\" );" );
 		}
 
 		// Add user-defined combo features (only for Static combos - Dynamic combos don't need Material Editor UI)
