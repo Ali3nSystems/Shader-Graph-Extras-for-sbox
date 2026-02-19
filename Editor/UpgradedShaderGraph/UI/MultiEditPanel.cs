@@ -258,6 +258,7 @@ public class MultiEditPanel : Widget
 
 		Layout.Add( sheet );
 
+		int prevPriority = proxy.Priority;
 		so.OnPropertyChanged += ( p ) =>
 		{
 			foreach ( var node in _nodes )
@@ -267,9 +268,14 @@ public class MultiEditPanel : Widget
 				else if ( p.Name == "IsAttribute" )
 					SetBridgedIsAttribute( node, proxy.IsAttribute );
 				else if ( p.Name == "Priority" )
-					SetBridgedPriority( node, proxy.Priority );
+				{
+					int delta = proxy.Priority - prevPriority;
+					SetBridgedPriority( node, (GetBridgedPriority( node ) ?? 0) + delta );
+				}
 				MarkDirty( node );
 			}
+			if ( p.Name == "Priority" )
+				prevPriority = proxy.Priority;
 			PropertyUpdated?.Invoke();
 		};
 	}
@@ -474,6 +480,7 @@ public class MultiEditPanel : Widget
 		sheet.AddObject( so );
 		Layout.Add( sheet );
 
+		int prevPriority = proxy.Priority;
 		so.OnPropertyChanged += ( p ) =>
 		{
 			foreach ( var node in _nodes )
@@ -488,10 +495,13 @@ public class MultiEditPanel : Widget
 				ui.ColorSpace = proxy.ColorSpace;
 				ui.ImageFormat = proxy.ImageFormat;
 				ui.SrgbRead = proxy.SrgbRead;
-				ui.Priority = proxy.Priority;
+				if ( p.Name == "Priority" )
+					ui.Priority = ui.Priority + (proxy.Priority - prevPriority);
 				SetUIProperty( node, ui );
 				MarkDirty( node );
 			}
+			if ( p.Name == "Priority" )
+				prevPriority = proxy.Priority;
 			PropertyUpdated?.Invoke();
 		};
 	}
@@ -527,6 +537,7 @@ public class MultiEditPanel : Widget
 		sheet.AddObject( so );
 		Layout.Add( sheet );
 
+		int prevPriority = proxy.Priority;
 		so.OnPropertyChanged += ( p ) =>
 		{
 			foreach ( var node in _nodes )
@@ -534,10 +545,13 @@ public class MultiEditPanel : Widget
 				var ui = (ParameterUI)GetUIProperty( node );
 				ui.Type = proxy.Type;
 				ui.Step = proxy.Step;
-				ui.Priority = proxy.Priority;
+				if ( p.Name == "Priority" )
+					ui.Priority = ui.Priority + (proxy.Priority - prevPriority);
 				SetUIProperty( node, ui );
 				MarkDirty( node );
 			}
+			if ( p.Name == "Priority" )
+				prevPriority = proxy.Priority;
 			PropertyUpdated?.Invoke();
 		};
 	}
