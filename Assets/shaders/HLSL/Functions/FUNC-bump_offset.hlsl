@@ -2,7 +2,7 @@ float2 SGEBumpOffsetIterative(float2 coordinates, Texture2D texture, SamplerStat
 {
         float layerNumbers = lerp(minimumIterations, maximumIterations, levelOfDetail);
 
-        float ratioPerPass = (amplitude / max(ceil(layerNumbers), 1)) * -1;
+        float ratioPerPass = (amplitude / max(ceil(layerNumbers), 1));
         offset = offset - 1;
 
         float2 currentCoordinates = coordinates;
@@ -11,7 +11,7 @@ float2 SGEBumpOffsetIterative(float2 coordinates, Texture2D texture, SamplerStat
         for (int i = 0; i < ceil(layerNumbers); i++)
         {
             float currentDepthValue = texture.Sample(sampler, currentCoordinates)[channel];
-            currentCoordinates += ((currentDepthValue + offset) * ratioPerPass * tangentSpaceViewDirection.xy);
+            currentCoordinates += ((currentDepthValue + offset) * ratioPerPass * (tangentSpaceViewDirection.xy / tangentSpaceViewDirection.z));
         }
 
         return lerp(coordinates, currentCoordinates, saturate(layerNumbers));
