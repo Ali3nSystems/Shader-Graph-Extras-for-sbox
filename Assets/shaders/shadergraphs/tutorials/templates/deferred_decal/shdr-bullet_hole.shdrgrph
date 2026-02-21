@@ -723,7 +723,7 @@
       },
       "B": {
         "Identifier": "41",
-        "Output": "TextureCoordinateOutput"
+        "Output": "Output"
       },
       "C": {
         "Identifier": "33",
