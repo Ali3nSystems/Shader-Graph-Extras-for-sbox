@@ -488,15 +488,17 @@ public sealed class SGEComboNode : ShaderNode
 
 		if ( Type == ComboType.Bool )
 		{
+			
 			var trueResult = compiler.Result( InputTrue );
 			var falseResult = compiler.Result( InputFalse );
 			
-			if ( !falseResult.IsValid )
-				return NodeResult.Error( "False input must be connected" );
 			if ( !trueResult.IsValid )
 				return NodeResult.Error( "True input must be connected" );
 
-			results = new[] { trueResult, falseResult };
+			if ( !falseResult.IsValid )
+				return NodeResult.Error( "False input must be connected" );
+
+			results = new[] { falseResult, trueResult };
 			stateCount = 2;
 		}
 		else
