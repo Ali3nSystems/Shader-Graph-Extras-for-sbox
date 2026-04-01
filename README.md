@@ -41,8 +41,12 @@ Simply right click on an already existing .shdrgrph or .shdrfunc in the asset br
 ### 🔀 Combo Definitions
 - Using the combo node, you can define whether to use a combo with static/dynamic mode or bool/enum type for your shader logic. Can be controlled via material editor or C# just like regular written combos.
 
-    <img src="Assets\documentation\images\Combo.png"
-    alt="Shader Template" width="512">
+    <img src="Assets\documentation\images\Combo Definition.png" alt="Combo Definition" width="512">
+
+### ✏️ Node Multi-Editing
+- Select multiple nodes of the same or different types and edit their shared properties all at once. Shared properties, UI settings, sampler configurations, and group/sub-group assignments are automatically detected and displayed in a unified inspector panel. Priority fields support relative adjustments (e.g. `+5` or `-3`) so nodes can be offset without overwriting individual values. Group and sub-group name fields offer autocompletion from existing groups in the graph.
+
+    <img src="Assets\documentation\images\node multi-editing.png" alt="Node Multi-Editing" width="512">
 
 ### 🐛 Bug Fixes
 - Resolves multiple GitHub issues:
