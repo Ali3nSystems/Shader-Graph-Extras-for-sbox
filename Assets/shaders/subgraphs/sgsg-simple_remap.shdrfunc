@@ -50,11 +50,11 @@
       "_class": "FunctionResult",
       "FunctionOutputs": [
         {
-          "Id": "fbe1d0c5-dac9-4a1a-af1b-a6a59ed16e3b",
+          "Id": "e4bbe86f-4a6b-4c9f-9ff2-2c0ce34165db",
           "Name": "Output",
           "Type": "Vector4",
           "Preview": "None",
-          "Priority": 0
+          "Priority": 1
         }
       ],
       "Identifier": "2",
