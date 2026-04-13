@@ -10,6 +10,8 @@ public enum BlendMode
 	Translucent,
 	[Icon( "tune" )]
 	Dynamic,
+	[Icon( "build" )]
+	Custom,
 }
 
 public enum ShadingModel
@@ -115,6 +117,8 @@ public sealed partial class ShaderGraph : IGraph
 	public bool SupportsTranslucentBlendMode => GetFeature( "SupportsTranslucentBlendMode", true );
 	[Hide]
 	public bool SupportsDynamicBlendMode => GetFeature( "SupportsDynamicBlendMode", true );
+	[Hide]
+	public bool SupportsCustomBlendMode => GetFeature( "SupportsCustomBlendMode", true );
 
 	private bool GetFeature( string featureName, bool defaultValue )
 	{
@@ -171,6 +175,7 @@ public sealed partial class ShaderGraph : IGraph
 			BlendMode.Masked => SupportsMaskedBlendMode,
 			BlendMode.Translucent => SupportsTranslucentBlendMode,
 			BlendMode.Dynamic => SupportsDynamicBlendMode,
+			BlendMode.Custom => SupportsCustomBlendMode,
 			_ => false
 		};
 
@@ -181,6 +186,7 @@ public sealed partial class ShaderGraph : IGraph
 			else if ( SupportsMaskedBlendMode ) BlendMode = BlendMode.Masked;
 			else if ( SupportsTranslucentBlendMode ) BlendMode = BlendMode.Translucent;
 			else if ( SupportsDynamicBlendMode ) BlendMode = BlendMode.Dynamic;
+			else if ( SupportsCustomBlendMode ) BlendMode = BlendMode.Custom;
 		}
 
 		// Auto-correct ShadingModel if current is not supported

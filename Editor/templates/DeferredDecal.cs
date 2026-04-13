@@ -20,7 +20,8 @@ public static class SGEDeferredDecalTemplate
 		{"SupportsOpaqueBlendMode", false},
 		{"SupportsMaskedBlendMode", false},
 		{"SupportsTranslucentBlendMode", true},
-		{"SupportsDynamicBlendMode", false}
+		{"SupportsDynamicBlendMode", false},
+		{"SupportsCustomBlendMode", false},
 	};
 
 	public static string Code => @"

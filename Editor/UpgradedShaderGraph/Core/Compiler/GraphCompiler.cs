@@ -846,6 +846,7 @@ public sealed partial class GraphCompiler
 	}
 
 	private bool IsDynamicBlendMode => Graph.BlendMode == BlendMode.Dynamic;
+	private bool IsCustomBlendMode => Graph.BlendMode == BlendMode.Custom;
 
 	private string GenerateFeatures()
 	{
@@ -888,7 +889,11 @@ public sealed partial class GraphCompiler
 
 		var blendMode = Graph.BlendMode;
 
-		if ( IsDynamicBlendMode )
+		if ( IsCustomBlendMode )
+		{
+			// Custom blend mode: Template defines its own blend mode logic
+		}
+		else if ( IsDynamicBlendMode )
 		{
 			// Dynamic blend mode: Use StaticCombos linked to Features
 			sb.AppendLine( "StaticCombo( S_ALPHA_TEST, F_ALPHA_TEST, Sys( ALL ) );" );
@@ -1066,7 +1071,7 @@ public sealed partial class GraphCompiler
 		return $"{result.Cast( componentCount )}";
 	}
 
-	private string GenerateGlobals( CompileResult result, bool includeRepresentativeTexture = false )
+	private string GenerateGlobals( CompileResult result, bool includeRepresentativeTexture = false, HashSet<string> excludeTextures = null )
 	{
 		var sb = new StringBuilder();
 
@@ -1089,6 +1094,9 @@ public sealed partial class GraphCompiler
 		{
 			foreach ( var texInput in result.TextureInputs )
 			{
+				if ( excludeTextures != null && excludeTextures.Contains( texInput.Key ) )
+					continue;
+
 				sb.Append( $"{texInput.Value.CreateTexture( texInput.Key )} <" )
 				  .Append( $" Attribute( \"{texInput.Key}\" );" )
 				  .Append( $" SrgbRead( {texInput.Value.SrgbRead} ); >;" )
@@ -1118,6 +1126,9 @@ public sealed partial class GraphCompiler
 		{
 			foreach ( var texInput in result.TextureInputs )
 			{
+				if ( excludeTextures != null && excludeTextures.Contains( texInput.Key ) )
+					continue;
+
 				// If we're an attribute, we don't care about texture inputs
 				if ( texInput.Value.IsAttribute )
 					continue;
@@ -1135,6 +1146,9 @@ public sealed partial class GraphCompiler
 
 			foreach ( var texInput in result.TextureInputs )
 			{
+				if ( excludeTextures != null && excludeTextures.Contains( texInput.Key ) )
+					continue;
+
 				// If we're an attribute, we don't care about the UI options
 				if ( texInput.Value.IsAttribute )
 				{
@@ -1176,7 +1190,8 @@ public sealed partial class GraphCompiler
 
 	private string GeneratePixelGlobals()
 	{
-		return GenerateGlobals( PixelResult, includeRepresentativeTexture: true );
+		var vertexTextureKeys = new HashSet<string>( VertexResult.TextureInputs.Keys );
+		return GenerateGlobals( PixelResult, includeRepresentativeTexture: true, excludeTextures: vertexTextureKeys );
 	}
 
 	private string GenerateMaterial()

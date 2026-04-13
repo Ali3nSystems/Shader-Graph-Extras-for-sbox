@@ -21,6 +21,7 @@ public static class SGEBlendableTemplate
 		{"SupportsMaskedBlendMode", true},
 		{"SupportsTranslucentBlendMode", true},
 		{"SupportsDynamicBlendMode", true},
+		{"SupportsCustomBlendMode", false},
 	};
 
 	public static string Code => @"
