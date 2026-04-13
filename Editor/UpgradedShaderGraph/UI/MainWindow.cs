@@ -325,31 +325,31 @@ public class MainWindow : DockWindow
 		switch ( value )
 		{
 			case Color v:
-				_float4Attributes.Add( name, v );
+				_float4Attributes[name] = v;
 				_preview?.SetAttribute( name, v );
 				break;
 			case Vector4 v:
-				_float4Attributes.Add( name, v );
+				_float4Attributes[name] = v;
 				_preview?.SetAttribute( name, (Color)v );
 				break;
 			case Vector3 v:
-				_float3Attributes.Add( name, v );
+				_float3Attributes[name] = v;
 				_preview?.SetAttribute( name, v );
 				break;
 			case Vector2 v:
-				_float2Attributes.Add( name, v );
+				_float2Attributes[name] = v;
 				_preview?.SetAttribute( name, v );
 				break;
 			case float v:
-				_floatAttributes.Add( name, v );
+				_floatAttributes[name] = v;
 				_preview?.SetAttribute( name, v );
 				break;
 			case bool v:
-				_boolAttributes.Add( name, v );
+				_boolAttributes[name] = v;
 				_preview?.SetAttribute( name, v );
 				break;
 			case Texture v:
-				_textureAttributes.Add( name, v );
+				_textureAttributes[name] = v;
 				_preview?.SetAttribute( name, v );
 				break;
 			default:
