@@ -1071,7 +1071,7 @@ public sealed partial class GraphCompiler
 		return $"{result.Cast( componentCount )}";
 	}
 
-	private string GenerateGlobals( CompileResult result, bool includeRepresentativeTexture = false, HashSet<string> excludeTextures = null )
+	private string GenerateGlobals( CompileResult result, bool includeRepresentativeTexture = false )
 	{
 		var sb = new StringBuilder();
 
@@ -1094,9 +1094,6 @@ public sealed partial class GraphCompiler
 		{
 			foreach ( var texInput in result.TextureInputs )
 			{
-				if ( excludeTextures != null && excludeTextures.Contains( texInput.Key ) )
-					continue;
-
 				sb.Append( $"{texInput.Value.CreateTexture( texInput.Key )} <" )
 				  .Append( $" Attribute( \"{texInput.Key}\" );" )
 				  .Append( $" SrgbRead( {texInput.Value.SrgbRead} ); >;" )
@@ -1126,9 +1123,6 @@ public sealed partial class GraphCompiler
 		{
 			foreach ( var texInput in result.TextureInputs )
 			{
-				if ( excludeTextures != null && excludeTextures.Contains( texInput.Key ) )
-					continue;
-
 				// If we're an attribute, we don't care about texture inputs
 				if ( texInput.Value.IsAttribute )
 					continue;
@@ -1146,9 +1140,6 @@ public sealed partial class GraphCompiler
 
 			foreach ( var texInput in result.TextureInputs )
 			{
-				if ( excludeTextures != null && excludeTextures.Contains( texInput.Key ) )
-					continue;
-
 				// If we're an attribute, we don't care about the UI options
 				if ( texInput.Value.IsAttribute )
 				{
@@ -1190,8 +1181,7 @@ public sealed partial class GraphCompiler
 
 	private string GeneratePixelGlobals()
 	{
-		var vertexTextureKeys = new HashSet<string>( VertexResult.TextureInputs.Keys );
-		return GenerateGlobals( PixelResult, includeRepresentativeTexture: true, excludeTextures: vertexTextureKeys );
+		return GenerateGlobals( PixelResult, includeRepresentativeTexture: true );
 	}
 
 	private string GenerateMaterial()
