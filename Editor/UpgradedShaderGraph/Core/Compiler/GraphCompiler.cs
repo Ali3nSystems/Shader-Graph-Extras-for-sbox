@@ -969,6 +969,13 @@ public sealed partial class GraphCompiler
 			sb.AppendLine( $"#include \"{include}\"" );
 		}
 
+		// Add user-defined dynamic combos
+		foreach ( var combo in ComboDeclarations.Where( c => c.Mode == ComboMode.Dynamic ) )
+		{
+			int maxRange = combo.Type == ComboType.Bool ? 1 : combo.Range;
+			sb.AppendLine( $"DynamicCombo( {combo.GetComboVariableName()}, 0..{maxRange}, Sys( ALL ) );" );
+		}
+
 		if ( IsNotPreview )
 			return sb.ToString();
 
