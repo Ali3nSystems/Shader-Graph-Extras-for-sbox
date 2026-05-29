@@ -104,7 +104,7 @@ public class PreviewPanel : Widget
 		}
 	}
 
-	private bool _autoCompile = true;
+	private bool _autoCompile = false;
 	public bool AutoCompile
 	{
 		get => _autoCompile;
@@ -249,7 +249,7 @@ public class PreviewPanel : Widget
 		var option = toolBar.AddOption( null, "refresh" );
 
 		option.Checkable = true;
-		option.Checked = true;
+		option.Checked = false;
 		option.Toggled = ( e ) => AutoCompile = e;
 		option.ToolTip = "Enable Auto Compile";
 		option.StatusTip = "Enable Auto Compile";
