@@ -151,6 +151,20 @@ public class MainWindow : DockWindow
 		EditorUtility.OpenFileFolder( path );
 	}
 
+	private void ForceCompile()
+	{
+		if ( _asset == null )
+			return;
+
+		var compiler = new GraphCompiler( _graph, false );
+		var code = compiler.Generate();
+		if ( string.IsNullOrWhiteSpace( code ) )
+			return;
+
+		var shaderPath = System.IO.Path.ChangeExtension( _asset.AbsolutePath, ".shader" );
+		System.IO.File.WriteAllText( shaderPath, code );
+	}
+
 	protected virtual void Compile()
 	{
 		_shaderCompileErrors.Clear();
@@ -298,7 +312,8 @@ public class MainWindow : DockWindow
 			// Alternatively Material.Create could be made to force reload the shader
 			ConsoleSystem.Run( $"mat_reloadshaders {shaderPath}" );
 
-			_preview.Material = Material.Create( $"{_asset?.Name ?? "untitled"}_shadergraph_generated", shaderPath );
+			if ( _preview?.AutoCompile ?? true )
+				_preview.Material = Material.Create( $"{_asset?.Name ?? "untitled"}_shadergraph_generated", shaderPath );
 		}
 		else
 		{
@@ -357,7 +372,7 @@ public class MainWindow : DockWindow
 		}
 	}
 
-	private string GeneratePreviewCode()
+	private string GeneratePreviewCode( bool force = false )
 	{
 		ClearAttributes();
 
@@ -438,7 +453,7 @@ public class MainWindow : DockWindow
 
 		var code = compiler.Generate();
 
-		if ( compiler.Errors.Any() || !(_preview?.AutoCompile ?? true) )
+		if ( compiler.Errors.Any() || (!force && !(_preview?.AutoCompile ?? true)) )
 		{
 			_output.Errors = compiler.Errors;
 			DockManager.RaiseDock( "Output" );
@@ -622,7 +637,7 @@ public class MainWindow : DockWindow
 		toolBar.AddSeparator();
 
 		toolBar.AddOption( "Save", "common/save.png", () => Save() ).StatusTip = "Save Shader Graph";
-		toolBar.AddOption( "Compile", "refresh", Compile ).StatusTip = "Compile Generated Shader";
+		toolBar.AddOption( "Compile", "refresh", ForceCompile ).StatusTip = "Compile Generated Shader";
 
 		toolBar.AddSeparator();
 
