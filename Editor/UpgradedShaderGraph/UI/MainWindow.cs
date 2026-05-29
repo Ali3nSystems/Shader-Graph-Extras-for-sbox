@@ -462,12 +462,6 @@ public class MainWindow : DockWindow
 		return code;
 	}
 
-	private string GenerateShaderCode()
-	{
-		var compiler = new GraphCompiler( _graph, false );
-		return compiler.Generate();
-	}
-
 	public void OnUndoPushed()
 	{
 		_undoHistory.History = _undoStack.Names;
@@ -622,9 +616,13 @@ public class MainWindow : DockWindow
 		var toolBar = new ToolBar( this, "ShaderGraphToolbar" );
 		AddToolBar( toolBar, ToolbarPosition.Top );
 
-		toolBar.AddOption( "New", "common/new.png", New ).StatusTip = "New Graph";
-		toolBar.AddOption( "Open", "common/open.png", Open ).StatusTip = "Open Graph";
-		toolBar.AddOption( "Save", "common/save.png", () => Save() ).StatusTip = "Save Graph";
+		toolBar.AddOption( "New", "common/new.png", New ).StatusTip = "New Shader Graph";
+		toolBar.AddOption( "Open", "common/open.png", Open ).StatusTip = "Open Shader Graph";
+
+		toolBar.AddSeparator();
+
+		toolBar.AddOption( "Save", "common/save.png", () => Save() ).StatusTip = "Save Shader Graph";
+		toolBar.AddOption( "Compile", "refresh", Compile ).StatusTip = "Compile Generated Shader";
 
 		toolBar.AddSeparator();
 
@@ -640,7 +638,6 @@ public class MainWindow : DockWindow
 
 		toolBar.AddSeparator();
 
-		toolBar.AddOption( "Compile", "refresh", Compile ).StatusTip = "Compile Graph";
 		toolBar.AddOption( "Open Generated Shader", "common/edit.png", OpenGeneratedShader ).StatusTip = "Open Generated Shader";
 		toolBar.AddOption( "Take Screenshot", "photo_camera", Screenshot ).StatusTip = "Take Screenshot";
 
@@ -1019,17 +1016,6 @@ public class MainWindow : DockWindow
 		if ( IsSubgraph )
 		{
 			Compile();
-		}
-		else
-		{
-			var shaderPath = System.IO.Path.ChangeExtension( savePath, ".shader" );
-
-			var code = GenerateShaderCode();
-			if ( string.IsNullOrWhiteSpace( code ) )
-				return false;
-
-			// Write generated shader to file
-			System.IO.File.WriteAllText( shaderPath, code );
 		}
 
 		AddToRecentFiles( savePath );
