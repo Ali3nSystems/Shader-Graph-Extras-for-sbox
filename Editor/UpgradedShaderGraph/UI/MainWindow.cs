@@ -1016,11 +1016,11 @@ public class MainWindow : DockWindow
 		if ( IsSubgraph )
 		{
 			Compile();
+
+			EditorEvent.Run( "shadergraph.update.subgraph", _asset.RelativePath );
 		}
 
 		AddToRecentFiles( savePath );
-
-		EditorEvent.Run( "shadergraph.update.subgraph", _asset.RelativePath );
 
 		return true;
 	}
