@@ -2,6 +2,11 @@
 
 <img src="Assets/textures/ICON-shader_graph_extras@10x10.png" alt="Shader Graph Extras Icon" width="512">
 
+## Sources
+
+sbox.game: https://sbox.game/ali3nsystems/lib-shader_graph_extras
+github.com: https://github.com/Ali3nSystems/Shader-Graph-Extras-for-sbox
+
 ## Introduction
 
 A brand new "Upgraded Shader Graph" with additional nodes, subgraphs, HLSL functions, custom shader templates, custom shading models, various optimizations and other advanced features. Some nodes and subgraphs are available in both the base Shader Graph and Upgraded Shader Graph under the "Shader Graph Extras - Universal" menu when selecting nodes in the graph. Upgraded Shader Graph is already compatible with .shdrgrph and .shdrfunc files created using base Shader Graph.

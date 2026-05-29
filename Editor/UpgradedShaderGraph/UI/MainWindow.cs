@@ -480,7 +480,7 @@ public class MainWindow : DockWindow
 		_dirty = true;
 		_graphCanvas.WindowTitle = $"{_asset?.Name ?? "untitled"}*";
 
-		if ( evaluate )
+		if ( evaluate && (_preview?.AutoCompile ?? true) )
 			GeneratePreviewCode();
 	}
 
@@ -1126,7 +1126,8 @@ public class MainWindow : DockWindow
 
 		_preview = new PreviewPanel( this, _graph.Model )
 		{
-			OnModelChanged = ( model ) => _graph.Model = model?.Name
+			OnModelChanged = ( model ) => _graph.Model = model?.Name,
+			OnAutoCompileEnabled = () => GeneratePreviewCode()
 		};
 
 		foreach ( var value in _textureAttributes )

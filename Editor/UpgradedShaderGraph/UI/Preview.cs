@@ -104,6 +104,24 @@ public class PreviewPanel : Widget
 		}
 	}
 
+	private bool _autoCompile = true;
+	public bool AutoCompile
+	{
+		get => _autoCompile;
+		set
+		{
+			if ( _autoCompile == value )
+				return;
+
+			_autoCompile = value;
+
+			if ( _autoCompile )
+				OnAutoCompileEnabled?.Invoke();
+		}
+	}
+
+	public Action OnAutoCompileEnabled { get; set; }
+
 	private void UpdateAnimationCombo()
 	{
 		_animationCombo.Clear();
@@ -228,12 +246,22 @@ public class PreviewPanel : Widget
 		stretcher.Layout.AddStretchCell( 1 );
 		toolBar.AddWidget( stretcher );
 
-		var option = toolBar.AddOption( null, "preview" );
+		var option = toolBar.AddOption( null, "refresh" );
+
+		option.Checkable = true;
+		option.Checked = true;
+		option.Toggled = ( e ) => AutoCompile = e;
+		option.ToolTip = "Enable Auto Compile";
+		option.StatusTip = "Enable Auto Compile";
+
+		toolBar.AddSeparator();
+		
+		option = toolBar.AddOption( null, "preview" );
 		option.Checkable = true;
 		option.Toggled = ( e ) => _preview.EnableNodePreview = e;
 		option.ToolTip = "Toggle Node Preview";
 		option.StatusTip = "Toggle Node Preview";
-
+		
 		toolBar.AddSeparator();
 
 		option = toolBar.AddOption( null, "lightbulb", OpenLightSettings );
