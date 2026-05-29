@@ -438,7 +438,7 @@ public class MainWindow : DockWindow
 
 		var code = compiler.Generate();
 
-		if ( compiler.Errors.Any() )
+		if ( compiler.Errors.Any() || !(_preview?.AutoCompile ?? true) )
 		{
 			_output.Errors = compiler.Errors;
 			DockManager.RaiseDock( "Output" );
@@ -474,7 +474,7 @@ public class MainWindow : DockWindow
 		_dirty = true;
 		_graphCanvas.WindowTitle = $"{_asset?.Name ?? "untitled"}*";
 
-		if ( evaluate && (_preview?.AutoCompile ?? true) )
+		if ( evaluate )
 			GeneratePreviewCode();
 	}
 
