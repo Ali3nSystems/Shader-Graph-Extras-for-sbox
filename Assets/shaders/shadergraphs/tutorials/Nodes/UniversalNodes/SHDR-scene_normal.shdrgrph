@@ -1,0 +1,65 @@
+{
+  "IsSubgraph": false,
+  "Path": "shaders/shadergraphs/tutorials/nodes/universalnodes/shdr-scene_normal.shdrgrph",
+  "Model": "models/dev/plane.vmdl",
+  "Title": null,
+  "Description": "",
+  "Category": null,
+  "Icon": null,
+  "AddToNodeLibrary": false,
+  "BlendMode": "Opaque",
+  "ShadingModel": "Unlit",
+  "Domain": "Surface",
+  "PreviewSettings": {
+    "RenderBackfaces": false,
+    "EnableShadows": true,
+    "ShowGround": false,
+    "ShowSkybox": true,
+    "BackgroundColor": "0,0,0,1",
+    "Tint": "1,1,1,1"
+  },
+  "Version": 1,
+  "nodes": [
+    {
+      "_class": "CommentNode",
+      "Size": "444,84",
+      "Color": "Green",
+      "Title": "Scene Normal",
+      "Description": "Coordinates: - XY of the Screen Position to be sampled.",
+      "Layer": 3,
+      "Identifier": "0",
+      "Position": "168,0",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 1,
+      "DefaultMetalness": 0,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "1",
+      "Position": "0,0",
+      "HandleOffsets": {},
+      "Albedo": {
+        "Identifier": "2",
+        "Output": "Output"
+      }
+    },
+    {
+      "_class": "SGESceneNormalNode",
+      "Identifier": "2",
+      "Position": "-216,0",
+      "HandleOffsets": {},
+      "Coordinates": {
+        "Identifier": "3",
+        "Output": "XY"
+      }
+    },
+    {
+      "_class": "ScreenPosition",
+      "Identifier": "3",
+      "Position": "-432,-24",
+      "HandleOffsets": {}
+    }
+  ]
+}
