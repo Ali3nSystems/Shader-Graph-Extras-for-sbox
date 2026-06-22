@@ -124,6 +124,19 @@ PS
 	#include ""common/pixel.hlsl""
 	#include ""common/classes/Depth.hlsl""
 {9}{10}{11}
+	float g_flNormalAttenuation < UiGroup( ""Decal Parameters,20/Normal,1"" ); UiType( Slider ); Range( 0, 1 ); Default( 0 ); >;
+
+#ifndef DECALS_HLSL
+	float DecalAttenuation( float3 surfaceNormal, float3 decalOrientation, float attenuationFactor )
+	{{
+		const float MinClampAngle = 0.55;
+		float angleDot = dot( surfaceNormal, decalOrientation );
+		angleDot = clamp( angleDot, MinClampAngle, 1.0 );
+		angleDot = smoothstep( MinClampAngle, 1.0, angleDot );
+		return lerp( 1, angleDot, attenuationFactor );
+	}}
+#endif
+
 	RenderState( BlendEnable, true );
 	RenderState( SrcBlend, SRC_ALPHA );
 	RenderState( DstBlend, INV_SRC_ALPHA );
@@ -177,6 +190,11 @@ PS
 		m.Roughness = saturate( m.Roughness );
 		m.Metalness = saturate( m.Metalness );
 		m.Opacity = saturate( m.Opacity );
+
+		// Normal attenuation: fade on surfaces angled away from decal projection
+		float3 vSurfaceNormal = normalize( cross( ddy( worldPos ), ddx( worldPos ) ) );
+		if ( dot( vSurfaceNormal, normalize( g_vCameraPositionWs - worldPos ) ) < 0 ) vSurfaceNormal = -vSurfaceNormal;
+		m.Opacity *= DecalAttenuation( vSurfaceNormal, -i.vDecalRight, g_flNormalAttenuation );
 
 		// Toolvis:
 		m.WorldTangentU = i.vTangentUWs;
