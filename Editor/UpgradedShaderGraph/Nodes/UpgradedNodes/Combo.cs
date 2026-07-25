@@ -100,11 +100,12 @@ public sealed class SGEComboNode : ShaderNode
 	[Hide, JsonIgnore]
 	private int _stateCount = 2;
 
+	[Title( "Group" ),Group("UI")]
+	[ShowIf( nameof( IsStaticMode ), true )]
+	public ComboGroup Group { get; set; } = "Combo Group";
+
 	[Title( "Name" ),Group("UI")]
 	public ComboName Name { get; set; } = "Combo Name";
-
-	[Title( "Group" ),Group("UI")]
-	public ComboGroup Group { get; set; } = "Combo Group";
 
 	[Title( "State 1" ),Group("UI")]
 	[ShowIf( nameof( IsEnumMode ), true )]
@@ -143,6 +144,9 @@ public sealed class SGEComboNode : ShaderNode
 
 	[Hide]
 	private bool IsBoolMode => Type == ComboType.Bool;
+
+	[Hide]
+	private bool IsStaticMode => Mode == ComboMode.Static;
 
 	[Hide]
 	private bool HasState3 => IsEnumMode && StateCount >= 3;
