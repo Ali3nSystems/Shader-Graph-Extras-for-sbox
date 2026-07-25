@@ -11,7 +11,7 @@ public static class SGEBlendableTemplate
 		{ "SupportsMetalness", true },
 		{ "SupportsAmbientOcclusion", true },
 		{ "SupportsPositionOffset", true },
-        { "SupportsPixelDepthOffset", true},
+       	{ "SupportsPixelDepthOffset", false},
 
         {"SupportsLitShadingModel", true},
 		{"SupportsUnlitShadingModel", true},

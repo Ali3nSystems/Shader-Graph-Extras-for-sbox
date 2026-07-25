@@ -12,7 +12,7 @@ public static class SGEToonShadingModel
 		{ "SupportsMetalness", true },
 		{ "SupportsAmbientOcclusion", true },
 		{ "SupportsPositionOffset", true},
-		{ "SupportsPixelDepthOffset", true},
+		{ "SupportsPixelDepthOffset", false},
 
 		{"SupportsOpaqueBlendMode", true},
 		{"SupportsMaskedBlendMode", true},
