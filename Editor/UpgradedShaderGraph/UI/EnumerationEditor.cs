@@ -39,6 +39,7 @@ public class BlendModeControlWidget : ControlWidget
 			nameof( BlendMode.Masked ) => shaderGraph.SupportsMaskedBlendMode,
 			nameof( BlendMode.Translucent ) => shaderGraph.SupportsTranslucentBlendMode,
 			nameof( BlendMode.Dynamic ) => shaderGraph.SupportsDynamicBlendMode,
+			nameof( BlendMode.Custom ) => shaderGraph.SupportsCustomBlendMode,
 			_ => true
 		};
 	}
