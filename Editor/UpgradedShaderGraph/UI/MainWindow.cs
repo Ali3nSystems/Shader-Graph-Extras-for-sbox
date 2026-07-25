@@ -619,12 +619,6 @@ public class MainWindow : DockWindow
 		_graphView.ClearSelection();
 	}
 
-	[Shortcut( "gameObject.frame", "F", ShortcutType.Window )]
-	private void CenterOnSelection()
-	{
-		_graphView.CenterOnSelection();
-	}
-
 	private void CreateToolBar()
 	{
 		var toolBar = new ToolBar( this, "ShaderGraphToolbar" );
