@@ -403,20 +403,23 @@ public class ShaderGraphView : GraphView
 
 	private void SelectionChanged()
 	{
+		// Comments are excluded from multi-edit, but a selection that has no
+		// editable node still needs to reach the properties panel -- otherwise
+		// clicking a comment shows the graph and its text can't be edited.
 		var selectedNodes = SelectedItems
 			.OfType<NodeUI>()
 			.Where( n => n is not CommentUI )
 			.ToList();
 
-		if ( selectedNodes.Count == 0 )
+		if ( selectedNodes.Count < 2 )
 		{
-			_window.OnNodeSelected( null );
-			return;
-		}
+			// Same as base shadergraph: prefer the comment, if there is one.
+			var item = SelectedItems
+				.OfType<NodeUI>()
+				.OrderByDescending( n => n is CommentUI )
+				.FirstOrDefault();
 
-		if ( selectedNodes.Count == 1 )
-		{
-			_window.OnNodeSelected( (BaseNode)selectedNodes[0].Node );
+			_window.OnNodeSelected( item.IsValid() ? (BaseNode)item.Node : null );
 			return;
 		}
 
