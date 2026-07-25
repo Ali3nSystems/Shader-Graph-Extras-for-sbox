@@ -11,12 +11,13 @@ public static class LitShadingModel
 		{ "SupportsMetalness", true },
 		{ "SupportsAmbientOcclusion", true },
 		{ "SupportsPositionOffset", true },
-        { "SupportsPixelDepthOffset", true},
+        { "SupportsPixelDepthOffset", false},
 
-		{"SupportsOpaqueBlendMode", true},
-		{"SupportsMaskedBlendMode", true},
-		{"SupportsTranslucentBlendMode", true},
-		{"SupportsDynamicBlendMode", true}
+		{ "SupportsOpaqueBlendMode", true},
+		{ "SupportsMaskedBlendMode", true},
+		{ "SupportsTranslucentBlendMode", true},
+		{ "SupportsDynamicBlendMode", true},
+		{ "SupportsCustomBlendMode", true}
 	};
 	public static string Code => @"
 return ShadingModelStandard::Shade( m );";

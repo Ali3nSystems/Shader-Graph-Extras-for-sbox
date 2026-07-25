@@ -13,14 +13,15 @@ public static class SurfaceTemplate
 		{ "SupportsPositionOffset", true },
         { "SupportsPixelDepthOffset", false},
 
-        {"SupportsLitShadingModel", true},
-		{"SupportsUnlitShadingModel", true},
-		{"SupportsCustomShadingModel", true},
+        { "SupportsLitShadingModel", true},
+		{ "SupportsUnlitShadingModel", true},
+		{ "SupportsCustomShadingModel", true},
 
 		{ "SupportsOpaqueBlendMode", true},
 		{ "SupportsMaskedBlendMode", true},
 		{ "SupportsTranslucentBlendMode", true},
-		{ "SupportsDynamicBlendMode", true }
+		{ "SupportsDynamicBlendMode", true },
+		{ "SupportsCustomBlendMode", false }
 	};
 	public static string Code => @"
 HEADER

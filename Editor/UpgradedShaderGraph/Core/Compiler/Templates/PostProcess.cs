@@ -17,10 +17,11 @@ public static class PostProcessTemplate
 		{ "SupportsUnlitShadingModel", true },
 		{ "SupportsCustomShadingModel", false },
 
-		{ "SupportsOpaqueBlendMode", true },
-		{ "SupportsMaskedBlendMode", true },
-		{ "SupportsTranslucentBlendMode", true },
-		{ "SupportsDynamicBlendMode", true }
+		{ "SupportsOpaqueBlendMode", false },
+		{ "SupportsMaskedBlendMode", false },
+		{ "SupportsTranslucentBlendMode", false },
+		{ "SupportsDynamicBlendMode", false },
+		{ "SupportsCustomBlendMode", true }
 	};
 	public static string Code => @"
 HEADER

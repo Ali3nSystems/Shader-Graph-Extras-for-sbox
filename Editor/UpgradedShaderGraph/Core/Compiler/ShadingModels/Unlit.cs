@@ -11,12 +11,13 @@ public static class UnlitShadingModel
 		{ "SupportsMetalness", false },
 		{ "SupportsAmbientOcclusion", false },
 		{ "SupportsPositionOffset", true },
-        { "SupportsPixelDepthOffset", true},
+        { "SupportsPixelDepthOffset", false},
 
-		{"SupportsOpaqueBlendMode", true},
-		{"SupportsMaskedBlendMode", true},
-		{"SupportsTranslucentBlendMode", true},
-		{"SupportsDynamicBlendMode", true}
+		{ "SupportsOpaqueBlendMode", true},
+		{ "SupportsMaskedBlendMode", true},
+		{ "SupportsTranslucentBlendMode", true},
+		{ "SupportsDynamicBlendMode", true},
+		{ "SupportsCustomBlendMode", true}
 	};
 	public static string Code => @"
 return float4( m.Albedo, m.Opacity );";

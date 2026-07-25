@@ -13,15 +13,15 @@ public static class SGEDeferredDecalTemplate
 		{ "SupportsPositionOffset", false },
 		{ "SupportsPixelDepthOffset", false},
 
-        {"SupportsLitShadingModel", true},
-		{"SupportsUnlitShadingModel", true},
-		{"SupportsCustomShadingModel", true},
+        { "SupportsLitShadingModel", true},
+		{ "SupportsUnlitShadingModel", true},
+		{ "SupportsCustomShadingModel", true},
 
-		{"SupportsOpaqueBlendMode", false},
-		{"SupportsMaskedBlendMode", false},
-		{"SupportsTranslucentBlendMode", true},
-		{"SupportsDynamicBlendMode", false},
-		{"SupportsCustomBlendMode", false},
+		{ "SupportsOpaqueBlendMode", false},
+		{ "SupportsMaskedBlendMode", false},
+		{ "SupportsTranslucentBlendMode", true},
+		{ "SupportsDynamicBlendMode", false},
+		{ "SupportsCustomBlendMode", false}
 	};
 
 	public static string Code => @"
