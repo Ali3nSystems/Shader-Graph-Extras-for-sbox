@@ -10,6 +10,12 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 		Steep
 	}
 
+	public enum SGEParallaxOcclusionMappingZDivision
+	{
+		Enabled,
+		Disabled
+	}
+
 	public enum SGEParallaxOcclusionMappingChannel
 	{
 		Red,
@@ -64,6 +70,9 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 	}
 
 	public SGEParallaxOcclusionMappingMode Mode { get; set; } = SGEParallaxOcclusionMappingMode.Standard;
+
+	[Title("Z Division")]
+	public SGEParallaxOcclusionMappingZDivision ZDivision { get; set; } = SGEParallaxOcclusionMappingZDivision.Enabled;
 	public SGEParallaxOcclusionMappingChannel Channel { get; set; } = SGEParallaxOcclusionMappingChannel.Alpha;
 
 	[InputDefault( nameof( Amplitude ) )]
@@ -95,6 +104,7 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 		var levelOfDetail = compiler.ResultOrDefault( LevelOfDetail, DefaultLevelOfDetail );
 		var offset = compiler.ResultOrDefault(Offset, DefaultOffset);
 		int channel = (int)Channel;
+		int zDivision = (int)ZDivision;
 
 		compiler.RegisterInclude( "shaders/hlsl/functions/func-parallax_occlusion_mapping.hlsl" );
 
@@ -103,12 +113,12 @@ public sealed class SGEParallaxOcclusionMappingNode : ShaderNode
 		switch (Mode)
 		{
 			case SGEParallaxOcclusionMappingMode.Standard:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingStandard({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
+				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingStandard({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel}, {zDivision})");
 				break;
 
 
 			case SGEParallaxOcclusionMappingMode.Steep:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingSteep({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel})");
+				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEParallaxOcclusionMappingSteep({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations},  {levelOfDetail}, {offset}, {channel}, {zDivision})");
 				break;
 		}
 

@@ -443,7 +443,7 @@
       "Color": "Green",
       "Title": "",
       "Description": "Amplitude: - Controls the amplitude of the coordinates.\nMinimum Iterations: - Minimum number of height textures to sample based on the LOD.\nMaximum Iterations: - Maximum number of height textures to sample based on the LOD.",
-      "Layer": 3,
+      "Layer": 6,
       "Identifier": "27",
       "Position": "168,180",
       "HandleOffsets": {}
@@ -586,20 +586,20 @@
       "Color": "Green",
       "Title": "Parallax Occlusion Mapping",
       "Description": "Coordinates: - Add your coordinates to sample the height.\nTexture: - Add your \u0022Texture\u0022 output here from the \u0022Texture Object\u0022 node.\nSampler: - Add your \u0022Sampler\u0022 output here from the \u0022Texture Object\u0022 node.\nTangent Space View Direction: - Add \u0022Tangent View Vector\u0022 node as shown.",
-      "Layer": 5,
+      "Layer": 7,
       "Identifier": "40",
       "Position": "168,0",
       "HandleOffsets": {}
     },
     {
       "_class": "CommentNode",
-      "Size": "564,132",
+      "Size": "444,132",
       "Color": "Orange",
       "Title": "Info",
       "Description": "If you want to use this node with \u0022Deferred Decals\u0022 template then look at: shaders/shadergraphs/tutorials/templates/deferred_decal/shdr-bullet_hole.shdrgrph",
-      "Layer": 4,
+      "Layer": 1,
       "Identifier": "41",
-      "Position": "768,156",
+      "Position": "768,372",
       "HandleOffsets": {}
     },
     {
@@ -608,7 +608,7 @@
       "Color": "Purple",
       "Title": "Modes",
       "Description": "Standard: - Moderately expensive with high quality results. Interpolates the layers and is about 2 times more expensive than \u0022Steep\u0022.\nSteep: - Cheapest but also the worst quality overall. You must use a lot of samples if you want decent results.\n\n",
-      "Layer": 1,
+      "Layer": 4,
       "Identifier": "42",
       "Position": "768,0",
       "HandleOffsets": {}
@@ -650,6 +650,7 @@
     {
       "_class": "SGEParallaxOcclusionMappingNode",
       "Mode": "Standard",
+      "ZDivision": "Enabled",
       "Channel": "Red",
       "DefaultAmplitude": 0.1,
       "DefaultMinimumIterations": 8,
@@ -694,7 +695,7 @@
       "Color": "Green",
       "Title": "",
       "Description": "Level Of Detail: - Lerps between the minimum and maximum numbers of height samples (0-1 = Minimum - Maximum).\nOffset: - Controls the offset of the coordinates.",
-      "Layer": 2,
+      "Layer": 5,
       "Identifier": "45",
       "Position": "168,360",
       "HandleOffsets": {}
@@ -745,6 +746,28 @@
         "Identifier": "48",
         "Output": "Result"
       }
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "312,108",
+      "Color": "Purple",
+      "Title": "Modes",
+      "Description": "Enabled: - Use it for terrain or models.\nDisabled: - Use it for decals.\n\n",
+      "Layer": 3,
+      "Identifier": "50",
+      "Position": "768,156",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "456,84",
+      "Color": "Purple",
+      "Title": "Channel",
+      "Description": "Which channel to use from the texture for displacement.\n\n",
+      "Layer": 2,
+      "Identifier": "51",
+      "Position": "768,276",
+      "HandleOffsets": {}
     }
   ]
 }

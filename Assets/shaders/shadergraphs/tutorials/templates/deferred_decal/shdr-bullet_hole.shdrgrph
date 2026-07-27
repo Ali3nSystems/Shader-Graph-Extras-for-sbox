@@ -32,11 +32,11 @@
       "Position": "0,0",
       "HandleOffsets": {},
       "Albedo": {
-        "Identifier": "67",
+        "Identifier": "66",
         "Output": "Result"
       },
       "Opacity": {
-        "Identifier": "77",
+        "Identifier": "76",
         "Output": "Result"
       },
       "Normal": {
@@ -137,7 +137,7 @@
       "Position": "-192,456",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "78",
+        "Identifier": "77",
         "Output": "Result"
       }
     },
@@ -184,7 +184,7 @@
       "Position": "-780,216",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "76",
+        "Identifier": "75",
         "Output": "Output"
       }
     },
@@ -195,7 +195,7 @@
       "Position": "-1272,36",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "46",
+        "Identifier": "45",
         "Output": "Result"
       }
     },
@@ -327,7 +327,7 @@
       "Position": "-1992,252",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "51",
+        "Identifier": "50",
         "Output": "Result"
       }
     },
@@ -338,7 +338,7 @@
       "Position": "-2292,336",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "88",
+        "Identifier": "87",
         "Output": "Result"
       }
     },
@@ -412,7 +412,7 @@
       "Position": "-2352,108",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "40",
+        "Identifier": "39",
         "Output": "Result"
       }
     },
@@ -423,7 +423,7 @@
       "Position": "-2112,588",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "49",
+        "Identifier": "48",
         "Output": "Result"
       }
     },
@@ -434,7 +434,7 @@
       "Position": "-1860,12",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "39",
+        "Identifier": "100",
         "Output": "Result"
       }
     },
@@ -456,7 +456,7 @@
       "Position": "-2448,540",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "44",
+        "Identifier": "43",
         "Output": "Result"
       }
     },
@@ -489,7 +489,7 @@
       "Position": "-2448,648",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "45",
+        "Identifier": "44",
         "Output": "Output"
       }
     },
@@ -500,7 +500,7 @@
       "Position": "-2412,84",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "50",
+        "Identifier": "49",
         "Output": "Result"
       }
     },
@@ -584,17 +584,6 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "39",
-      "Position": "-1860,60",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "34",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "40",
       "Position": "-2352,144",
       "HandleOffsets": {},
       "Input": {
@@ -605,25 +594,26 @@
     {
       "_class": "SGEParallaxOcclusionMappingNode",
       "Mode": "Standard",
+      "ZDivision": "Disabled",
       "Channel": "Alpha",
       "DefaultAmplitude": 0.1,
       "DefaultMinimumIterations": 8,
       "DefaultMaximumIterations": 32,
       "DefaultLevelOfDetail": 1,
       "DefaultOffset": 0.3,
-      "Identifier": "41",
+      "Identifier": "40",
       "Position": "-1800,24",
       "HandleOffsets": {},
       "Coordinates": {
-        "Identifier": "39",
+        "Identifier": "100",
         "Output": "Result"
       },
       "Texture": {
-        "Identifier": "71",
+        "Identifier": "70",
         "Output": "Result"
       },
       "Sampler": {
-        "Identifier": "72",
+        "Identifier": "71",
         "Output": "Result"
       },
       "TangentSpaceViewDirection": {
@@ -631,11 +621,11 @@
         "Output": "Result"
       },
       "Amplitude": {
-        "Identifier": "43",
+        "Identifier": "42",
         "Output": "Result"
       },
       "MinimumIterations": {
-        "Identifier": "48",
+        "Identifier": "47",
         "Output": "Result"
       },
       "MaximumIterations": {
@@ -643,7 +633,7 @@
         "Output": "Result"
       },
       "LevelOfDetail": {
-        "Identifier": "47",
+        "Identifier": "46",
         "Output": "Result"
       },
       "Offset": {
@@ -653,25 +643,25 @@
     },
     {
       "_class": "ScreenPosition",
-      "Identifier": "42",
+      "Identifier": "41",
       "Position": "-3060,588",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "43",
+      "Identifier": "42",
       "Position": "-2232,156",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "52",
+        "Identifier": "51",
         "Output": "Result"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "44",
+      "Identifier": "43",
       "Position": "-2448,528",
       "HandleOffsets": {},
       "Input": {
@@ -689,23 +679,23 @@
         "Maximum": 1,
         "Value": 1
       },
-      "Identifier": "45",
+      "Identifier": "44",
       "Position": "-2664,612",
       "HandleOffsets": {},
       "Coordinates": {
-        "Identifier": "42",
+        "Identifier": "41",
         "Output": "XY"
       },
       "Value": {
-        "Identifier": "58",
+        "Identifier": "57",
         "Output": "Result"
       },
       "Minimum": {
-        "Identifier": "60",
+        "Identifier": "59",
         "Output": "Result"
       },
       "Maximum": {
-        "Identifier": "62",
+        "Identifier": "61",
         "Output": "Result"
       }
     },
@@ -714,7 +704,7 @@
       "DefaultA": 0,
       "DefaultB": 1,
       "Fraction": 0.5,
-      "Identifier": "46",
+      "Identifier": "45",
       "Position": "-1488,0",
       "HandleOffsets": {},
       "A": {
@@ -722,7 +712,7 @@
         "Output": "Result"
       },
       "B": {
-        "Identifier": "41",
+        "Identifier": "40",
         "Output": "Output"
       },
       "C": {
@@ -733,7 +723,7 @@
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "47",
+      "Identifier": "46",
       "Position": "-2052,228",
       "HandleOffsets": {},
       "Input": {
@@ -744,7 +734,7 @@
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "48",
+      "Identifier": "47",
       "Position": "-2172,180",
       "HandleOffsets": {},
       "Input": {
@@ -772,14 +762,14 @@
           "Priority": 2
         }
       },
-      "Identifier": "49",
+      "Identifier": "48",
       "Position": "-2664,552",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "50",
+      "Identifier": "49",
       "Position": "-2412,120",
       "HandleOffsets": {},
       "Input": {
@@ -790,18 +780,18 @@
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "51",
+      "Identifier": "50",
       "Position": "-1992,780",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "53",
+        "Identifier": "52",
         "Output": "Result"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "52",
+      "Identifier": "51",
       "Position": "-2232,468",
       "HandleOffsets": {},
       "Input": {
@@ -829,7 +819,7 @@
           "Priority": 2
         }
       },
-      "Identifier": "53",
+      "Identifier": "52",
       "Position": "-2664,744",
       "HandleOffsets": {}
     },
@@ -853,7 +843,7 @@
           "Priority": 2
         }
       },
-      "Identifier": "54",
+      "Identifier": "53",
       "Position": "-3060,720",
       "HandleOffsets": {}
     },
@@ -877,7 +867,7 @@
           "Priority": 2
         }
       },
-      "Identifier": "55",
+      "Identifier": "54",
       "Position": "-3060,780",
       "HandleOffsets": {}
     },
@@ -901,59 +891,26 @@
           "Priority": 2
         }
       },
-      "Identifier": "56",
+      "Identifier": "55",
       "Position": "-3060,840",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "57",
+      "Identifier": "56",
       "Position": "-2844,756",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "54",
+        "Identifier": "53",
         "Output": "Result"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "58",
+      "Identifier": "57",
       "Position": "-2844,672",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "57",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "59",
-      "Position": "-2784,816",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "55",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "60",
-      "Position": "-2784,696",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "59",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "61",
-      "Position": "-2724,876",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "56",
@@ -963,11 +920,44 @@
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "62",
+      "Identifier": "58",
+      "Position": "-2784,816",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "54",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "59",
+      "Position": "-2784,696",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "58",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "60",
+      "Position": "-2724,876",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "55",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "61",
       "Position": "-2724,720",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "61",
+        "Identifier": "60",
         "Output": "Result"
       }
     },
@@ -975,7 +965,7 @@
       "_class": "Multiply",
       "DefaultA": 0,
       "DefaultB": 1,
-      "Identifier": "63",
+      "Identifier": "62",
       "Position": "-324,0",
       "HandleOffsets": {},
       "A": {
@@ -983,7 +973,7 @@
         "Output": "Result"
       },
       "B": {
-        "Identifier": "66",
+        "Identifier": "65",
         "Output": "Result"
       }
     },
@@ -1005,15 +995,26 @@
           "Priority": 2
         }
       },
-      "Identifier": "64",
+      "Identifier": "63",
       "Position": "-996,48",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "65",
+      "Identifier": "64",
       "Position": "-780,84",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "63",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "65",
+      "Position": "-780,60",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "64",
@@ -1021,64 +1022,53 @@
       }
     },
     {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "66",
-      "Position": "-780,60",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "65",
-        "Output": "Result"
-      }
-    },
-    {
       "_class": "Multiply",
       "DefaultA": 0,
       "DefaultB": 1,
-      "Identifier": "67",
+      "Identifier": "66",
       "Position": "-132,0",
       "HandleOffsets": {},
       "A": {
-        "Identifier": "63",
+        "Identifier": "62",
         "Output": "Result"
       },
       "B": {
-        "Identifier": "70",
+        "Identifier": "69",
         "Output": "Result"
       }
     },
     {
       "_class": "Tint",
-      "Identifier": "68",
+      "Identifier": "67",
       "Position": "-408,-60",
       "HandleOffsets": {}
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "69",
+      "Identifier": "68",
       "Position": "-192,-24",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "68",
+        "Identifier": "67",
         "Output": "RGBA"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "70",
+      "Identifier": "69",
       "Position": "-192,60",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "69",
+        "Identifier": "68",
         "Output": "Result"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "71",
+      "Identifier": "70",
       "Position": "-1860,84",
       "HandleOffsets": {},
       "Input": {
@@ -1089,7 +1079,7 @@
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "72",
+      "Identifier": "71",
       "Position": "-1920,108",
       "HandleOffsets": {},
       "Input": {
@@ -1100,8 +1090,19 @@
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "73",
+      "Identifier": "72",
       "Position": "-1860,276",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "70",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "73",
+      "Position": "-1920,300",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "71",
@@ -1109,20 +1110,9 @@
       }
     },
     {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "74",
-      "Position": "-1920,300",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "72",
-        "Output": "Result"
-      }
-    },
-    {
       "_class": "SGETextureSampleNode",
       "Mode": "Texture2D",
-      "Identifier": "75",
+      "Identifier": "74",
       "Position": "-1212,216",
       "HandleOffsets": {},
       "Texture2DCoordinates": {
@@ -1130,11 +1120,11 @@
         "Output": "Result"
       },
       "Texture2DInput": {
-        "Identifier": "73",
+        "Identifier": "72",
         "Output": "Result"
       },
       "Texture2DSampler": {
-        "Identifier": "74",
+        "Identifier": "73",
         "Output": "Result"
       }
     },
@@ -1144,18 +1134,18 @@
       "G": true,
       "B": true,
       "A": false,
-      "Identifier": "76",
+      "Identifier": "75",
       "Position": "-996,216",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "75",
+        "Identifier": "74",
         "Output": "Output"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "77",
+      "Identifier": "76",
       "Position": "-192,84",
       "HandleOffsets": {},
       "Input": {
@@ -1167,7 +1157,7 @@
       "_class": "Multiply",
       "DefaultA": 0,
       "DefaultB": 1,
-      "Identifier": "78",
+      "Identifier": "77",
       "Position": "-324,420",
       "HandleOffsets": {},
       "A": {
@@ -1175,29 +1165,29 @@
         "Output": "A"
       },
       "B": {
-        "Identifier": "80",
+        "Identifier": "79",
         "Output": "Result"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "79",
+      "Identifier": "78",
       "Position": "-384,504",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "82",
+        "Identifier": "81",
         "Output": "Output"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "80",
+      "Identifier": "79",
       "Position": "-384,480",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "79",
+        "Identifier": "78",
         "Output": "Result"
       }
     },
@@ -1221,18 +1211,29 @@
           "Priority": 1
         }
       },
-      "Identifier": "81",
+      "Identifier": "80",
       "Position": "-816,468",
       "HandleOffsets": {}
     },
     {
       "_class": "SGEAngleAttenuationNode",
       "DefaultInput": 0,
-      "Identifier": "82",
+      "Identifier": "81",
       "Position": "-600,468",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "81",
+        "Identifier": "80",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "82",
+      "Position": "-3432,456",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "84",
         "Output": "Result"
       }
     },
@@ -1240,7 +1241,144 @@
       "_class": "Reroute",
       "Comment": null,
       "Identifier": "83",
-      "Position": "-3432,456",
+      "Position": "-2760,516",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "89",
+        "Output": "Output"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "84",
+      "Position": "-3432,420",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "94",
+        "Output": "Up"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "85",
+      "Position": "-2820,456",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "86",
+        "Output": "Output"
+      }
+    },
+    {
+      "_class": "SGENegateNode",
+      "Identifier": "86",
+      "Position": "-3312,420",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "82",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TangentViewVector",
+      "Identifier": "87",
+      "Position": "-2700,300",
+      "HandleOffsets": {},
+      "WorldPosition": {
+        "Identifier": "98",
+        "Output": "Result"
+      },
+      "WorldNormal": {
+        "Identifier": "97",
+        "Output": "Result"
+      },
+      "TangentUWs": {
+        "Identifier": "95",
+        "Output": "Result"
+      },
+      "TangentVWs": {
+        "Identifier": "90",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "88",
+      "Position": "-3372,516",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "96",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SGENegateNode",
+      "Identifier": "89",
+      "Position": "-3312,480",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "88",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "90",
+      "Position": "-2760,408",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "83",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "TransformNormal",
+      "InputSpace": "World",
+      "OutputSpace": "Tangent",
+      "DecodeNormal": false,
+      "Identifier": "91",
+      "Position": "-3096,360",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "92",
+        "Output": "Output"
+      }
+    },
+    {
+      "_class": "SGENegateNode",
+      "Identifier": "92",
+      "Position": "-3312,360",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "94",
+        "Output": "Right"
+      }
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "93",
+      "Position": "-2880,396",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "91",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "SGEDecalProjectionNode",
+      "Identifier": "94",
+      "Position": "-3648,336",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "95",
+      "Position": "-2820,384",
       "HandleOffsets": {},
       "Input": {
         "Identifier": "85",
@@ -1250,176 +1388,28 @@
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "84",
-      "Position": "-2760,516",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "90",
-        "Output": "Output"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "85",
-      "Position": "-3432,420",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "95",
-        "Output": "Up"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "86",
-      "Position": "-2820,456",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "87",
-        "Output": "Output"
-      }
-    },
-    {
-      "_class": "SGENegateNode",
-      "Identifier": "87",
-      "Position": "-3312,420",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "83",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "TangentViewVector",
-      "Identifier": "88",
-      "Position": "-2700,300",
-      "HandleOffsets": {},
-      "WorldPosition": {
-        "Identifier": "99",
-        "Output": "Result"
-      },
-      "WorldNormal": {
-        "Identifier": "98",
-        "Output": "Result"
-      },
-      "TangentUWs": {
-        "Identifier": "96",
-        "Output": "Result"
-      },
-      "TangentVWs": {
-        "Identifier": "91",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "89",
-      "Position": "-3372,516",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "97",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "SGENegateNode",
-      "Identifier": "90",
-      "Position": "-3312,480",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "89",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "91",
-      "Position": "-2760,408",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "84",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "TransformNormal",
-      "InputSpace": "World",
-      "OutputSpace": "Tangent",
-      "DecodeNormal": false,
-      "Identifier": "92",
-      "Position": "-3096,360",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "93",
-        "Output": "Output"
-      }
-    },
-    {
-      "_class": "SGENegateNode",
-      "Identifier": "93",
-      "Position": "-3312,360",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "95",
-        "Output": "Right"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "94",
-      "Position": "-2880,396",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "92",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "SGEDecalProjectionNode",
-      "Identifier": "95",
-      "Position": "-3648,336",
-      "HandleOffsets": {}
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
       "Identifier": "96",
-      "Position": "-2820,384",
-      "HandleOffsets": {},
-      "Input": {
-        "Identifier": "86",
-        "Output": "Result"
-      }
-    },
-    {
-      "_class": "Reroute",
-      "Comment": null,
-      "Identifier": "97",
       "Position": "-3372,372",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "95",
+        "Identifier": "94",
         "Output": "Forward"
       }
     },
     {
       "_class": "Reroute",
       "Comment": null,
-      "Identifier": "98",
+      "Identifier": "97",
       "Position": "-2880,360",
       "HandleOffsets": {},
       "Input": {
-        "Identifier": "94",
+        "Identifier": "93",
         "Output": "Result"
       }
     },
     {
       "_class": "WorldPosition",
-      "Identifier": "99",
+      "Identifier": "98",
       "Position": "-3096,300",
       "HandleOffsets": {}
     },
@@ -1430,9 +1420,20 @@
       "Title": "Bullet Hole",
       "Description": "A Deferred Decal shadergraph example showcasing a POM projected bullet hole with a depth based LOD system.",
       "Layer": 1,
-      "Identifier": "100",
+      "Identifier": "99",
       "Position": "168,0",
       "HandleOffsets": {}
+    },
+    {
+      "_class": "Reroute",
+      "Comment": null,
+      "Identifier": "100",
+      "Position": "-1860,60",
+      "HandleOffsets": {},
+      "Input": {
+        "Identifier": "34",
+        "Output": "Result"
+      }
     }
   ]
 }

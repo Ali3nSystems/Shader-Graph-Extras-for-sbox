@@ -8,6 +8,11 @@ public sealed class SGEBumpOffsetNode : ShaderNode
 		Iterative,
 		Standard
 	}
+	public enum SGEBumpOffsetZDivision
+	{
+		Enabled,
+		Disabled
+	}
 	public enum SGEBumpOffsetChannel
 	{
 		Red,
@@ -125,6 +130,9 @@ public sealed class SGEBumpOffsetNode : ShaderNode
 	}
 
 	public SGEBumpOffsetMode Mode { get; set; } = SGEBumpOffsetMode.Standard;
+	
+	[Title("Z Division")]
+	public SGEBumpOffsetZDivision ZDivision { get; set; } = SGEBumpOffsetZDivision.Enabled;
 
 	public SGEBumpOffsetChannel Channel { get; set; } = SGEBumpOffsetChannel.Alpha;
 
@@ -132,9 +140,11 @@ public sealed class SGEBumpOffsetNode : ShaderNode
 	public float DefaultAmplitude { get; set; } = 0.1f;
 
 	[InputDefault( nameof( MinimumIterations ) )]
+	[ShowIf( nameof( IsIterativeMode ), true )]
 	public float DefaultMinimumIterations { get; set; } = 0;
 
 	[InputDefault( nameof( MaximumIterations ) )]
+	[ShowIf( nameof( IsIterativeMode ), true )]
 	public float DefaultMaximumIterations { get; set; } = 4;
 
 	[InputDefault( nameof( LevelOfDetail ) )]
@@ -157,6 +167,7 @@ public sealed class SGEBumpOffsetNode : ShaderNode
 		var levelOfDetail = compiler.ResultOrDefault( LevelOfDetail, DefaultLevelOfDetail );
 		var offset = compiler.ResultOrDefault( Offset, DefaultOffset );
 		int channel = (int)Channel;
+		int zDivision = (int)ZDivision;
 
 		compiler.RegisterInclude( "shaders/hlsl/functions/func-bump_offset.hlsl" );
 
@@ -165,12 +176,12 @@ public sealed class SGEBumpOffsetNode : ShaderNode
 		switch (Mode)
 		{
 			case SGEBumpOffsetMode.Iterative:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEBumpOffsetIterative({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations}, {levelOfDetail}, {offset}, {channel})");
+				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEBumpOffsetIterative({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {minimumIterations},{maximumIterations}, {levelOfDetail}, {offset}, {channel}, {zDivision})");
 				break;
 
 
 			case SGEBumpOffsetMode.Standard:
-				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEBumpOffsetStandard({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {levelOfDetail}, {offset}, {channel})");
+				nodeResult = new NodeResult(NodeResultType.Vector2, $"SGEBumpOffsetStandard({coordinates}, {texture}, {sampler}, {tangentSpaceViewDirection}, {amplitude}, {levelOfDetail}, {offset}, {channel}, {zDivision})");
 				break;
 		}
 		return nodeResult;

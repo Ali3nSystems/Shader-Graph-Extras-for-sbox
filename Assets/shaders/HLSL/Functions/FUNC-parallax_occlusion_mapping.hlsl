@@ -1,10 +1,13 @@
-float2 SGEParallaxOcclusionMappingStandard(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel)
+float2 SGEParallaxOcclusionMappingStandard(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel, int zDivision)
 {
     float layerNumbers = lerp(minimumIterations, maximumIterations, levelOfDetail);
     float layerDepth = 1 / layerNumbers;
     float currentLayerDepth = 0;
 
-    float2 S = tangentSpaceViewDirection.xy / tangentSpaceViewDirection.z * amplitude;
+    // zDivision: 0 = Enabled (perspective-correct), 1 = Disabled (no grazing-angle blowup)
+    float2 S = zDivision == 0
+        ? tangentSpaceViewDirection.xy / tangentSpaceViewDirection.z * amplitude
+        : tangentSpaceViewDirection.xy * -amplitude;
     float2 deltaCoordinates = S / layerNumbers;
 
     float2 currentCoordinates = coordinates + offset * S;
@@ -27,13 +30,16 @@ float2 SGEParallaxOcclusionMappingStandard(float2 coordinates, Texture2D texture
     return currentCoordinates;
 }
 
-float2 SGEParallaxOcclusionMappingSteep(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel)
+float2 SGEParallaxOcclusionMappingSteep(float2 coordinates, Texture2D texture, SamplerState sampler, float3 tangentSpaceViewDirection, float amplitude, float minimumIterations,float maximumIterations, float levelOfDetail, float offset, int channel, int zDivision)
     {
         float layerNumbers = lerp(minimumIterations, maximumIterations, levelOfDetail);
         float layerDepth = 1 / layerNumbers;
         float currentLayerDepth = 0;
 
-        float2 S = tangentSpaceViewDirection.xy / tangentSpaceViewDirection.z * amplitude;
+        // zDivision: 0 = Enabled (perspective-correct), 1 = Disabled (no grazing-angle blowup)
+        float2 S = zDivision == 0
+            ? tangentSpaceViewDirection.xy / tangentSpaceViewDirection.z * amplitude
+            : tangentSpaceViewDirection.xy * -amplitude;
         float2 deltaCoordinates = S / layerNumbers;
 
         float2 currentCoordinates = coordinates + offset * S;

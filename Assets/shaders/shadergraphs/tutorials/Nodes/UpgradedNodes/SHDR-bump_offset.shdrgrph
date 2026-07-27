@@ -55,7 +55,8 @@
     {
       "_class": "SGEBumpOffsetNode",
       "Mode": "Iterative",
-      "Channel": "Blue",
+      "ZDivision": "Enabled",
+      "Channel": "Red",
       "DefaultAmplitude": 0.1,
       "DefaultMinimumIterations": 0,
       "DefaultMaximumIterations": 4,
@@ -343,7 +344,7 @@
       "_class": "Float",
       "Min": 0,
       "Max": 1,
-      "Value": 0.5,
+      "Value": 0.1,
       "Name": "Amplitude",
       "IsAttribute": false,
       "UI": {
@@ -633,7 +634,7 @@
       "Color": "Green",
       "Title": "Bump Offset",
       "Description": "Coordinates: - Add your coordinates to sample the height.\nTexture: - Add your height texture.\nSampler: - Add your height sampler.\nTangent Space View Direction: - Add \u0022Tangent View Vector\u0022 node as shown.\nAmplitude: - Controls the amplitude of the coordinates.\n",
-      "Layer": 3,
+      "Layer": 4,
       "Identifier": "41",
       "Position": "168,0",
       "HandleOffsets": {}
@@ -646,7 +647,7 @@
       "Description": "This node is much more cheaper than Parallax Occlusion Mapping but it falls off considerably at very steep angles.\nIt is configured to match the Amplitude and Offset settings on the Parallax Occlusion Mapping node, so feel free to swap between them, they should look similar if the angle is right.",
       "Layer": 1,
       "Identifier": "42",
-      "Position": "780,0",
+      "Position": "780,372",
       "HandleOffsets": {}
     },
     {
@@ -739,9 +740,9 @@
       "Color": "Purple",
       "Title": "Mode",
       "Description": "Iterative: - Samples the height texture and the coordinates multiple times for a better displacement.\nStandard: - Optimized to Sample the height texture only once for the displacement.\n",
-      "Layer": 3,
+      "Layer": 2,
       "Identifier": "49",
-      "Position": "780,180",
+      "Position": "780,0",
       "HandleOffsets": {}
     },
     {
@@ -750,9 +751,31 @@
       "Color": "Green",
       "Title": "",
       "Description": "Minimum Iterations: - Minimum amount of times to sample the height texture.\nMaximum Iterations: - Maximum amount of times to sample the height texture.\nLevel Of Detail: - Mask to lerp between minimum and maximum iterations.\nOffset: - Controls the offset of the coordinates.",
-      "Layer": 2,
+      "Layer": 3,
       "Identifier": "50",
       "Position": "168,180",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "312,108",
+      "Color": "Purple",
+      "Title": "Modes",
+      "Description": "Enabled: - Use it for terrain or models.\nDisabled: - Use it for decals.\n\n",
+      "Layer": 2,
+      "Identifier": "51",
+      "Position": "780,156",
+      "HandleOffsets": {}
+    },
+    {
+      "_class": "CommentNode",
+      "Size": "456,84",
+      "Color": "Purple",
+      "Title": "Channel",
+      "Description": "Which channel to use from the texture for displacement.\n",
+      "Layer": 3,
+      "Identifier": "52",
+      "Position": "780,276",
       "HandleOffsets": {}
     }
   ]
